@@ -44,7 +44,7 @@ def requires_auth(f):
 
 def connect_db():
     # print("in connect_db")
-    return sqlite3.connect('/home/globalhealth/mysite/ghi.db')
+	return sqlite3.connect('F:\GHI_latest_project\global-health-impact-web\ghi.db')
 
 @app.before_request
 def before_request():
