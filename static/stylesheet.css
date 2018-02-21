@@ -226,13 +226,13 @@ body {
 }
 
 #back {
-    position: fixed;
+    position: absolute;
     width: 100vw;
     left: 0;
     z-index: -1;
 }
 #fore {
-    position: fixed;
+    position: absolute;
     z-index: 1;
     width: 100vw;
 }
