@@ -358,7 +358,8 @@ body {
     top: calc(80vw * 0.506);
     position: relative;
     background: #FFFFFF;
-    overflow: hidden;
+    overflow: hidden;    
+    width: 100vw !important;
 }
 .foot {
     background-color: #404040;
