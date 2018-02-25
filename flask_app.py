@@ -44,7 +44,7 @@ def requires_auth(f):
 
 def connect_db():
     # print("in connect_db")
-	return sqlite3.connect('F:\GHI_latest_project\global-health-impact-web\ghi.db')
+	return sqlite3.connect('/Users/shileicui/Desktop/GHI_Website/new_website/global-health-impact-web-/ghi.db')
 
 @app.before_request
 def before_request():
@@ -161,7 +161,7 @@ def diseasepg(dyear,ddisease):
             upp = ddisease.upper()
             speclocate = [dyear, ddisease,upp]
             return render_template('disease.html', navsub=4, showindex=1, diseasepie = piedata, bar1data = bar1data, disease=0, bar1 = bar1, bar2 = bar2, bar3 = bar3, speclocate = speclocate, scrolling=1)
-       
+
         elif ddisease == 'Malaria':
             piedata = []
             bar1data = []
@@ -196,7 +196,7 @@ def diseasepg(dyear,ddisease):
             upp = ddisease.upper()
             speclocate = [dyear, ddisease,upp]
             return render_template('disease.html', navsub=4, showindex=1, piedat=piedat, clickdat=clickdat, index=index, disease=1, speclocate = speclocate, scrolling=1)
-      
+
         else:
             piedat = []
             clickdat = []
@@ -1656,4 +1656,3 @@ if __name__ == '__main__':
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_database', None)
-
