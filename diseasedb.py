@@ -19,45 +19,53 @@ conn.execute('''CREATE TABLE disbars
 
 datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=1560508440&single=true&output=csv'
 df = pd.read_csv(datasrc, skiprows=1)
-
 disease2010db = []
 disease2013db = []
 
 i = 0
-for k in range(7,19):
+for k in range(8,20):
     distypes = ['TB','TB','TB','Malaria','Malaria','HIV','Roundworm','Hookworm','Whipworm','Schistosomiasis','Onchoceriasis','LF']
     colors = ['#FFB31C','#FFB31C','#FFB31C','#0083CA','#0083CA','#EF3E2E','#003452','#86AAB9','#CAEEFD','#546675','#8A5575','#305516']
     dis = ['Drug Susceptable TB','MDR-TB','XDR-TB','p. falc Malaria','p. vivax Malaria','HIV','Roundworm','Hookworm','Whipworm','Schistosomiasis','Onchoceriasis','LF']
     color = colors[i]
     disease = dis[i]
     distype = distypes[i]
-    impact = float(df.iloc[k,43].replace(',',''))
-    daly = float(df.iloc[k,45].replace(',',''))
-    need = float(df.iloc[k,46].replace(',',''))
-    i += 1
-    row = [disease,distype,impact,daly,need,color]
-    disease2010db.append(row)
-    conn.execute('insert into disease2010 values (?,?,?,?,?,?)', row)
+    temp = df.iloc[k,43]
+    temp1 = df.iloc[k,45]
+    temp2 = df.iloc[k,46]
+    if type(temp) != float and type(temp1)!=float and type(temp2)!=float:
+        impact = float(temp.replace(',',''))
+        daly = float(temp1.replace(',',''))
+        need = float(temp2.replace(',',''))
+        i += 1
+        row = [disease,distype,impact,daly,need,color]
+        disease2010db.append(row)
+        conn.execute('insert into disease2010 values (?,?,?,?,?,?)', row)
 
 i = 0
-for k in range(7,19):
+for k in range(8,20):
     distypes = ['TB','TB','TB','Malaria','Malaria','HIV','Roundworm','Hookworm','Whipworm','Schistosomiasis','Onchoceriasis','LF']
     colors = ['#FFB31C','#FFB31C','#FFB31C','#0083CA','#0083CA','#EF3E2E','#003452','#86AAB9','#CAEEFD','#546675','#8A5575','#305516']
     dis = ['Drug Susceptable TB','MDR-TB','XDR-TB','p. falc Malaria','p. vivax Malaria','HIV','Roundworm','Hookworm','Whipworm','Schistosomiasis','Onchoceriasis','LF']
     color = colors[i]
     disease = dis[i]
     distype = distypes[i]
-    impact = float(df.iloc[k,92].replace(',',''))
-    daly = float(df.iloc[k,94].replace(',',''))
-    need = float(df.iloc[k,95].replace(',',''))
-    i += 1
-    row = [disease,distype,impact,daly,need,color]
-    disease2013db.append(row)
-    conn.execute('insert into disease2013 values (?,?,?,?,?,?)', row)
-
+    temp = df.iloc[k,94]
+    temp1 = df.iloc[k,96]
+    temp2 = df.iloc[k,97]
+    if type(temp) != float and type(temp1)!=float and type(temp2)!=float:
+        impact = float(temp.replace(',',''))
+        daly = float(temp1.replace(',',''))
+        need = float(temp2.replace(',',''))
+        i += 1
+        row = [disease,distype,impact,daly,need,color]
+        disease2013db.append(row)
+        conn.execute('insert into disease2013 values (?,?,?,?,?,?)', row)
 
 def stripdata(x,y):
     tmp = df.iloc[x,y]
+    if tmp=="#DIV/0!" or tmp=="nan":
+        return(0)
     if isinstance(tmp,float) == False:
         return(float(tmp.replace(',','').replace(' ','0').replace('%','')))
     else:
@@ -65,10 +73,12 @@ def stripdata(x,y):
 
 disbars = []
 j=0
-for k in range(90, 99):
-    colors = ['#FFB31C', '#FFB31C', '#FFB31C', '#0083CA', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
+
+for k in range(91, 100):
+    colors = ['#FFB31C', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
               '#546675', '#8A5575', '#305516']
     diseasename = df.iloc[k,7]
+    #print(diseasename)
     color = colors[j]
     efficacy2010 = stripdata(k,8)
     efficacy2013 = stripdata(k,9)
@@ -81,5 +91,7 @@ for k in range(90, 99):
     disbars.append(roww)
     j+=1
     conn.execute('insert into disbars values (?,?,?,?,?,?,?,?)', roww)
+
+
 
 conn.commit()
