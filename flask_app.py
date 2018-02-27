@@ -161,16 +161,15 @@ def diseasepg(dyear,ddisease):
             upp = ddisease.upper()
             speclocate = [dyear, ddisease,upp]
             return render_template('disease.html', navsub=4, showindex=1, diseasepie = piedata, bar1data = bar1data, disease=0, bar1 = bar1, bar2 = bar2, bar3 = bar3, speclocate = speclocate, scrolling=1)
-
+        
         elif ddisease == 'malaria':
-            piedata = []
-            bar1data = []
-            bar1 = []
-            bar2 = []
-            bar3 = []
+            piedat = []
+            clickdat = []
             g.db = connect_db()
-            g.db = connect_db()
-            cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchocerciasis, lf from diseaseall2010 ')
+            cur = g.db.execute(' select disease, impact, color from disease2010 where distype=?', ('Malaria',))
+            daly = g.db.execute(' select disease, daly, color from disease2010  where distype=?', ('Malaria',))
+            barz = g.db.execute(' select disease, color, efficacy2010, coverage2010, need2010 from disbars  where disease=?', ('Malaria',))
+
             data = cur.fetchall()
             for row in data:
                 country = row[0]
@@ -186,15 +185,16 @@ def diseasepg(dyear,ddisease):
                 total = tb+malaria+hiv+roundworm+hookworm+whipworm+schistosomiasis+onchocerciasis+lf
                 xx = [country,total]
                 xy = [country,tb,malaria,hiv,roundworm,hookworm,whipworm,schistosomiasis,onchocerciasis,lf]
-                #piedata.append(xx)
-                #clickdata.append(xy)
-            #seq = sorted(piedata, key=lambda sc: sc[1], reverse=True)
-            #index = [seq.index(v) for v in piedata]
-            #piedata.insert(0,['Country','DALY'])
+                piedat.append(xx)
+                clickdat.append(xy)
+            seq = sorted(piedat, key=lambda sc: sc[1], reverse=True)
+            index = [seq.index(v) for v in piedat]
+            piedat.insert(0,['Country','DALY'])
             upp = ddisease.upper()
             speclocate = [dyear, ddisease,upp]
-            return render_template('disease.html', navsub=4, showindex=1,disease=2, speclocate = speclocate, scrolling=1)
+            return render_template('disease.html', navsub=4, name=ddisease, showindex=1, piedat=piedat, clickdat=clickdat, index=index, disease=1, speclocate = speclocate, scrolling=1)
 
+   
         elif ddisease == 'tb':
             piedata = []
             bar1data = []
@@ -998,6 +998,8 @@ def companyindx(year,disease):
         color = compcolors[colcnt]
         #color = row[3]
         colcnt += 1
+        colcnt %= 50
+
         xyz = [comp,daly,disease,color]
         bardata.append(xyz)
 #-----------------------------------------------------------------------------------------------------------------------------------------
