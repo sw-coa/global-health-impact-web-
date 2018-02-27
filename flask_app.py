@@ -44,7 +44,7 @@ def requires_auth(f):
 
 def connect_db():
     # print("in connect_db")
-	return sqlite3.connect('/Users/shileicui/Desktop/GHI_Website/new_website/global-health-impact-web-/ghi.db')
+	return sqlite3.connect('F:/global-health-impact-web/ghi.db')
 
 @app.before_request
 def before_request():
@@ -162,7 +162,7 @@ def diseasepg(dyear,ddisease):
             speclocate = [dyear, ddisease,upp]
             return render_template('disease.html', navsub=4, showindex=1, diseasepie = piedata, bar1data = bar1data, disease=0, bar1 = bar1, bar2 = bar2, bar3 = bar3, speclocate = speclocate, scrolling=1)
 
-        elif ddisease == 'Malaria':
+        elif ddisease == 'malaria':
             piedata = []
             bar1data = []
             bar1 = []
@@ -172,8 +172,6 @@ def diseasepg(dyear,ddisease):
             g.db = connect_db()
             cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchocerciasis, lf from diseaseall2010 ')
             data = cur.fetchall()
-            ddisease = 'All'
-            dyear = '2010'
             for row in data:
                 country = row[0]
                 tb = row[1]
@@ -188,16 +186,50 @@ def diseasepg(dyear,ddisease):
                 total = tb+malaria+hiv+roundworm+hookworm+whipworm+schistosomiasis+onchocerciasis+lf
                 xx = [country,total]
                 xy = [country,tb,malaria,hiv,roundworm,hookworm,whipworm,schistosomiasis,onchocerciasis,lf]
-                piedat.append(xx)
-                clickdat.append(xy)
-            seq = sorted(piedat, key=lambda sc: sc[1], reverse=True)
-            index = [seq.index(v) for v in piedat]
-            piedat.insert(0,['Country','DALY'])
+                #piedata.append(xx)
+                #clickdata.append(xy)
+            #seq = sorted(piedata, key=lambda sc: sc[1], reverse=True)
+            #index = [seq.index(v) for v in piedata]
+            #piedata.insert(0,['Country','DALY'])
             upp = ddisease.upper()
             speclocate = [dyear, ddisease,upp]
-            return render_template('disease.html', navsub=4, showindex=1, piedat=piedat, clickdat=clickdat, index=index, disease=1, speclocate = speclocate, scrolling=1)
+            return render_template('disease.html', navsub=4, showindex=1,disease=2, speclocate = speclocate, scrolling=1)
 
-        else:
+        elif ddisease == 'tb':
+            piedata = []
+            bar1data = []
+            bar1 = []
+            bar2 = []
+            bar3 = []
+            g.db = connect_db()
+            g.db = connect_db()
+            cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchocerciasis, lf from diseaseall2010 ')
+            data = cur.fetchall()
+            for row in data:
+                country = row[0]
+                tb = row[1]
+                malaria = row[2]
+                hiv = row[3]
+                roundworm = row[4]
+                hookworm = row[5]
+                whipworm = row[6]
+                schistosomiasis = row[7]
+                onchocerciasis = row[8]
+                lf = row[9]
+                total = tb + malaria + hiv + roundworm + hookworm + whipworm + schistosomiasis + onchocerciasis + lf
+                xx = [country, total]
+                xy = [country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchocerciasis, lf]
+                # piedata.append(xx)
+                # clickdata.append(xy)
+            # seq = sorted(piedata, key=lambda sc: sc[1], reverse=True)
+            # index = [seq.index(v) for v in piedata]
+            # piedata.insert(0,['Country','DALY'])
+            upp = ddisease.upper()
+            speclocate = [dyear, ddisease, upp]
+            return render_template('disease.html', navsub=4, showindex=1, disease=3, speclocate=speclocate, scrolling=1)
+
+
+        elif ddisease == 'all':
             piedat = []
             clickdat = []
             g.db = connect_db()

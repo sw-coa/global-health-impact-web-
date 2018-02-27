@@ -111,18 +111,6 @@
         </div>
     </div>
 </div>
-
-<div class="currentlocation">
-<p class="pagetitle">Index / <a href="/index/disease" class="pagetitle">Disease</a> / <a href="/index/disease/{{ speclocate.0 }}/Malaria" class="pagetitle">{{ speclocate.0 }}</a> / <a href="/index/drug/{{ speclocate.0 }}/Malaria" class="titlebold">Malaria</a></p>
-</div>
-<div class="row">
-    <div class="col-sm-6">
-        <div class="contentbox">
-            <p class="redtxt">DISEASE: <b>Malaria</b></p>
-            <p class="txtcontent">The map you see displays the aggregate need for treatment for all diseases combined. These diseases include HIV/AIDS, TB, malaria, lymphatic filariasis, onchoriasis, schistosomiasis, hookworm, ringworm, and whipworm. By clicking on a country on the map, you can view its specific need for treatment for these diseases. Different drugs and combinations of drugs are having different degrees of success in combating these different diseases. The first graph illustrates the impact of key drugs on each of these diseases. Subsequent graphs illustrate the need for, access to, and effectiveness of these drugs. For additional information, please see the About the Index and Methodology.</p>
-        </div>
-    </div>
- </div>
 <div class="row">
     <div class="col-sm-4">
         <p class="blueheader text-center">Need</p>
@@ -267,6 +255,38 @@
                 </table>
             </div>
         </div>
+    </div>
+</div>
+{% endif %}
+{% if disease == 2 %}
+<div class="currentlocation">
+<p class="pagetitle">Index / <a href="/index/disease" class="pagetitle">Disease</a> / <a href="/index/disease/{{ speclocate.0 }}/malaria" class="pagetitle">{{ speclocate.0 }}</a> / <a href="/index/drug/{{ speclocate.0 }}/malaria" class="titlebold">Malaria</a></p>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="contentbox">
+            <p class="redtxt">DISEASE: <b>Malaria</b></p>
+            <p class="txtcontent">The map you see displays the aggregate need for treatment of diseases for all diseases combined. These diseases include HIV/AIDS, TB, malaria, lymphatic filariasis, onchoriasis, schistomiasis, hookworm, ringworm, and whipworm. By clicking on a country on the map, you can view its specific need for treatment and the proportion of the disease burden due to each of these individual diseases in that country.</p>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div width="400px" id="mapdiv"></div>
+    </div>
+</div>
+{% endif %}
+{% if disease == 3 %}
+<div class="currentlocation">
+<p class="pagetitle">Index / <a href="/index/disease" class="pagetitle">Disease</a> / <a href="/index/disease/{{ speclocate.0 }}/tb" class="pagetitle">{{ speclocate.0 }}</a> / <a href="/index/drug/{{ speclocate.0 }}/tb" class="titlebold">TB</a></p>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="contentbox">
+            <p class="redtxt">DISEASE: <b>TB</b></p>
+            <p class="txtcontent">The map you see displays the aggregate need for treatment of diseases for all diseases combined. These diseases include HIV/AIDS, TB, malaria, lymphatic filariasis, onchoriasis, schistomiasis, hookworm, ringworm, and whipworm. By clicking on a country on the map, you can view its specific need for treatment and the proportion of the disease burden due to each of these individual diseases in that country.</p>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div width="400px" id="mapdiv"></div>
     </div>
 </div>
 {% endif %}
