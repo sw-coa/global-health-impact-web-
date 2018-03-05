@@ -259,97 +259,18 @@
 </div>
 {% endif %}
 {% if disease == 2 %}
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('upcoming', {packages:["geochart","corechart"]});
-      google.charts.setOnLoadCallback(drawMap);
-      function drawMap() {
-        var data = google.visualization.arrayToDataTable({{ piedat |safe }});
-        var mapoptions = {
-        };
-        mapoptions['dataMode'] = 'regions';
-        mapoptions['colors'] = ['#548A9B', '#C0E188', '#EE8D7D'];
-        mapoptions['width'] = 450;
-        mapoptions['backgroundColor'] = '#ffffff';
-        var mapcontainer = document.getElementById('mapdiv');
-        var geomap = new google.visualization.GeoChart(mapcontainer);
-        drawcharts(0);
-
-        geomap.draw(data, mapoptions);
-        google.visualization.events.addListener(geomap, 'select', selectHandler);
-        function selectHandler() {
-            var selection = geomap.getSelection();
-            var diseases = ['TB'];
-            var rownum = selection[0].row;
-            drawcharts(rownum);
-
-        };
-      };
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawcharts(rownum) {
-       
-
-        var bar1 = new google.visualization.DataTable();
-            bar1.addColumn('string', 'Disease');
-            bar1.addColumn('number','Need');
-            bar1.addColumn({type: 'string', role: 'style'});
-            bar1.addRows({{ bar1 |safe }});
-
-        var bar2 = new google.visualization.DataTable();
-            bar2.addColumn('string', 'Disease');
-            bar2.addColumn('number','Coverage');
-            bar2.addColumn({type: 'string', role: 'style'});
-            bar2.addRows({{ bar2 |safe }});
-
-        var options = {
-            width: 600,
-            height: "auto",
-            chartArea:{top:0},
-            legend:'none',
-            colors: ['#FFB31C','#FFB31C','#FFB31C','#0083CA','#0083CA','#EF3E2E','#003452','#86AAB9','#CAEEFD','#546675','#8A5575','#305516'],
-        };
-        var optionsbar = {
-            height: 400,
-            width: 450,
-            top: 0,
-            legend:'none',
-            hAxis: {showTextEvery: 1, slantedText: true, slantedTextAngle: 45},
-            chartArea:{top:5,width:"300px",height:"400px"},
-
-        };
-
-        var vertbar1 = new google.visualization.ColumnChart(document.getElementById('verticalbar1'));
-        var vertbar2 = new google.visualization.ColumnChart(document.getElementById('verticalbar2'));
-
-        vertbar1.draw(bar1, optionsbar);
-        vertbar2.draw(bar2, optionsbar);
-      };
-    </script>
 <div class="currentlocation">
-<p class="pagetitle">Index / <a href="/index/disease" class="pagetitle">Disease</a> / <a href="/index/disease/{{ speclocate.0 }}/{{ speclocate.1 }}" class="pagetitle">{{ speclocate.0 }}</a> / <a href="/index/drug/{{ speclocate.0 }}/{{ speclocate.1 }}" class="titlebold">{{ speclocate.2 }}</a></p>
+<p class="pagetitle">Index / <a href="/index/disease" class="pagetitle">Disease</a> / <a href="/index/disease/{{ speclocate.0 }}/malaria" class="pagetitle">{{ speclocate.0 }}</a> / <a href="/index/drug/{{ speclocate.0 }}/malaria" class="titlebold">Malaria</a></p>
 </div>
 <div class="row">
     <div class="col-sm-6">
         <div class="contentbox">
-            <p class="redtxt">DISEASE: <b>ALL</b></p>
+            <p class="redtxt">DISEASE: <b>Malaria</b></p>
             <p class="txtcontent">The map you see displays the aggregate need for treatment of diseases for all diseases combined. These diseases include HIV/AIDS, TB, malaria, lymphatic filariasis, onchoriasis, schistomiasis, hookworm, ringworm, and whipworm. By clicking on a country on the map, you can view its specific need for treatment and the proportion of the disease burden due to each of these individual diseases in that country.</p>
         </div>
     </div>
     <div class="col-sm-6">
         <div width="400px" id="mapdiv"></div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-4">
-        <p class="blueheader text-center">Treatment Coverage <br />by TB Type: </p>
-        <div class="verticalbar" id="verticalbar1"></div>
-    </div>
-    <div class="col-sm-4">
-        <p class="blueheader text-center">TB Treatment <br /> Effectiveness by Drug:</p>
-        <div class="verticalbar" id="verticalbar2"></div>
     </div>
 </div>
 {% endif %}
