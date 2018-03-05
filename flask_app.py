@@ -8,8 +8,6 @@ import sqlite3
 
 import math
 
-
-
 app = Flask(__name__)
 
 DATABASE = 'ghi.db'
@@ -44,7 +42,7 @@ def requires_auth(f):
 
 def connect_db():
     # print("in connect_db")
-	return sqlite3.connect('F:/global-health-impact-web/ghi.db')
+ return sqlite3.connect('F:/global-health-impact-web/ghi.db')
 
 @app.before_request
 def before_request():
@@ -196,37 +194,49 @@ def diseasepg(dyear,ddisease):
             return render_template('disease.html', navsub=4, showindex=1,disease=2, speclocate = speclocate, scrolling=1)
 
         elif ddisease == 'tb':
-            piedata = []
-            bar1data = []
             bar1 = []
             bar2 = []
-            bar3 = []
+            piedat = []
+            clickdat = []
             g.db = connect_db()
-            g.db = connect_db()
-            cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchocerciasis, lf from diseaseall2010 ')
+            cur = g.db.execute(' select disease,distype,color,efficacy2010,coverage2010 ,position from distypes where distype=? order by position ASC ',('TB',))
+            cur2 = g.db.execute(' select country, tb from diseaseall2010 ')
+
             data = cur.fetchall()
+            data2 = cur2.fetchall()
+            barcolors = ['#FFD480','#CCCC00','#CCA300','#86AAB9','#003452','#CAEEFD','#546675','#8A5575','#305516']
+            c = 0
+            print(data)
             for row in data:
+                disease = row[0]
+                tb = row[1]
+                color = "color: " + barcolors[c]
+                c += 1
+                efficacy2010 = row[3]
+                coverage2010 = row[4]
+                xx = [disease,efficacy2010,color]
+                xy = [disease,coverage2010,color]
+                bar1.append(xx)
+                bar2.append(xy)
+                print('=======')
+                print(efficacy2010)
+
+            for row in data2:
                 country = row[0]
                 tb = row[1]
-                malaria = row[2]
-                hiv = row[3]
-                roundworm = row[4]
-                hookworm = row[5]
-                whipworm = row[6]
-                schistosomiasis = row[7]
-                onchocerciasis = row[8]
-                lf = row[9]
-                total = tb + malaria + hiv + roundworm + hookworm + whipworm + schistosomiasis + onchocerciasis + lf
-                xx = [country, total]
-                xy = [country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchocerciasis, lf]
-                # piedata.append(xx)
-                # clickdata.append(xy)
-            # seq = sorted(piedata, key=lambda sc: sc[1], reverse=True)
-            # index = [seq.index(v) for v in piedata]
-            # piedata.insert(0,['Country','DALY'])
+                #xx = [country,tb]
+                xy = [country,tb]
+                piedat.append(xy)
+                clickdat.append(xy)
+            print('==========efficacy2010=====')
+            print(bar1)
+
+            seq = sorted(piedat, key=lambda sc: sc[1], reverse=True)
+            index = [seq.index(v) for v in piedat]
+            piedat.insert(0,['Country','DALY'])
             upp = ddisease.upper()
-            speclocate = [dyear, ddisease, upp]
-            return render_template('disease.html', navsub=4, showindex=1, disease=3, speclocate=speclocate, scrolling=1)
+            speclocate = [dyear, ddisease,upp]
+            return render_template('disease.html', navsub=4, showindex=1,piedat=piedat, clickdat=clickdat, index=index, bar1 = bar1, bar2 = bar2, disease=2, speclocate = speclocate, scrolling=1)
 
 
         elif ddisease == 'all':
@@ -331,6 +341,50 @@ def diseasepg(dyear,ddisease):
             upp = ddisease.upper()
             speclocate = [dyear, ddisease,upp]
             return render_template('disease.html', navsub=4, showindex=1, piedat=piedat, clickdat=clickdat, index=index, disease=1, speclocate = speclocate, scrolling=1)
+        elif ddisease == 'tb':
+            bar1 = []
+            bar2 = []
+            piedat = []
+            clickdat = []
+            g.db = connect_db()
+            cur = g.db.execute(' select disease,distype,color,efficacy2013,coverage2013 ,position from distypes where distype=? order by position ASC ',('TB',))
+            cur2 = g.db.execute(' select country, tb from diseaseall2013 ')
+
+            data = cur.fetchall()
+            data2 = cur2.fetchall()
+            barcolors = ['#FFD480','#CCCC00','#CCA300','#86AAB9','#003452','#CAEEFD','#546675','#8A5575','#305516']
+            c = 0
+            print(data)
+            for row in data:
+                disease = row[0]
+                tb = row[1]
+                color = "color: " + barcolors[c]
+                c += 1
+                efficacy2013 = row[3]
+                coverage2013 = row[4]
+                xx = [disease,efficacy2013,color]
+                xy = [disease,coverage2013,color]
+                bar1.append(xx)
+                bar2.append(xy)
+                print('=======')
+                print(efficacy2013)
+
+            for row in data2:
+                country = row[0]
+                tb = row[1]
+                #xx = [country,tb]
+                xy = [country,tb]
+                piedat.append(xy)
+                clickdat.append(xy)
+            print('==========efficacy2010=====')
+            print(bar1)
+
+            seq = sorted(piedat, key=lambda sc: sc[1], reverse=True)
+            index = [seq.index(v) for v in piedat]
+            piedat.insert(0,['Country','DALY'])
+            upp = ddisease.upper()
+            speclocate = [dyear, ddisease,upp]
+            return render_template('disease.html', navsub=4, showindex=1,piedat=piedat, clickdat=clickdat, index=index, bar1 = bar1, bar2 = bar2, disease=2, speclocate = speclocate, scrolling=1)
 
 
 @app.route('/reports')
@@ -366,13 +420,13 @@ def methadology():
 
 @app.route('/index/drug')
 def druginx():
-    drugcolors = ['#FFB31C', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD', '#546675', '#8A5575', '#305516',
-                  '#B78988', '#BAE2DA', '#B1345D', '#5B75A7', '#906F76', '#C0E188', '#DE9C2A', '#F15A22', '#8F918B',
-                  '#F2C2B7',
-                  '#F7C406', '#B83F98', '#548A9B', '#D86375', '#F1DBC6', '#0083CA', '#7A80A3', '#CA8566', '#A3516E',
-                  '#1DF533', '#510B95', '#DFF352', '#F2C883', '#E3744D', '#26B2BE', '#5006BA', '#B99BCF', '#DC2A5A',
-                  '#D3D472', '#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5', '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5',
-                  '#0ACD57', '#22419F', '#D47C5B']
+    drugcolors = ['#7A80A3','#B78988','#906F76','#8F918B','#548A9B','#BAE2DA','#C0E188','#f2c2b7',
+                  '#d86375','#b1345d','#de9c2a','#f7c406','#f1dbc6','#5b75a7','#f15a22','#b83f98',
+                  '#0083ca','#FFB31C','#0083CA','#EF3E2E','#003452','#86AAB9','#CAEEFD','#546675',
+                  '#8A5575','#305516','#B78988','#BAE2DA','#B1345D','#5B75A7','#906F76','#C0E188',
+                  '#B99BCF', '#DC2A5A', '#D3D472','#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5',
+                  '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5', '#0ACD57', '#22419F','#D47C5B','#003452',
+                  '#86AAB9', '#CAEEFD' ]
     piedata = []
     drugg = []
     pielabb = []
@@ -432,13 +486,13 @@ def druginx():
 
 @app.route('/index/drug/<year>/<disease>')
 def drug(year,disease):
-    drugcolors = ['#FFB31C', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD', '#546675', '#8A5575', '#305516',
-                  '#B78988', '#BAE2DA', '#B1345D', '#5B75A7', '#906F76', '#C0E188', '#DE9C2A', '#F15A22', '#8F918B',
-                  '#F2C2B7',
-                  '#F7C406', '#B83F98', '#548A9B', '#D86375', '#F1DBC6', '#0083CA', '#7A80A3', '#CA8566', '#A3516E',
-                  '#1DF533', '#510B95', '#DFF352', '#F2C883', '#E3744D', '#26B2BE', '#5006BA', '#B99BCF', '#DC2A5A',
-                  '#D3D472', '#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5', '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5',
-                  '#0ACD57', '#22419F', '#D47C5B']
+    drugcolors = ['#7A80A3','#B78988','#906F76','#8F918B','#548A9B','#BAE2DA','#C0E188','#f2c2b7',
+                  '#d86375','#b1345d','#de9c2a','#f7c406','#f1dbc6','#5b75a7','#f15a22','#b83f98',
+                  '#0083ca','#FFB31C','#0083CA','#EF3E2E','#003452','#86AAB9','#CAEEFD','#546675',
+                  '#8A5575','#305516','#B78988','#BAE2DA','#B1345D','#5B75A7','#906F76','#C0E188',
+                  '#B99BCF', '#DC2A5A', '#D3D472','#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5',
+                  '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5', '#0ACD57', '#22419F','#D47C5B','#003452',
+                  '#86AAB9', '#CAEEFD' ]
     piedata = []
     drugg = []
     pielabb = []
@@ -621,7 +675,7 @@ def countrydata(xdisease,xyear):
             br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf from countryp2013 ')
     else:
         isall = 0
-        namedict = {'tb': 'TB', 'malaria': 'MALARIA', 'hiv': 'HIV', 'schistosomiasis': 'SCHISTOSOMIASIS', 'onchocerciasis':'ONCHOCERCIASIS', 'lf': 'LYMPHATIC FILARIASIS', 'hookworm': 'HOOKWORM', 'roundworm': 'ROUNDWORM', 'whipworm': 'WHIPWORM'}
+        namedict = {'tb': 'TB', 'malaria': 'MALARIA', 'hiv': 'HIV/AIDS', 'schistosomiasis': 'SCHISTOSOMIASIS', 'onchocerciasis':'ONCHOCERCIASIS', 'lf': 'LYMPHATIC FILARIASIS', 'hookworm': 'HOOKWORM', 'roundworm': 'ROUNDWORM', 'whipworm': 'WHIPWORM'}
         color = colors[xdisease]
         name = namedict[xdisease]
         drugg = xdisease
@@ -753,12 +807,16 @@ def countrydata(xdisease,xyear):
     return render_template('country.html', showindex=1, navsub=1, name=name, color=color, mapdata=mapdata, sortedlist=sortedlist, sortedval = sort, year=year, isall=isall, barlist = barlist, speclocate = speclocate,scrolling=1,disease = xdisease)
 
 
+
 @app.route('/index/company')
 def company():
-    compcolors = [ '#FFB31C', '#0083CA', '#EF3E2E', '#546675', '#8A5575', '#305516', '#B78988', '#BAE2DA', '#B1345D', '#5B75A7', '#906F76', '#C0E188', '#DE9C2A', '#F15A22', '#8F918B', '#F2C2B7',
- '#F7C406', '#B83F98', '#548A9B', '#D86375', '#F1DBC6', '#0083CA', '#7A80A3', '#CA8566', '#A3516E', '#1DF533', '#510B95', '#DFF352', '#F2C883', '#E3744D', '#26B2BE', '#5006BA', '#B99BCF', '#DC2A5A', '#D3D472',
- '#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5', '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5', '#0ACD57', '#22419F','#D47C5B','#003452', '#86AAB9', '#CAEEFD' ]
-
+    compcolors = ['#7A80A3','#B78988','#906F76','#8F918B','#548A9B','#BAE2DA','#C0E188','#f2c2b7',
+                  '#d86375','#b1345d','#de9c2a','#f7c406','#f1dbc6','#5b75a7','#f15a22','#b83f98',
+                  '#0083ca','#FFB31C','#0083CA','#EF3E2E','#003452','#86AAB9','#CAEEFD','#546675',
+                  '#8A5575','#305516','#B78988','#BAE2DA','#B1345D','#5B75A7','#906F76','#C0E188',
+                  '#B99BCF', '#DC2A5A', '#D3D472','#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5',
+                  '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5', '#0ACD57', '#22419F','#D47C5B','#003452',
+                  '#86AAB9', '#CAEEFD' ]
 #------Jing 10/7----modify sql: add order by and use manudis as table to select data, apply color to piechart and bar chart------------------
 
     cur = g.db.execute(' select distinct company,disease, daly2010 from manudis order by daly2010 DESC')#====10.7
@@ -866,9 +924,13 @@ def company():
 
 @app.route('/index/company/manufacturer/<year>/<disease>')
 def companyindx(year,disease):
-    compcolors = ['#FFB31C', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD', '#546675', '#8A5575', '#305516', '#B78988', '#BAE2DA', '#B1345D', '#5B75A7', '#906F76', '#C0E188', '#DE9C2A', '#F15A22', '#8F918B', '#F2C2B7',
- '#F7C406', '#B83F98', '#548A9B', '#D86375', '#F1DBC6', '#0083CA', '#7A80A3', '#CA8566', '#A3516E', '#1DF533', '#510B95', '#DFF352', '#F2C883', '#E3744D', '#26B2BE', '#5006BA', '#B99BCF', '#DC2A5A', '#D3D472',
- '#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5', '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5', '#0ACD57', '#22419F', '#D47C5B']
+    compcolors =['#7A80A3','#B78988','#906F76','#8F918B','#548A9B','#BAE2DA','#C0E188','#f2c2b7',
+                  '#d86375','#b1345d','#de9c2a','#f7c406','#f1dbc6','#5b75a7','#f15a22','#b83f98',
+                  '#0083ca','#FFB31C','#0083CA','#EF3E2E','#003452','#86AAB9','#CAEEFD','#546675',
+                  '#8A5575','#305516','#B78988','#BAE2DA','#B1345D','#5B75A7','#906F76','#C0E188',
+                  '#B99BCF', '#DC2A5A', '#D3D472','#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5',
+                  '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5', '#0ACD57', '#22419F','#D47C5B','#003452',
+                  '#86AAB9', '#CAEEFD' ]
    # colors = {'TB': '#FFB31C', 'Malaria': '#0083CA', 'HIV': '#EF3E2E', 'schistomasis': '#546675', 'lf': '#305516', 'hookworm': '#86AAB9', 'roundworm': '#003452', 'whipworm': '#CAEEFD', 'onchocerciasis': '#5CB85C'}
 
 
@@ -882,7 +944,7 @@ def companyindx(year,disease):
     pielab2 = []
     barchart = []
     bardata = []
-    if year == '2010':
+    if year == '2010A':
         if disease == 'all':
             cur = g.db.execute(' select company,disease, daly2010, color from manudis order by daly2010 DESC')
             cdd = g.db.execute(' select company, disease, daly2010, color from manudis order by daly2010 DESC ')
@@ -890,11 +952,28 @@ def companyindx(year,disease):
         elif disease == 'hiv':
             cur = g.db.execute(' select company,disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('hiv',))
             cdd = g.db.execute(' select company, disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('hiv',))
-            name = 'HIV'
+            name = 'HIV/AIDS'
         elif disease == 'tb':
             cur = g.db.execute(' select company,disease, daly2010, color from manudis where disease = ? order by daly2010 DESC ', ('tb',))
             cdd = g.db.execute(' select company, disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('tb',))
             name = 'TB'
+    elif year == '2010B':
+        if disease == 'all':
+            cur = g.db.execute(' select company,disease, daly2010, color from company2015  order by daly2010 DESC')
+            cdd = g.db.execute(' select company, disease, daly2010, color from company2015 order by daly2010 DESC')
+            name = 'ALL'
+        elif disease == 'hiv':
+            cur = g.db.execute(' select company, disease,daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('hiv',))
+            cdd = g.db.execute(' select company, disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('hiv',))
+            name = 'HIV/AIDS'
+        elif disease == 'tb':
+            cur = g.db.execute(' select company,disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('tb',))
+            cdd = g.db.execute(' select company, disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('tb',))
+            name = 'TB'
+        elif disease == 'malaria':
+            cur = g.db.execute(' select company,disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('malaria',))
+            cdd = g.db.execute(' select company, disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('malaria',))
+            name = 'MALARIA'
     elif year == '2013':
         if disease == 'all':
             cur = g.db.execute(' select company,disease, daly2013, color from manudis order by daly2013 DESC')
@@ -903,11 +982,29 @@ def companyindx(year,disease):
         elif disease == 'hiv':
             cur = g.db.execute(' select company, disease,daly2013, color from manudis where disease = ? order by daly2013 DESC', ('hiv',))
             cdd = g.db.execute(' select company, disease, daly2013, color from manudis where disease = ? order by daly2013 DESC', ('hiv',))
-            name = 'HIV'
+            name = 'HIV/AIDS'
         elif disease == 'tb':
             cur = g.db.execute(' select company,disease, daly2013, color from manudis where disease = ? order by daly2013 DESC', ('tb',))
             cdd = g.db.execute(' select company, disease, daly2013, color from manudis where disease = ? order by daly2013 DESC', ('tb',))
             name = 'TB'
+    elif year == '2015':#=====add 2015 SQL=========
+        if disease == 'all':
+            cur = g.db.execute(' select company,disease, daly2015, color from company2015  order by daly2015 DESC')
+            cdd = g.db.execute(' select company, disease, daly2015, color from company2015 order by daly2015 DESC')
+            name = 'ALL'
+        elif disease == 'hiv':
+            cur = g.db.execute(' select company, disease,daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('hiv',))
+            cdd = g.db.execute(' select company, disease,daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('hiv',))
+            name = 'HIV/AIDS'
+        elif disease == 'tb':
+            cur = g.db.execute(' select company,disease, daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('tb',))
+            cdd = g.db.execute(' select company, disease, daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('tb',))
+            name = 'TB'
+        elif disease == 'malaria':
+            cur = g.db.execute(' select company,disease, daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('malaria',))
+            cdd = g.db.execute(' select company, disease, daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('malaria',))
+            name = 'MALARIA'
+            #=====2015--end============
     piee = cur.fetchall()
     barr = cdd.fetchall()
 
@@ -952,6 +1049,17 @@ def companyindx(year,disease):
             n = 0
             pielab1.append(temprow)
             temprow = []
+
+    while (n%4!=0):
+        comp = ''
+        temprow.append(comp)
+        shortcomp = ''
+        temprow.append(shortcomp)
+        sscolor = '#ffffff'
+        temprow.append(sscolor)
+        n += 1
+    pielab1.append(temprow)
+
     n = 0
     temprow = []
     colocnt = 0
@@ -973,6 +1081,15 @@ def companyindx(year,disease):
             pielab2.append(temprow)
             temprow = []
 
+    while (n<4):
+        comp = ''
+        temprow.append(comp)
+        shortcomp = ''
+        temprow.append(shortcomp)
+        sscolor = '#ffffff'
+        temprow.append(sscolor)
+        n += 1
+    pielab2.append(temprow)
 
     colcnt = 0
     for l in barr:
@@ -1554,11 +1671,11 @@ def updateit(db):
         conn.execute(''' DROP TABLE IF EXISTS countryp2010 ''')
         conn.execute(''' DROP TABLE IF EXISTS countryp2013 ''')
 
-        conn.execute(''' CREATE TABLE country2010 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistomasis real, lf real) ''')
-        conn.execute(''' CREATE TABLE country2013 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistomasis real, onchoceriasis real, lf real) ''')
+        conn.execute(''' CREATE TABLE country2010 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, lf real) ''')
+        conn.execute(''' CREATE TABLE country2013 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, onchoceriasis real, lf real) ''')
 
-        conn.execute(''' CREATE TABLE countryp2010 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistomasis real, lf real) ''')
-        conn.execute(''' CREATE TABLE countryp2013 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistomasis real, onchoceriasis real, lf real) ''')
+        conn.execute(''' CREATE TABLE countryp2010 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, lf real) ''')
+        conn.execute(''' CREATE TABLE countryp2013 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, onchoceriasis real, lf real) ''')
 
 
         url = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=0&single=true&output=csv'
@@ -1578,10 +1695,10 @@ def updateit(db):
             roundworm = clean(df.iloc[i,66])
             hookworm = clean(df.iloc[i,67])
             whipworm = clean(df.iloc[i,68])
-            schistomasis = clean(df.iloc[i,76])
+            schistosomiasis = clean(df.iloc[i,76])
             lf = clean(df.iloc[i,80])
-            total = tb + malaria + hiv + roundworm + hookworm + whipworm + schistomasis + lf
-            row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf]
+            total = tb + malaria + hiv + roundworm + hookworm + whipworm + schistosomiasis + lf
+            row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf]
             countrydata.append(row)
 
         sortedlist = sorted(countrydata, key=lambda xy: xy[1], reverse=True)
@@ -1596,9 +1713,9 @@ def updateit(db):
             roundworm = (j[5]/maxval) *  100
             hookworm = (j[6]/maxval) *  100
             whipworm = (j[7]/maxval) *  100
-            schistomasis = (j[8]/maxval) *  100
+            schistosomiasis = (j[8]/maxval) *  100
             lf = (j[9]/maxval) *  100
-            row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf]
+            row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf]
             mapp.append(row)
         for k in countrydata:
             conn.execute(''' INSERT INTO country2010 VALUES (?,?,?,?,?,?,?,?,?,?) ''', k)
@@ -1616,11 +1733,11 @@ def updateit(db):
             roundworm = clean(df.iloc[i,150])
             hookworm = clean(df.iloc[i,151])
             whipworm = clean(df.iloc[i,152])
-            schistomasis = clean(df.iloc[i,160])
+            schistosomiasis = clean(df.iloc[i,160])
             onchoceriasis = clean(df.iloc[i,165])
             lf = clean(df.iloc[i,169])
-            total = tb + malaria + hiv + roundworm + hookworm + whipworm + schistomasis + onchoceriasis + lf
-            row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, onchoceriasis, lf]
+            total = tb + malaria + hiv + roundworm + hookworm + whipworm + schistosomiasis + onchoceriasis + lf
+            row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchoceriasis, lf]
             countrydata2.append(row)
 
         sortedlist2 = sorted(countrydata2, key=lambda xy: xy[1], reverse=True)
@@ -1635,10 +1752,10 @@ def updateit(db):
             roundworm = (j[5]/maxval) *  100
             hookworm = (j[6]/maxval) *  100
             whipworm = (j[7]/maxval) *  100
-            schistomasis = (j[8]/maxval) *  100
+            schistosomiasis = (j[8]/maxval) *  100
             onchoceriasis = (j[9]/maxval) * 100
             lf = (j[10]/maxval) *  100
-            row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, onchoceriasis, lf]
+            row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchoceriasis, lf]
             mapp2.append(row)
 
         for k in countrydata2:
@@ -1688,3 +1805,4 @@ if __name__ == '__main__':
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_database', None)
+
