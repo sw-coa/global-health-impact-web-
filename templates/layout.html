@@ -13,7 +13,7 @@
                 <!-- Bootstrap JavaScript -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-       
+
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
@@ -29,7 +29,7 @@
         <script>
             var map = new Datamap({element: document.getElementById('mapcontainer')});
         </script>
-      
+
         <script>
             /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
 
@@ -73,171 +73,6 @@
                 window.location.href = ext;
             }
         </script>
-            {% if showindex == 1 %}
-            <div id="navigator">
-                <ul style="list-style-type:none;">
-                    <li><p class="indxhead">Index</p></li>
-                    <li><a class="hh1" href="/index/country">Country</a></li>
-                    {% if navsub == 1 %}
-                    <a href="#" onclick="yearclick('country2010','country2013')" class="yearbutton">2010</a>
-                    <div class="subnavdiv" id="country2010">
-                        <ul style="list-style-type:none;">
-                            <li><a class="dislist" href="/index/country/2010/all">All</a></li>
-                            <li><a class="dislist" href="/index/country/2010/malaria">Malaria</a></li>
-                            <li><a class="dislist" href="/index/country/2010/tb">TB</a></li>
-                            <li><a class="dislist" href="/index/country/2010/hiv">HIV/AIDS</a></li>
-                            <li><a class="dislist" href="/index/country/2010/onchocerciasis">Onchocerciasis</a></li>
-                            <li><a class="dislist" href="/index/country/2010/schistosomiasis">Schistosomiasis</a></li>
-                            <li><a class="dislist" href="/index/country/2010/lf">Lymphatic Filariasis</a></li>
-                            <li><a class="dislist" href="/index/country/2010/hookworm">Hookworm</a></li>
-                            <li><a class="dislist" href="/index/country/2010/roundworm">Roundworm</a></li>
-                            <li><a class="dislist" href="/index/country/2010/whipworm">Whipworm</a></li>
-                        </ul>
-                    </div><br>
-                    <a href="#" onclick="yearclick('country2013','country2010')" class="yearbutton">2013</a>
-                    <div class="subnavdiv" id="country2013">
-                        <ul style="list-style-type:none;">
-                            <li><a class="dislist" href="/index/country/2013/all">All</a></li>
-                            <li><a class="dislist" href="/index/country/2013/malaria">Malaria</a></li>
-                            <li><a class="dislist" href="/index/country/2013/tb">TB</a></li>
-                            <li><a class="dislist" href="/index/country/2013/hiv">HIV/AIDS</a></li>
-                            <li><a class="dislist" href="/index/country/2013/onchocerciasis">Onchocerciasis</a></li>
-                            <li><a class="dislist" href="/index/country/2013/schistosomiasis">Schistosomiasis</a></li>
-                            <li><a class="dislist" href="/index/country/2013/lf">Lymphatic Filariasis</a></li>
-                            <li><a class="dislist" href="/index/country/2013/hookworm">Hookworm</a></li>
-                            <li><a class="dislist" href="/index/country/2013/roundworm">Roundworm</a></li>
-                            <li><a class="dislist" href="/index/country/2013/whipworm">Whipworm</a></li>
-                        </ul>
-                    </div>
-                    {% endif %}
-                    <li><a class="hh1" href="/index/company">Company</a></li>
-                    {% if navsub == 2 %}
-                    <ul class="compsublist">
-                        <li><a href="#" onclick="yearclick('manunav','patentnav')" class="compsub">Manufacturer</a>
-                        <div id="manunav"{% if comptype == 1 %} style="display:none"{% endif %}>
-                            <a href="#" onclick="yearclick('manu2010','manu2013')" class="yearbutton">2010</a>
-                            <div class="subnavdiv" id="manu2010">
-                                <ul style="list-style-type:none;">
-                                    <li><a class="dislist" href="/index/company/manufacturer/2010/all">All</a></li>
-                                    <li><a class="dislist" href="/index/company/manufacturer/2010/tb">TB</a></li>
-                                    <li><a class="dislist" href="/index/company/manufacturer/2010/hiv">HIV/AIDS</a></li>
-                                </ul>
-                            </div><br>
-                            <a href="#" onclick="yearclick('manu2013','manu2010')" class="yearbutton">2013</a>
-                            <div class="subnavdiv" id="manu2013">
-                                <ul style="list-style-type:none;">
-                                    <li><a class="dislist" href="/index/company/manufacturer/2013/all">All</a></li>
-                                    <li><a class="dislist" href="/index/company/manufacturer/2013/tb">TB</a></li>
-                                    <li><a class="dislist" href="/index/company/manufacturer/2013/hiv">HIV/AIDS</a></li>
-                                </ul>
-                            </div>
-                        </div></li>
-                        <li><a href="#" onclick="yearclick('patentnav','manunav')" class="compsub">Patent Holder</a>
-                        <div id="patentnav"{% if comptype == 0 %} style="display:none"{% endif %}>
-                            <a href="#" onclick="yearclick('patent2010','patent2013')" class="yearbutton">2010</a>
-                            <div class="subnavdiv" id="patent2010">
-                                <ul style="list-style-type:none;">
-                                    <li><a class="dislist" href="/index/company/patent/2010/all">All</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2010/malaria">Malaria</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2010/tb">TB</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2010/hiv">HIV/AIDS</a></li>
-                                   <!--<li><a class="dislist" href="/index/company/patent/2010/onchocerciasis">Onchocerciasis</a></li>-->
-                                    <li><a class="dislist" href="/index/company/patent/2010/schistosomiasis">Schistosomiasis</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2010/lf">Lymphatic Filariasis</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2010/hookworm">Hookworm</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2010/roundworm">Roundworm</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2010/whipworm">Whipworm</a></li>
-                                </ul>
-                            </div><br>
-                            <a href="#" onclick="yearclick('patent2013','patent2010')" class="yearbutton">2013</a>
-                            <div class="subnavdiv" id="patent2013">
-                                <ul style="list-style-type:none;">
-                                    <li><a class="dislist" href="/index/company/patent/2013/all">All</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2013/malaria">Malaria</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2013/tb">TB</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2013/hiv">HIV/AIDS</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2013/onchocerciasis">Onchocerciasis</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2013/schistosomiasis">Schistosomiasis</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2013/lf">Lymphatic Filariasis</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2013/hookworm">Hookworm</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2013/roundworm">Roundworm</a></li>
-                                    <li><a class="dislist" href="/index/company/patent/2013/whipworm">Whipworm</a></li>
-                                </ul>
-                            </div>
-
-                        </div></li>
-                    </ul>
-                    {% endif %}
-                    <li><a class="hh1" href="/index/drug">Drug</a></li>
-                    {% if navsub == 3 %}
-                    <a href="#" onclick="yearclick('drug2010','drug2013')" class="yearbutton">2010</a>
-                    <div class="subnavdiv" id="drug2010">
-                        <ul style="list-style-type:none;">
-                            <li><a class="dislist" href="/index/drug/2010/all">All</a></li>
-                            <li><a class="dislist" href="/index/drug/2010/malaria">Malaria</a></li>
-                            <li><a class="dislist" href="/index/drug/2010/tb">TB</a></li>
-                            <li><a class="dislist" href="/index/drug/2010/hiv">HIV/AIDS</a></li>
-                            <li><a class="dislist" href="/index/drug/2010/schistosomiasis">Schistosomiasis</a></li>
-                            <li><a class="dislist" href="/index/drug/2010/lf">Lymphatic Filariasis</a></li>
-                            <li><a class="dislist" href="/index/drug/2010/hookworm">Hookworm</a></li>
-                            <li><a class="dislist" href="/index/drug/2010/roundworm">Roundworm</a></li>
-                            <li><a class="dislist" href="/index/drug/2010/whipworm">Whipworm</a></li>
-                        </ul>
-                    </div><br>
-                    <a href="#" onclick="yearclick('drug2013','drug2010')" class="yearbutton">2013</a>
-                    <div class="subnavdiv" id="drug2013">
-                        <ul style="list-style-type:none;">
-                            <li><a class="dislist" href="/index/drug/2013/all">All</a></li>
-                            <li><a class="dislist" href="/index/drug/2013/malaria">Malaria</a></li>
-                            <li><a class="dislist" href="/index/drug/2013/tb">TB</a></li>
-                            <li><a class="dislist" href="/index/drug/2013/hiv">HIV/AIDS</a></li>
-                            <li><a class="dislist" href="/index/drug/2013/onchocerciasis">Onchocerciasis</a></li>
-                            <li><a class="dislist" href="/index/drug/2013/schistosomiasis">Schistosomiasis</a></li>
-                            <li><a class="dislist" href="/index/drug/2013/lf">Lymphatic Filariasis</a></li>
-                            <li><a class="dislist" href="/index/drug/2013/hookworm">Hookworm</a></li>
-                            <li><a class="dislist" href="/index/drug/2013/roundworm">Roundworm</a></li>
-                            <li><a class="dislist" href="/index/drug/2013/whipworm">Whipworm</a></li>
-                        </ul>
-                    </div>
-                    {% endif %}
-                    <li><a class="hh1" href="/index/disease">Disease</a></li>
-                    {% if navsub == 4 %}
-                    <a href="#" onclick="yearclick('disease2010','disease2013')" class="yearbutton">2010</a>
-                    <div class="subnavdiv" id="disease2010">
-                        <ul style="list-style-type:none;">
-                            <li><a class="dislist" href="/index/disease/2010/summary">Summary</a></li>
-                            <li><a class="dislist" href="/index/disease/2010/all">All</a></li>
-                            <li><a class="dislist" href="/index/disease/2010/malaria">Malaria</a></li>
-                            <li><a class="dislist" href="/index/disease/2010/tb">TB</a></li>
-                            <li><a class="dislist" href="/index/disease/2010/hiv">HIV/AIDS</a></li>
-                            <li><a class="dislist" href="/index/disease/2010/onchocerciasis">Onchocerciasis</a></li>
-                            <li><a class="dislist" href="/index/disease/2010/schistosomiasis">Schistosomiasis</a></li>
-                            <li><a class="dislist" href="/index/disease/2010/lf">Lymphatic Filariasis</a></li>
-                            <li><a class="dislist" href="/index/disease/2010/hookworm">Hookworm</a></li>
-                            <li><a class="dislist" href="/index/disease/2010/roundworm">Roundworm</a></li>
-                            <li><a class="dislist" href="/index/disease/2010/whipworm">Whipworm</a></li>
-                        </ul>
-                    </div><br>
-                    <a href="#" onclick="yearclick('disease2013','disease2010')" class="yearbutton">2013</a>
-                    <div class="subnavdiv" id="disease2013">
-                        <ul style="list-style-type:none;">
-                            <li><a class="dislist" href="/index/disease/2013/summary">Summary</a></li>
-                            <li><a class="dislist" href="/index/disease/2013/all">All</a></li>
-                            <li><a class="dislist" href="/index/disease/2013/malaria">Malaria</a></li>
-                            <li><a class="dislist" href="/index/disease/2013/tb">TB</a></li>
-                            <li><a class="dislist" href="/index/disease/2013/hiv">HIV/AIDS</a></li>
-                            <li><a class="dislist" href="/index/disease/2013/onchocerciasis">Onchocerciasis</a></li>
-                            <li><a class="dislist" href="/index/disease/2013/schistosomiasis">Schistosomiasis</a></li>
-                            <li><a class="dislist" href="/index/disease/2013/lf">Lymphatic Filariasis</a></li>
-                            <li><a class="dislist" href="/index/disease/2013/hookworm">Hookworm</a></li>
-                            <li><a class="dislist" href="/index/disease/2013/roundworm">Roundworm</a></li>
-                            <li><a class="dislist" href="/index/disease/2013/whipworm">Whipworm</a></li>
-                        </ul>
-                    </div>
-                    {% endif %}
-                </ul>
-            </div>
-            {% endif %}
 
 
     </div>
@@ -247,10 +82,179 @@
 
     </div>
         <div class="height" id="maincontentblock">
+
         <div class="narrow">
-            {% block content %}{% endblock %}
+          {% if showindex == 1 %}
+          <div id="navigator">
+              <ul style="list-style-type:none;">
+                  <li><p class="indxhead">Index</p></li>
+                  <li><a class="hh1" href="/index/country">Country</a></li>
+                  {% if navsub == 1 %}
+                  <a href="#" onclick="yearclick('country2010','country2013')" class="yearbutton">2010</a>
+                  <div class="subnavdiv" id="country2010">
+                      <ul style="list-style-type:none;">
+                          <li><a class="dislist" href="/index/country/2010/all">All</a></li>
+                          <li><a class="dislist" href="/index/country/2010/malaria">Malaria</a></li>
+                          <li><a class="dislist" href="/index/country/2010/tb">TB</a></li>
+                          <li><a class="dislist" href="/index/country/2010/hiv">HIV/AIDS</a></li>
+                          <li><a class="dislist" href="/index/country/2010/onchocerciasis">Onchocerciasis</a></li>
+                          <li><a class="dislist" href="/index/country/2010/schistosomiasis">Schistosomiasis</a></li>
+                          <li><a class="dislist" href="/index/country/2010/lf">Lymphatic Filariasis</a></li>
+                          <li><a class="dislist" href="/index/country/2010/hookworm">Hookworm</a></li>
+                          <li><a class="dislist" href="/index/country/2010/roundworm">Roundworm</a></li>
+                          <li><a class="dislist" href="/index/country/2010/whipworm">Whipworm</a></li>
+                      </ul>
+                  </div><br>
+                  <a href="#" onclick="yearclick('country2013','country2010')" class="yearbutton">2013</a>
+                  <div class="subnavdiv" id="country2013">
+                      <ul style="list-style-type:none;">
+                          <li><a class="dislist" href="/index/country/2013/all">All</a></li>
+                          <li><a class="dislist" href="/index/country/2013/malaria">Malaria</a></li>
+                          <li><a class="dislist" href="/index/country/2013/tb">TB</a></li>
+                          <li><a class="dislist" href="/index/country/2013/hiv">HIV/AIDS</a></li>
+                          <li><a class="dislist" href="/index/country/2013/onchocerciasis">Onchocerciasis</a></li>
+                          <li><a class="dislist" href="/index/country/2013/schistosomiasis">Schistosomiasis</a></li>
+                          <li><a class="dislist" href="/index/country/2013/lf">Lymphatic Filariasis</a></li>
+                          <li><a class="dislist" href="/index/country/2013/hookworm">Hookworm</a></li>
+                          <li><a class="dislist" href="/index/country/2013/roundworm">Roundworm</a></li>
+                          <li><a class="dislist" href="/index/country/2013/whipworm">Whipworm</a></li>
+                      </ul>
+                  </div>
+                  {% endif %}
+                  <li><a class="hh1" href="/index/company">Company</a></li>
+                  {% if navsub == 2 %}
+                  <ul class="compsublist">
+                      <li><a href="#" onclick="yearclick('manunav','patentnav')" class="compsub">Manufacturer</a>
+                      <div id="manunav"{% if comptype == 1 %} style="display:none"{% endif %}>
+                          <a href="#" onclick="yearclick('manu2010','manu2013')" class="yearbutton">2010</a>
+                          <div class="subnavdiv" id="manu2010">
+                              <ul style="list-style-type:none;">
+                                  <li><a class="dislist" href="/index/company/manufacturer/2010/all">All</a></li>
+                                  <li><a class="dislist" href="/index/company/manufacturer/2010/tb">TB</a></li>
+                                  <li><a class="dislist" href="/index/company/manufacturer/2010/hiv">HIV/AIDS</a></li>
+                              </ul>
+                          </div><br>
+                          <a href="#" onclick="yearclick('manu2013','manu2010')" class="yearbutton">2013</a>
+                          <div class="subnavdiv" id="manu2013">
+                              <ul style="list-style-type:none;">
+                                  <li><a class="dislist" href="/index/company/manufacturer/2013/all">All</a></li>
+                                  <li><a class="dislist" href="/index/company/manufacturer/2013/tb">TB</a></li>
+                                  <li><a class="dislist" href="/index/company/manufacturer/2013/hiv">HIV/AIDS</a></li>
+                              </ul>
+                          </div>
+                      </div></li>
+                      <li><a href="#" onclick="yearclick('patentnav','manunav')" class="compsub">Patent Holder</a>
+                      <div id="patentnav"{% if comptype == 0 %} style="display:none"{% endif %}>
+                          <a href="#" onclick="yearclick('patent2010','patent2013')" class="yearbutton">2010</a>
+                          <div class="subnavdiv" id="patent2010">
+                              <ul style="list-style-type:none;">
+                                  <li><a class="dislist" href="/index/company/patent/2010/all">All</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2010/malaria">Malaria</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2010/tb">TB</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2010/hiv">HIV/AIDS</a></li>
+                                 <!--<li><a class="dislist" href="/index/company/patent/2010/onchocerciasis">Onchocerciasis</a></li>-->
+                                  <li><a class="dislist" href="/index/company/patent/2010/schistosomiasis">Schistosomiasis</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2010/lf">Lymphatic Filariasis</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2010/hookworm">Hookworm</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2010/roundworm">Roundworm</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2010/whipworm">Whipworm</a></li>
+                              </ul>
+                          </div><br>
+                          <a href="#" onclick="yearclick('patent2013','patent2010')" class="yearbutton">2013</a>
+                          <div class="subnavdiv" id="patent2013">
+                              <ul style="list-style-type:none;">
+                                  <li><a class="dislist" href="/index/company/patent/2013/all">All</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2013/malaria">Malaria</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2013/tb">TB</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2013/hiv">HIV/AIDS</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2013/onchocerciasis">Onchocerciasis</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2013/schistosomiasis">Schistosomiasis</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2013/lf">Lymphatic Filariasis</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2013/hookworm">Hookworm</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2013/roundworm">Roundworm</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2013/whipworm">Whipworm</a></li>
+                              </ul>
+                          </div>
+
+                      </div></li>
+                  </ul>
+                  {% endif %}
+                  <li><a class="hh1" href="/index/drug">Drug</a></li>
+                  {% if navsub == 3 %}
+                  <a href="#" onclick="yearclick('drug2010','drug2013')" class="yearbutton">2010</a>
+                  <div class="subnavdiv" id="drug2010">
+                      <ul style="list-style-type:none;">
+                          <li><a class="dislist" href="/index/drug/2010/all">All</a></li>
+                          <li><a class="dislist" href="/index/drug/2010/malaria">Malaria</a></li>
+                          <li><a class="dislist" href="/index/drug/2010/tb">TB</a></li>
+                          <li><a class="dislist" href="/index/drug/2010/hiv">HIV/AIDS</a></li>
+                          <li><a class="dislist" href="/index/drug/2010/schistosomiasis">Schistosomiasis</a></li>
+                          <li><a class="dislist" href="/index/drug/2010/lf">Lymphatic Filariasis</a></li>
+                          <li><a class="dislist" href="/index/drug/2010/hookworm">Hookworm</a></li>
+                          <li><a class="dislist" href="/index/drug/2010/roundworm">Roundworm</a></li>
+                          <li><a class="dislist" href="/index/drug/2010/whipworm">Whipworm</a></li>
+                      </ul>
+                  </div><br>
+                  <a href="#" onclick="yearclick('drug2013','drug2010')" class="yearbutton">2013</a>
+                  <div class="subnavdiv" id="drug2013">
+                      <ul style="list-style-type:none;">
+                          <li><a class="dislist" href="/index/drug/2013/all">All</a></li>
+                          <li><a class="dislist" href="/index/drug/2013/malaria">Malaria</a></li>
+                          <li><a class="dislist" href="/index/drug/2013/tb">TB</a></li>
+                          <li><a class="dislist" href="/index/drug/2013/hiv">HIV/AIDS</a></li>
+                          <li><a class="dislist" href="/index/drug/2013/onchocerciasis">Onchocerciasis</a></li>
+                          <li><a class="dislist" href="/index/drug/2013/schistosomiasis">Schistosomiasis</a></li>
+                          <li><a class="dislist" href="/index/drug/2013/lf">Lymphatic Filariasis</a></li>
+                          <li><a class="dislist" href="/index/drug/2013/hookworm">Hookworm</a></li>
+                          <li><a class="dislist" href="/index/drug/2013/roundworm">Roundworm</a></li>
+                          <li><a class="dislist" href="/index/drug/2013/whipworm">Whipworm</a></li>
+                      </ul>
+                  </div>
+                  {% endif %}
+                  <li><a class="hh1" href="/index/disease">Disease</a></li>
+                  {% if navsub == 4 %}
+                  <a href="#" onclick="yearclick('disease2010','disease2013')" class="yearbutton">2010</a>
+                  <div class="subnavdiv" id="disease2010">
+                      <ul style="list-style-type:none;">
+                          <li><a class="dislist" href="/index/disease/2010/summary">Summary</a></li>
+                          <li><a class="dislist" href="/index/disease/2010/all">All</a></li>
+                          <li><a class="dislist" href="/index/disease/2010/malaria">Malaria</a></li>
+                          <li><a class="dislist" href="/index/disease/2010/tb">TB</a></li>
+                          <li><a class="dislist" href="/index/disease/2010/hiv">HIV/AIDS</a></li>
+                          <li><a class="dislist" href="/index/disease/2010/onchocerciasis">Onchocerciasis</a></li>
+                          <li><a class="dislist" href="/index/disease/2010/schistosomiasis">Schistosomiasis</a></li>
+                          <li><a class="dislist" href="/index/disease/2010/lf">Lymphatic Filariasis</a></li>
+                          <li><a class="dislist" href="/index/disease/2010/hookworm">Hookworm</a></li>
+                          <li><a class="dislist" href="/index/disease/2010/roundworm">Roundworm</a></li>
+                          <li><a class="dislist" href="/index/disease/2010/whipworm">Whipworm</a></li>
+                      </ul>
+                  </div><br>
+                  <a href="#" onclick="yearclick('disease2013','disease2010')" class="yearbutton">2013</a>
+                  <div class="subnavdiv" id="disease2013">
+                      <ul style="list-style-type:none;">
+                          <li><a class="dislist" href="/index/disease/2013/summary">Summary</a></li>
+                          <li><a class="dislist" href="/index/disease/2013/all">All</a></li>
+                          <li><a class="dislist" href="/index/disease/2013/malaria">Malaria</a></li>
+                          <li><a class="dislist" href="/index/disease/2013/tb">TB</a></li>
+                          <li><a class="dislist" href="/index/disease/2013/hiv">HIV/AIDS</a></li>
+                          <li><a class="dislist" href="/index/disease/2013/onchocerciasis">Onchocerciasis</a></li>
+                          <li><a class="dislist" href="/index/disease/2013/schistosomiasis">Schistosomiasis</a></li>
+                          <li><a class="dislist" href="/index/disease/2013/lf">Lymphatic Filariasis</a></li>
+                          <li><a class="dislist" href="/index/disease/2013/hookworm">Hookworm</a></li>
+                          <li><a class="dislist" href="/index/disease/2013/roundworm">Roundworm</a></li>
+                          <li><a class="dislist" href="/index/disease/2013/whipworm">Whipworm</a></li>
+                      </ul>
+                  </div>
+                  {% endif %}
+              </ul>
+          </div>
+
+          {% endif %}
+            {% block content %}
+
+            {% endblock %}
         </div>
-      
+
             <div class="foot">
             <table width=100%;>
                 <tr valign="middle">
