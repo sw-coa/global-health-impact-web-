@@ -60,8 +60,9 @@
                 <a href="/index/company">COMPANY</a>
                 <a href="/index/drug">DRUG</a>
                 <a href="/index/disease">DISEASE</a>
-            </div>
+          </div>
         </div>
+            <button id="home" onclick="location.href='http://127.0.0.1:5000/'" class="navbtn">HOME</button>
         </div>
     </div>
     <div class="par">
@@ -119,6 +120,7 @@
                           <li><a class="dislist" href="/index/country/2013/hookworm#relocation">Hookworm</a></li>
                           <li><a class="dislist" href="/index/country/2013/roundworm#relocation">Roundworm</a></li>
                           <li><a class="dislist" href="/index/country/2013/whipworm#relocation">Whipworm</a></li>
+
                       </ul>
                   </div>
                   {% endif %}
@@ -252,10 +254,8 @@
 
           {% endif %}
             {% block content %}
-
             {% endblock %}
         </div>
-
             <div class="foot">
             <table width=100%;>
                 <tr valign="middle">
@@ -268,7 +268,5 @@
             </table>
             </div>
         </div>
-
-
     </body>
 </html>

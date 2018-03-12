@@ -186,6 +186,7 @@ body {
     color: #0083C4;
     font-family: 'Nunito', sans-serif;
 }
+
 .newsred {
     font-size: 24px;
     color: #FF7474;
@@ -243,7 +244,6 @@ body {
 .frontimg {
     width: 100vw;
     position: absolute;
-    top: 85px;
 }
 #frontcaption {
     position: fixed;
