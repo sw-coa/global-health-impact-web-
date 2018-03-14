@@ -43,7 +43,7 @@ def requires_auth(f):
 def connect_db():
     # print("in connect_db")
     return sqlite3.connect('F:/global-health-impact-web/ghi.db')
-  
+
 @app.before_request
 def before_request():
     # print("In before_request")
@@ -996,48 +996,49 @@ def companyindx(year,disease):
     pielab2 = []
     barchart = []
     bardata = []
-    if year == '2010A':
+    if year == '2010':
         if disease == 'all':
             cur = g.db.execute(' select company,disease, daly2010, color from manudis order by daly2010 DESC')
             cdd = g.db.execute(' select company, disease, daly2010, color from manudis order by daly2010 DESC ')
             name = 'ALL'
         elif disease == 'hiv':
-            cur = g.db.execute(' select company,disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('hiv',))
-            cdd = g.db.execute(' select company, disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('hiv',))
+            cur = g.db.execute(' select company,disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('HIV',))
+            cdd = g.db.execute(' select company, disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('HIV',))
             name = 'HIV/AIDS'
         elif disease == 'tb':
-            cur = g.db.execute(' select company,disease, daly2010, color from manudis where disease = ? order by daly2010 DESC ', ('tb',))
-            cdd = g.db.execute(' select company, disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('tb',))
+            cur = g.db.execute(' select company,disease, daly2010, color from manudis where disease = ? order by daly2010 DESC ', ('TB',))
+            cdd = g.db.execute(' select company, disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('TB',))
             name = 'TB'
-    elif year == '2010B':
-        if disease == 'all':
-            cur = g.db.execute(' select company,disease, daly2010, color from company2015  order by daly2010 DESC')
-            cdd = g.db.execute(' select company, disease, daly2010, color from company2015 order by daly2010 DESC')
-            name = 'ALL'
-        elif disease == 'hiv':
-            cur = g.db.execute(' select company, disease,daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('hiv',))
-            cdd = g.db.execute(' select company, disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('hiv',))
-            name = 'HIV/AIDS'
-        elif disease == 'tb':
-            cur = g.db.execute(' select company,disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('tb',))
-            cdd = g.db.execute(' select company, disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('tb',))
-            name = 'TB'
-        elif disease == 'malaria':
-            cur = g.db.execute(' select company,disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('malaria',))
-            cdd = g.db.execute(' select company, disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('malaria',))
-            name = 'MALARIA'
+     #Pooja Upadhyay - I do not know why this code was written for 2010A and 2010B so I commented it to make the broken website working
+    #elif year == '2010B':
+            #if disease == 'all':
+            #cur = g.db.execute(' select company,disease, daly2010, color from company2015  order by daly2010 DESC')
+            #cdd = g.db.execute(' select company, disease, daly2010, color from company2015 order by daly2010 DESC')
+        #name = 'ALL'
+            #elif disease == 'hiv':
+            #cur = g.db.execute(' select company, disease,daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('hiv',))
+            #cdd = g.db.execute(' select company, disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('hiv',))
+        #name = 'HIV/AIDS'
+            #elif disease == 'tb':
+            #cur = g.db.execute(' select company,disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('tb',))
+            #cdd = g.db.execute(' select company, disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('tb',))
+        #name = 'TB'
+            #elif disease == 'malaria':
+            #cur = g.db.execute(' select company,disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('malaria',))
+            #cdd = g.db.execute(' select company, disease, daly2010, color from company2015 where disease = ? order by daly2010 DESC', ('malaria',))
+    #name = 'MALARIA'
     elif year == '2013':
         if disease == 'all':
             cur = g.db.execute(' select company,disease, daly2013, color from manudis order by daly2013 DESC')
             cdd = g.db.execute(' select company, disease, daly2013, color from manudis order by daly2013 DESC')
             name = 'ALL'
         elif disease == 'hiv':
-            cur = g.db.execute(' select company, disease,daly2013, color from manudis where disease = ? order by daly2013 DESC', ('hiv',))
-            cdd = g.db.execute(' select company, disease, daly2013, color from manudis where disease = ? order by daly2013 DESC', ('hiv',))
+            cur = g.db.execute(' select company, disease,daly2013, color from manudis where disease = ? order by daly2013 DESC', ('HIV',))
+            cdd = g.db.execute(' select company, disease, daly2013, color from manudis where disease = ? order by daly2013 DESC', ('HIV',))
             name = 'HIV/AIDS'
         elif disease == 'tb':
-            cur = g.db.execute(' select company,disease, daly2013, color from manudis where disease = ? order by daly2013 DESC', ('tb',))
-            cdd = g.db.execute(' select company, disease, daly2013, color from manudis where disease = ? order by daly2013 DESC', ('tb',))
+            cur = g.db.execute(' select company,disease, daly2013, color from manudis where disease = ? order by daly2013 DESC', ('TB',))
+            cdd = g.db.execute(' select company, disease, daly2013, color from manudis where disease = ? order by daly2013 DESC', ('TB',))
             name = 'TB'
     elif year == '2015':#=====add 2015 SQL=========
         if disease == 'all':
@@ -1102,16 +1103,6 @@ def companyindx(year,disease):
             pielab1.append(temprow)
             temprow = []
 
-    while (n%4!=0):
-        comp = ''
-        temprow.append(comp)
-        shortcomp = ''
-        temprow.append(shortcomp)
-        sscolor = '#ffffff'
-        temprow.append(sscolor)
-        n += 1
-    pielab1.append(temprow)
-
     n = 0
     temprow = []
     colocnt = 0
@@ -1133,16 +1124,6 @@ def companyindx(year,disease):
             pielab2.append(temprow)
             temprow = []
 
-    while (n<4):
-        comp = ''
-        temprow.append(comp)
-        shortcomp = ''
-        temprow.append(shortcomp)
-        sscolor = '#ffffff'
-        temprow.append(sscolor)
-        n += 1
-    pielab2.append(temprow)
-
     colcnt = 0
     for l in barr:
         company = l[0]
@@ -1156,7 +1137,7 @@ def companyindx(year,disease):
         colcnt += 1
         xyz = [company,daly2010,disease,color]
         barchart.append(xyz)
-    barchart.sort(key=lambda x: x[1], reverse=True)
+    #barchart.sort(key=lambda x: x[1], reverse=True)
     maxim = barchart[0]
     maxval = maxim[1]
     colcnt = 1

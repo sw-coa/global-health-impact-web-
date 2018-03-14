@@ -235,11 +235,13 @@ body {
     width: 100vw;
     left: 0;
     z-index: -1;
+    top:85px;
 }
 #fore {
     position: absolute;
     z-index: 1;
     width: 100vw;
+    top:85px;
 }
 .frontimg {
     width: 100vw;
@@ -659,4 +661,7 @@ body {
     width:30%;
     margin-right: 5px;
     margin-bottom: 5px;
+}
+.firstLetterp {
+    text-transform: uppercase;
 }
