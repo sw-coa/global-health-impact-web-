@@ -30,6 +30,7 @@
             legend:'none',
             slices: [{color: '#00cab1'},{% for row in impactpie %}{color: '{{row.3 |safe}}'},{% endfor %}{}],
             is3D: 'true',
+            tooltip: { trigger: 'selection' }
             
         };
         var options2 = {
