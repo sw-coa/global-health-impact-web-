@@ -29,14 +29,16 @@
             'chartArea':{top:0},
             legend:'none',
             slices: [{color: '#00cab1'},{% for row in impactpie %}{color: '{{row.3 |safe}}'},{% endfor %}{}],
-            is3D: 'true'
+            is3D: 'true',
+            
         };
         var options2 = {
             height: 300,
             'chartArea':{top:0},
             legend:'none',
             slices: [{% for row in impactpie %}{color: '{{row.3 |safe}}'},{% endfor %}{}],
-            is3D: 'true'
+            is3D: 'true',
+            tooltip: { trigger: 'selection' }
         };
         var chart = new google.visualization.PieChart(document.getElementById('piediv'));
         var chart2 = new google.visualization.PieChart(document.getElementById('pie2div'));
