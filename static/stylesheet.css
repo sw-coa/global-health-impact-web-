@@ -103,17 +103,11 @@ body {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;z-index: 1;}
 
-#navigator {
+@media screen and (min-width: 1300px) {
+  #navigator {
     position: absolute;
-    display: block;
-    /*background-color: rgba(255,255,255,0.75);*/
-    overflow-y: auto;
-    top: 0;
-    width: 300px;
-    z-index: 1;
-    padding-top: 10px;
-    left: -28%;
-    /*height: calc(100vw * 0.506 + 70px);*/
+    left: -27%;
+  }
 }
 
 .dislist {
@@ -236,12 +230,14 @@ body {
     left: 0;
     z-index: -1;
     top:85px;
+    background-attachment: scroll;
 }
 #fore {
     position: absolute;
     z-index: 1;
     width: 100vw;
     top:85px;
+    background-attachment: scroll;
 }
 .frontimg {
     width: 100vw;
@@ -370,7 +366,7 @@ body {
 
 .height1 {
     z-index: 1;
-    top: calc(56vw * 0.506);
+    top: calc(55vw * 0.506);
     position: relative;
     background: #FFFFFF;
     overflow: hidden;
@@ -661,7 +657,4 @@ body {
     width:30%;
     margin-right: 5px;
     margin-bottom: 5px;
-}
-.firstLetterp {
-    text-transform: uppercase;
 }

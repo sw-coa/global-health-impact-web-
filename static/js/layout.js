@@ -39,3 +39,39 @@ window.onclick = function(event) {
 function scrolltop() {
     window.scrollBy(0, 500)
 }
+
+$(function(){
+if (window.location.hash){
+      var hash = window.location.hash.substring(1);
+      if (hash == "relocation2010"){
+         document.getElementById('country2010').style.display = 'block';
+      }
+      if (hash == "relocation2013"){
+         document.getElementById('country2013').style.display = 'block';
+      }
+      if (hash == "relocation_manu2010"){
+         document.getElementById('manu2010').style.display = 'block';
+      }
+      if (hash == "relocation_manu2013"){
+         document.getElementById('manu2013').style.display = 'block';
+      }
+      if (hash == "relocation_ph2010"){
+         document.getElementById('patent2010').style.display = 'block';
+      }
+      if (hash == "relocation_ph2013"){
+         document.getElementById('patent2013').style.display = 'block';
+      }
+      if (hash == "relocation_drug2010"){
+         document.getElementById('drug2010').style.display = 'block';
+      }
+      if (hash == "relocation_drug2013"){
+         document.getElementById('drug2013').style.display = 'block';
+      }
+      if (hash == "relocation_disease2010"){
+         document.getElementById('disease2010').style.display = 'block';
+      }
+      if (hash == "relocation_disease2013"){
+         document.getElementById('disease2013').style.display = 'block';
+      }
+   }
+});
