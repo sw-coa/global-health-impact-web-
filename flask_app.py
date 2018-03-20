@@ -44,6 +44,7 @@ def connect_db():
     # print("in connect_db")
     return sqlite3.connect('F:/global-health-impact-web/ghi.db')
 
+
 @app.before_request
 def before_request():
     # print("In before_request")
@@ -108,7 +109,6 @@ def diseaseinx():
     upp = ddisease.upper()
     speclocate = [dyear, ddisease,upp]
     return render_template('disease.html', navsub=4, showindex=1, piedat=piedat, clickdat=clickdat, index=index, disease=1, speclocate = speclocate, scrolling=1)
-
 
 @app.route('/index/disease/<dyear>/<ddisease>')
 def diseasepg(dyear, ddisease):

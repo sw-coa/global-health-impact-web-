@@ -24,7 +24,7 @@ conn.execute('''CREATE TABLE distypes
 datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=1560508440&single=true&output=csv'
 df = pd.read_csv(datasrc, skiprows=1)
 datasrc2 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI7j2NartMCCF_N-OCkFqAyD67N9Q32yybE21x-zaRPrETsszdZep91dVVVSCjeXXbPjPfZVdE-odE/pub?gid=1560508440&single=true&output=csv'
-df2 = pd.read_csv(datasrc, skiprows=1)
+df2 = pd.read_csv(datasrc2, skiprows=1)
 
 disease2010db = []
 disease2013db = []
@@ -196,14 +196,14 @@ for k in [94,96,98,99,100,102]:
     coverage2010 += stripdata2(k,3)
     coverage2011 += stripdata2(k,5)
     print('==========This is Malaria=====')
-    print(k)
-    print(df2.iloc[k,0])
-    print(df2.iloc[k,1])
-    print(df2.iloc[k,2])
-    print(df2.iloc[k,3])
-    print(df2.iloc[k,5])
-    print(coverage2010)
-    print(efficacy2010)
+    #print(k)
+    #print(df2.iloc[k,0])
+    #print(df2.iloc[k,1])
+    #print(df2.iloc[k,2])
+    #print(df2.iloc[k,3])
+    #print(df2.iloc[k,5])
+    #print(coverage2010)
+    #print(efficacy2010)
 
     if i==m :
         efficacy2010 /= m
@@ -225,6 +225,6 @@ for k in [94,96,98,99,100,102]:
     i+=1
 cur = conn.execute(' select * from distypes where distype=? ',('Malaria',))
 data = cur.fetchall()
-
 print(data)
+
 conn.commit()
