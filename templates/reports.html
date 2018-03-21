@@ -1,6 +1,443 @@
 {% extends "layout.html" %}
 {% block title %}
 <title>Reports</title>
+<style>
+#SanofiDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}
+#NovartisDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}
+#PfizerDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}#ShireDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}#HoffmanLaRocheDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}#BoehringerIngelheimDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}#BristolMeyersSquibbDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}#ViivHealthcareDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}#MerkDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}#GileadScienceDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}#AbbottLaboratoriesDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}
+#DaiichiSankyoDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}
+#ChongqingTongheDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}
+#EliLillyDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}
+#KyorinCoLtdDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}
+#BayerHealthcareDIV {
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+}
+
+
+
+
+#SanofiCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#NovartisCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#PfizerCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#ShireCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#HoffmanLaRocheCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#BoehringerIngelheimCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#BristolMeyersSquibbCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#ViivHealthcareCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#MerkCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#GileadScienceCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#AbbottLaboratoriesCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#DaiichiSankyoCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#ChongqingTongheCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#EliLillyCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#KyorinCoLtdCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+#BayerHealthcareCompany{
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+</style>
+<script>
+
+function myFunSanofi() {
+    var x = document.getElementById("SanofiDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function SanofiBold() {
+    var x = document.getElementById("SanofiCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}
+
+function myFunNovartis() {
+    var x = document.getElementById("NovartisDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function NovartisBold() {
+    var x = document.getElementById("NovartisCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}
+function myFunPfizer() {
+    var x = document.getElementById("PfizerDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function PfizerBold() {
+    var x = document.getElementById("PfizerCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunShire() {
+    var x = document.getElementById("ShireDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function ShireBold() {
+    var x = document.getElementById("ShireCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunHoffmanLaRoche() {
+    var x = document.getElementById("HoffmanLaRocheDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function HoffmanLaRocheBold() {
+    var x = document.getElementById("HoffmanLaRocheCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunBoehringerIngelheim() {
+    var x = document.getElementById("BoehringerIngelheimDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function BoehringerIngelheimBold() {
+    var x = document.getElementById("BoehringerIngelheimCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunBristolMeyersSquibb() {
+    var x = document.getElementById("BristolMeyersSquibbDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function BristolMeyersSquibbBold() {
+    var x = document.getElementById("BristolMeyersSquibbCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunViivHealthcare() {
+    var x = document.getElementById("ViivHealthcareDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function ViivHealthcareBold() {
+    var x = document.getElementById("ViivHealthcareCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunMerk() {
+    var x = document.getElementById("MerkDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function MerkBold() {
+    var x = document.getElementById("MerkCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunGileadScience() {
+    var x = document.getElementById("GileadScienceDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function GileadScienceBold() {
+    var x = document.getElementById("GileadScienceCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunAbbottLaboratories() {
+    var x = document.getElementById("AbbottLaboratoriesDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function AbbottLaboratoriesBold() {
+    var x = document.getElementById("AbbottLaboratoriesCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunDaiichiSankyo() {
+    var x = document.getElementById("DaiichiSankyoDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function DaiichiSankyoBold() {
+    var x = document.getElementById("DaiichiSankyoCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunChongqingTonghe() {
+    var x = document.getElementById("ChongqingTongheDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function ChongqingTongheBold() {
+    var x = document.getElementById("ChongqingTongheCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunEliLilly() {
+    var x = document.getElementById("EliLillyDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function EliLillyBold() {
+    var x = document.getElementById("EliLillyCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunKyorinCoLtd() {
+    var x = document.getElementById("KyorinCoLtdDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function KyorinCoLtdBold() {
+    var x = document.getElementById("KyorinCoLtdCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}function myFunBayerHealthcare() {
+    var x = document.getElementById("BayerHealthcareDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+function BayerHealthcareBold() {
+    var x = document.getElementById("BayerHealthcareCompany");
+    var stringBold = "color: rgb(0, 131, 196); font-weight:bold;";
+    var stringNormal = "color: black; font-weight:normal;"
+    if (x.style.color === "rgb(0, 131, 196)") {
+        x.style.cssText = stringNormal;
+    } else {
+        x.style.cssText = stringBold;
+    }
+}
+</script>
 {% endblock %}
 
 {% block frontimg %}
@@ -23,22 +460,24 @@
     <div class="col-sm-6">
         <div class="contentbox">
             <p class="redtxt">PICK A COMPANY:</p>
-            <p class="txtcontent">SanofiNovartis
-
-Pfizer</br>
-Shire</br>
-Hoffman-LaRoche</br>
-Boehringer Ingelheim</br>
-Bristol-Meyers Squibb</br>
-Viiv Healthcare</br>
-Merk</br>
-Gilead Science</br>
-Abbott Laboratories</br>
-Daiichi Sankyo</br>
-Chongqing Tonghe</br>
-Eli Lilly</br>
-Kyorin Co., Ltd</br>
-Bayer Healthcare</p>
+            <p class="txtcontent">
+<p onclick="myFunSanofi();SanofiBold();" id="SanofiCompany">Sanofi</p>
+<p onclick="myFunNovartis();NovartisBold()" id="NovartisCompany">Novartis</p>
+<p onclick="myFunPfizer();PfizerBold()" id="PfizerCompany">Pfizer</p>
+<p onclick="myFunShire();ShireBold()" id="ShireCompany">Shire</p>
+<p onclick="myFunHoffmanLaRoche();HoffmanLaRocheBold()" id="HoffmanLaRocheCompany">Hoffman-LaRoche</p>
+<p onclick="myFunBoehringerIngelheim();BoehringerIngelheimBold()" id="BoehringerIngelheimCompany">Boehringer Ingelheim</p>
+<p onclick="myFunBristolMeyersSquibb();BristolMeyersSquibbBold()" id="BristolMeyersSquibbCompany">Bristol-Meyers Squibb</p>
+<p onclick="myFunViivHealthcare();ViivHealthcareBold()" id="ViivHealthcareCompany">Viiv Healthcare</p>
+<p onclick="myFunMerk();MerkBold()" id="MerkCompany">Merk</p>
+<p onclick="myFunGileadScience();GileadScienceBold()" id="GileadScienceCompany">Gilead Science</p>
+<p onclick="myFunAbbottLaboratories();AbbottLaboratoriesBold()" id="AbbottLaboratoriesCompany">Abbott Laboratories</p>
+<p onclick="myFunDaiichiSankyo();DaiichiSankyoBold()" id="DaiichiSankyoCompany">Daiichi Sankyo</p>
+<p onclick="myFunChongqingTonghe();ChongqingTongheBold()" id="ChongqingTongheCompany">Chongqing Tonghe</p>
+<p onclick="myFunEliLilly();EliLillyBold()" id="EliLillyCompany">Eli Lilly</p>
+<p onclick="myFunKyorinCoLtd();KyorinCoLtdBold()" id="KyorinCoLtdCompany">Kyorin Co., Ltd</p>
+<p onclick="myFunBayerHealthcare();BayerHealthcareBold()" id="BayerHealthcareCompany">Bayer Healthcare</p>
+</p>
         </div>
         <div class="contentbox">
             <p class="redtxt">SCORE EXPLANATION REPORT:</p>
@@ -71,7 +510,217 @@ Bayer Healthcare</p>
     </div>
     <div class="col-sm-6">
         <div class="contentbox">
-
+            <div id="SanofiDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Sanofi</p>
+            <p>In 2011, Sanofi-Aventis reported revenue of 47.5 billion dollars. A few of their key products include Ambien, Plavix and Renagel, as well as vaccines Fluzone and Menactra. They focus on products for cardiovascular disease, the central nervous system, internal medicine, oncology, ophthalmology, and vaccines (subsidiary Sanofi Pasteur makes vaccines while its Genzyme unit makes biopharmaceuticals). They are a French company, which operates out of over 100 countries, and were founded in 2004 (by a merger of Aventis and Sanofi-Synthelabo).</p>
+            <p><b>Score: </b>20,180,440</p>
+            <p><b>Drugs: </b>AS+AQ, AS+SP, Eto, R</p>
+            <p><b>Diseases: </b>Malaria, TB</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Artesunate/Amodiaquine </b>is an artemisinin-based combination therapy (ACT) used to treat acute uncomplicated plasmodium falciparum malaria. This anti-malarial combination treatment was launched in 2007 by the Drugs for Neglected Disease Initiative in partnership with Sanofi-Aventis.</p>
+            <p><b>Artesunate + Sulfadoxine-Pyrimethamine </b>is another artemisin-based combination therapy for the treatment of malaria. Sanofi acquired the patent once it bought Hoechst AG which held the original patent.</p>
+            <p><b>Rifampicin </b>is an antibiotic that is used in the treatment of tuberculosis along with drugs such as pyranizamide, isoniazid, and ethambutol. The earliest patent for rifampicin was filed in 1965 by Gruppo Lepetit (now a subsidiary of Sanofi).</p>
+            </div>
+            <div id="NovartisDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Novartis</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div>
+            <div id="PfizerDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Pfizer</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="ShireDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Shire</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="HoffmanLaRocheDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Hoffman-LaRoche</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="BoehringerIngelheimDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Boehringer Ingelheim</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="BristolMeyersSquibbDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Bristol Meyers Squibb</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="ViivHealthcareDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Viiv Healthcare</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="MerkDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Merk</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="GileadScienceDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Gilead Science</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="AbbottLaboratoriesDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Abbott Laboratories</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="DaiichiSankyoDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Daiichi Sankyo</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="ChongqingTongheDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Chongqing Tonghe</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="EliLillyDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Eli Lilly</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="KyorinCoLtdDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Kyorin Co., Ltd</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div><div id="BayerHealthcareDIV">
+            <p class="bluetxt" style="font-size:26px; !important">Bayer Healthcare</p>
+            <p>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Score:</b></p>
+            <p><b>Drugs:</b></p>
+            <p><b>Diseases:</b></p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p>GRAPH</p>
+            <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
+            </div>
         </div>
     </div>
 </div>
