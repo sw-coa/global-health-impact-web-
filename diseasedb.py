@@ -38,8 +38,11 @@ for k in range(8,20):
     disease = dis[i]
     distype = distypes[i]
     temp = df.iloc[k,43]
+    print(temp)
     temp1 = df.iloc[k,45]
+    print(temp1)
     temp2 = df.iloc[k,46]
+    print(temp2)
     if type(temp) != float and type(temp1)!=float and type(temp2)!=float:
         impact = float(temp.replace(',',''))
         daly = float(temp1.replace(',',''))
@@ -148,7 +151,6 @@ for k in [94,96,98,99,100,102]:
     print(coverage2011)
     print(efficacy2010)
 
-
     if i==m :
         efficacy2010 /= m
         efficacy2013 /= m
@@ -171,8 +173,6 @@ cur = conn.execute(' select * from distypes where distype=? ',('TB',))
 data = cur.fetchall()
 
 #print(data)
-
-
 i=1
 j=0
 mark=0
@@ -196,14 +196,6 @@ for k in [94,96,98,99,100,102]:
     coverage2010 += stripdata2(k,3)
     coverage2011 += stripdata2(k,5)
     print('==========This is Malaria=====')
-    #print(k)
-    #print(df2.iloc[k,0])
-    #print(df2.iloc[k,1])
-    #print(df2.iloc[k,2])
-    #print(df2.iloc[k,3])
-    #print(df2.iloc[k,5])
-    #print(coverage2010)
-    #print(efficacy2010)
 
     if i==m :
         efficacy2010 /= m
@@ -226,5 +218,326 @@ for k in [94,96,98,99,100,102]:
 cur = conn.execute(' select * from distypes where distype=? ',('Malaria',))
 data = cur.fetchall()
 print(data)
+
+
+i=1
+j=0
+mark=0
+efficacy2010 = 0
+efficacy2013 = 0
+coverage2010 = 0
+coverage2011 = 0
+for k in [94,96,98,99,100,102]:
+    colors = ['#FFB31C', '#FFB31C', '#FFB31C', '#0083CA', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
+              '#546675', '#8A5575', '#305516']
+    dismap =[2,3,1]
+    position = [2,0,1]
+    disease = ['HIV']
+    disetype='HIV'
+    len(position)
+    p = position[mark]
+    color=colors[j%12]
+    print(len(disease))
+    diseasename = disease[mark]
+    efficacy2010 += stripdata2(k,1)
+    efficacy2013 += stripdata2(k,2)
+    coverage2010 += stripdata2(k,3)
+    coverage2011 += stripdata2(k,5)
+    print('==========This is HIV=====')
+
+    if i==m :
+        efficacy2010 /= m
+        efficacy2013 /= m
+        coverage2010 /= m
+        coverage2011 /= m
+        i=0
+        roww = [diseasename,disetype,color,efficacy2010,efficacy2013,coverage2010,coverage2011,p]
+        distypes.append(roww)
+        print(roww)
+        conn.execute('insert into distypes values (?,?,?,?,?,?,?,?)', roww)
+        efficacy2010 = 0
+        efficacy2013 = 0
+        coverage2010 = 0
+        coverage2011 = 0
+
+    j+=1
+    i+=1
+cur = conn.execute(' select * from distypes where distype=? ',('HIV',))
+data = cur.fetchall()
+print(data)
+
+i=1
+j=0
+mark=0
+efficacy2010 = 0
+efficacy2013 = 0
+coverage2010 = 0
+coverage2011 = 0
+for k in [94,96,98,99,100,102]:
+    colors = ['#FFB31C', '#FFB31C', '#FFB31C', '#0083CA', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
+              '#546675', '#8A5575', '#305516']
+    dismap =[2,3,1]
+    position = [2,0,1]
+    disease = ['Roundworm']
+    disetype='Roundworm'
+    m = dismap[mark]
+    p = position[mark]
+    color=colors[j%12]
+    diseasename = disease[mark]
+    efficacy2010 += stripdata2(k,1)
+    efficacy2013 += stripdata2(k,2)
+    coverage2010 += stripdata2(k,3)
+    coverage2011 += stripdata2(k,5)
+    print('==========This is Roundworm=====')
+
+    if i==m :
+        efficacy2010 /= m
+        efficacy2013 /= m
+        coverage2010 /= m
+        coverage2011 /= m
+        i=0
+        roww = [diseasename,disetype,color,efficacy2010,efficacy2013,coverage2010,coverage2011,p]
+        distypes.append(roww)
+        print(roww)
+        conn.execute('insert into distypes values (?,?,?,?,?,?,?,?)', roww)
+        efficacy2010 = 0
+        efficacy2013 = 0
+        coverage2010 = 0
+        coverage2011 = 0
+
+    j+=1
+    i+=1
+cur = conn.execute(' select * from distypes where distype=? ',('Roundworm',))
+data = cur.fetchall()
+print(data)
+
+
+i=1
+j=0
+mark=0
+efficacy2010 = 0
+efficacy2013 = 0
+coverage2010 = 0
+coverage2011 = 0
+for k in [94,96,98,99,100,102]:
+    colors = ['#FFB31C', '#FFB31C', '#FFB31C', '#0083CA', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
+              '#546675', '#8A5575', '#305516']
+    dismap =[2,3,1]
+    position = [2,0,1]
+    disease = ['Hookworm']
+    disetype='Hookworm'
+    m = dismap[mark]
+    p = position[mark]
+    color=colors[j%12]
+    diseasename = disease[mark]
+    efficacy2010 += stripdata2(k,1)
+    efficacy2013 += stripdata2(k,2)
+    coverage2010 += stripdata2(k,3)
+    coverage2011 += stripdata2(k,5)
+    print('==========This is Hookworm=====')
+
+    if i==m :
+        efficacy2010 /= m
+        efficacy2013 /= m
+        coverage2010 /= m
+        coverage2011 /= m
+        i=0
+        roww = [diseasename,disetype,color,efficacy2010,efficacy2013,coverage2010,coverage2011,p]
+        distypes.append(roww)
+        print(roww)
+        conn.execute('insert into distypes values (?,?,?,?,?,?,?,?)', roww)
+        efficacy2010 = 0
+        efficacy2013 = 0
+        coverage2010 = 0
+        coverage2011 = 0
+
+    j+=1
+    i+=1
+cur = conn.execute(' select * from distypes where distype=? ',('Hookworm',))
+data = cur.fetchall()
+print(data)
+
+
+i=1
+j=0
+mark=0
+efficacy2010 = 0
+efficacy2013 = 0
+coverage2010 = 0
+coverage2011 = 0
+for k in [94,96,98,99,100,102]:
+    colors = ['#FFB31C', '#FFB31C', '#FFB31C', '#0083CA', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
+              '#546675', '#8A5575', '#305516']
+    dismap =[2,3,1]
+    position = [2,0,1]
+    disease = ['Whipworm']
+    disetype='Whipworm'
+    m = dismap[mark]
+    p = position[mark]
+    color=colors[j%12]
+    diseasename = disease[mark]
+    efficacy2010 += stripdata2(k,1)
+    efficacy2013 += stripdata2(k,2)
+    coverage2010 += stripdata2(k,3)
+    coverage2011 += stripdata2(k,5)
+    print('==========This is Whipworm=====')
+
+    if i==m :
+        efficacy2010 /= m
+        efficacy2013 /= m
+        coverage2010 /= m
+        coverage2011 /= m
+        i=0
+        roww = [diseasename,disetype,color,efficacy2010,efficacy2013,coverage2010,coverage2011,p]
+        distypes.append(roww)
+        print(roww)
+        conn.execute('insert into distypes values (?,?,?,?,?,?,?,?)', roww)
+        efficacy2010 = 0
+        efficacy2013 = 0
+        coverage2010 = 0
+        coverage2011 = 0
+
+    j+=1
+    i+=1
+cur = conn.execute(' select * from distypes where distype=? ',('Whipworm',))
+data = cur.fetchall()
+print(data)
+
+
+i=1
+j=0
+mark=0
+efficacy2010 = 0
+efficacy2013 = 0
+coverage2010 = 0
+coverage2011 = 0
+for k in [94,96,98,99,100,102]:
+    colors = ['#FFB31C', '#FFB31C', '#FFB31C', '#0083CA', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
+              '#546675', '#8A5575', '#305516']
+    dismap =[2,3,1]
+    position = [2,0,1]
+    disease = ['Schistosomiasis']
+    disetype='Schistosomiasis'
+    m = dismap[mark]
+    p = position[mark]
+    color=colors[j%12]
+    diseasename = disease[mark]
+    efficacy2010 += stripdata2(k,1)
+    efficacy2013 += stripdata2(k,2)
+    coverage2010 += stripdata2(k,3)
+    coverage2011 += stripdata2(k,5)
+    print('==========This is Schistosomiasis=====')
+
+    if i==m :
+        efficacy2010 /= m
+        efficacy2013 /= m
+        coverage2010 /= m
+        coverage2011 /= m
+        i=0
+        roww = [diseasename,disetype,color,efficacy2010,efficacy2013,coverage2010,coverage2011,p]
+        distypes.append(roww)
+        print(roww)
+        conn.execute('insert into distypes values (?,?,?,?,?,?,?,?)', roww)
+        efficacy2010 = 0
+        efficacy2013 = 0
+        coverage2010 = 0
+        coverage2011 = 0
+
+    j+=1
+    i+=1
+cur = conn.execute(' select * from distypes where distype=? ',('Schistosomiasis',))
+data = cur.fetchall()
+print(data)
+
+i=1
+j=0
+mark=0
+efficacy2010 = 0
+efficacy2013 = 0
+coverage2010 = 0
+coverage2011 = 0
+for k in [94,96,98,99,100,102]:
+    colors = ['#FFB31C', '#FFB31C', '#FFB31C', '#0083CA', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
+              '#546675', '#8A5575', '#305516']
+    dismap =[2,3,1]
+    position = [2,0,1]
+    disease = ['Onchoceriasis']
+    disetype='Onchoceriasis'
+    m = dismap[mark]
+    p = position[mark]
+    color=colors[j%12]
+    diseasename = disease[mark]
+    efficacy2010 += stripdata2(k,1)
+    efficacy2013 += stripdata2(k,2)
+    coverage2010 += stripdata2(k,3)
+    coverage2011 += stripdata2(k,5)
+    print('==========This is Onchoceriasis=====')
+
+    if i==m :
+        efficacy2010 /= m
+        efficacy2013 /= m
+        coverage2010 /= m
+        coverage2011 /= m
+        i=0
+        roww = [diseasename,disetype,color,efficacy2010,efficacy2013,coverage2010,coverage2011,p]
+        distypes.append(roww)
+        print(roww)
+        conn.execute('insert into distypes values (?,?,?,?,?,?,?,?)', roww)
+        efficacy2010 = 0
+        efficacy2013 = 0
+        coverage2010 = 0
+        coverage2011 = 0
+
+    j+=1
+    i+=1
+cur = conn.execute(' select * from distypes where distype=? ',('Onchoceriasis',))
+data = cur.fetchall()
+print(data)
+
+i=1
+j=0
+mark=0
+efficacy2010 = 0
+efficacy2013 = 0
+coverage2010 = 0
+coverage2011 = 0
+for k in [94,96,98,99,100,102]:
+    colors = ['#FFB31C', '#FFB31C', '#FFB31C', '#0083CA', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
+              '#546675', '#8A5575', '#305516']
+    dismap =[2,3,1]
+    position = [2,0,1]
+    disease = ['LF']
+    disetype='LF'
+    m = dismap[mark]
+    p = position[mark]
+    color=colors[j%12]
+    diseasename = disease[mark]
+    efficacy2010 += stripdata2(k,1)
+    efficacy2013 += stripdata2(k,2)
+    coverage2010 += stripdata2(k,3)
+    coverage2011 += stripdata2(k,5)
+    print('==========This is LF=====')
+
+    if i==m :
+        efficacy2010 /= m
+        efficacy2013 /= m
+        coverage2010 /= m
+        coverage2011 /= m
+        i=0
+        roww = [diseasename,disetype,color,efficacy2010,efficacy2013,coverage2010,coverage2011,p]
+        distypes.append(roww)
+        print(roww)
+        conn.execute('insert into distypes values (?,?,?,?,?,?,?,?)', roww)
+        efficacy2010 = 0
+        efficacy2013 = 0
+        coverage2010 = 0
+        coverage2011 = 0
+
+    j+=1
+    i+=1
+cur = conn.execute(' select * from distypes where distype=? ',('LF',))
+data = cur.fetchall()
+print(data)
+
 
 conn.commit()
