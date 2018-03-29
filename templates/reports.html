@@ -160,7 +160,6 @@
 }
 </style>
 <script>
-
 function myFunSanofi() {
     var x = document.getElementById("SanofiDIV");
     if (x.style.display === "block") {
@@ -438,6 +437,42 @@ function BayerHealthcareBold() {
     }
 }
 </script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('upcoming', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(
+           [['Drug','Score'],['Unmet Need',220097690.35999998],['AL',45213608.73],['Artesunate/Amodiaquine (AS + AQ)',16709343.26],['Pyrazinamide (Z or PZA)',15199510.98],['Isoniazid (H or INH)',15199289.76],['RIfampicin (R or RMP)',15199289.76],['Ethambutol (E or EMB)',15199289.76],['Albendazole (ALB)',3354903.0800000005],['Mebendazole (MBZ)',1213364.65],['Lamivudine (3TC)',1179527.94],['Nevirapine (NVP)',799817.52],['Praziquantel (PZQ)',611022.3],['Stavudine (d4t)',505851.43],['Zidovudine (AZT)',505703.37],['EFV',488144.1],['Tenofovir (TDF)',234068.09],['Ivermectin (IVM)',102020.8],['Emtricitabine (FTC)',71451.36],['Diethylcarbamazine (DEC)',40838.4],['Lopinavir / Ritonavir (LPV/r)',40071.51],['Abacavir (ABC)',17614.43],['Didanosine (ddl)',9406.34],['Cycloserine (Cs)',3831.63],['Artesunate / Mefloquine (AS + MQ)',2642.38],['Atazanafir / Ritonavir (ATV/r)',1598.38],['Atazanafir / Ritonavir (ATV/r)',1598.38],['Kanamycin (Km)',1447.1899999999998],['Levofloxacin (Lfx)',1423.5300000000002],['Amikacin (Amk)',1045.62],['Capreomycin (Cm)',1045.62],['Gatifloxacin (Gfx)',760.45],['Moxifloxacin (Mfx)',760.45],['Ofloxacin (Ofx)',760.45],['Ethionamide (Eto)',663.08],['p-aminosalicylic acid (PAS)',663.08],['Streptomycin (S or STR)',261.52],['Artesunate / Sulfadoxine-pyrimethamine (AS + SP)',236.76],['Nelfinavir (NFV)',55.45],['DHA-Piperaquine (DHA-PPQ)',0.78]]
+        );
+        var data2 = google.visualization.arrayToDataTable(
+           [['Drug','Score'],['AL',45213608.73],['Artesunate/Amodiaquine (AS + AQ)',16709343.26],['Pyrazinamide (Z or PZA)',15199510.98],['Isoniazid (H or INH)',15199289.76],['RIfampicin (R or RMP)',15199289.76],['Ethambutol (E or EMB)',15199289.76],['Albendazole (ALB)',3354903.0800000005],['Mebendazole (MBZ)',1213364.65],['Lamivudine (3TC)',1179527.94],['Nevirapine (NVP)',799817.52],['Praziquantel (PZQ)',611022.3],['Stavudine (d4t)',505851.43],['Zidovudine (AZT)',505703.37],['EFV',488144.1],['Tenofovir (TDF)',234068.09],['Ivermectin (IVM)',102020.8],['Emtricitabine (FTC)',71451.36],['Diethylcarbamazine (DEC)',40838.4],['Lopinavir / Ritonavir (LPV/r)',40071.51],['Abacavir (ABC)',17614.43],['Didanosine (ddl)',9406.34],['Cycloserine (Cs)',3831.63],['Artesunate / Mefloquine (AS + MQ)',2642.38],['Atazanafir / Ritonavir (ATV/r)',1598.38],['Atazanafir / Ritonavir (ATV/r)',1598.38],['Kanamycin (Km)',1447.1899999999998],['Levofloxacin (Lfx)',1423.5300000000002],['Amikacin (Amk)',1045.62],['Capreomycin (Cm)',1045.62],['Gatifloxacin (Gfx)',760.45],['Moxifloxacin (Mfx)',760.45],['Ofloxacin (Ofx)',760.45],['Ethionamide (Eto)',663.08],['p-aminosalicylic acid (PAS)',663.08],['Streptomycin (S or STR)',261.52],['Artesunate / Sulfadoxine-pyrimethamine (AS + SP)',236.76],['Nelfinavir (NFV)',55.45],['DHA-Piperaquine (DHA-PPQ)',0.78]]
+        );
+        var options1 = {
+            height: 300,
+            'chartArea':{top:0},
+            legend:'none',
+            slices: [{color: '#00cab1'},{color: '#B78988'},{color: '#906F76'},{color: '#8F918B'},{color: '#548A9B'},{color: '#BAE2DA'},{color: '#C0E188'},{color: '#f2c2b7'},{color: '#d86375'},{color: '#b1345d'},{color: '#de9c2a'},{color: '#f7c406'},{color: '#f1dbc6'},{color: '#5b75a7'},{color: '#f15a22'},{color: '#b83f98'},{color: '#0083ca'},{color: '#FFB31C'},{color: '#0083CA'},{color: '#EF3E2E'},{color: '#003452'},{color: '#86AAB9'},{color: '#CAEEFD'},{color: '#546675'},{color: '#8A5575'},{color: '#305516'},{color: '#B78988'},{color: '#BAE2DA'},{color: '#B1345D'},{color: '#5B75A7'},{color: '#906F76'},{color: '#C0E188'},{color: '#B99BCF'},{color: '#DC2A5A'},{color: '#D3D472'},{color: '#2A9DC4'},{color: '#C25C90'},{color: '#65A007'},{color: '#FE3289'},{}],
+            is3D: 'true'
+        };
+        var options2 = {
+            height: 300,
+            'chartArea':{top:0},
+            legend:'none',
+            slices: [{color: '#B78988'},{color: '#906F76'},{color: '#8F918B'},{color: '#548A9B'},{color: '#BAE2DA'},{color: '#C0E188'},{color: '#f2c2b7'},{color: '#d86375'},{color: '#b1345d'},{color: '#de9c2a'},{color: '#f7c406'},{color: '#f1dbc6'},{color: '#5b75a7'},{color: '#f15a22'},{color: '#b83f98'},{color: '#0083ca'},{color: '#FFB31C'},{color: '#0083CA'},{color: '#EF3E2E'},{color: '#003452'},{color: '#86AAB9'},{color: '#CAEEFD'},{color: '#546675'},{color: '#8A5575'},{color: '#305516'},{color: '#B78988'},{color: '#BAE2DA'},{color: '#B1345D'},{color: '#5B75A7'},{color: '#906F76'},{color: '#C0E188'},{color: '#B99BCF'},{color: '#DC2A5A'},{color: '#D3D472'},{color: '#2A9DC4'},{color: '#C25C90'},{color: '#65A007'},{color: '#FE3289'},{}],
+            is3D: 'true'
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piediv'));
+        var chart2 = new google.visualization.PieChart(document.getElementById('pie2div'));
+        chart.draw(data, options1);
+        chart2.draw(data2, options2);
+      };
+      function bargoclick(num) {
+          chart.setSelection([{row:num}]);
+          alert(num);
+      };
+</script>
 {% endblock %}
 
 {% block frontimg %}
@@ -516,9 +551,24 @@ function BayerHealthcareBold() {
             <p><b>Score: </b>20,180,440</p>
             <p><b>Drugs: </b>AS+AQ, AS+SP, Eto, R</p>
             <p><b>Diseases: </b>Malaria, TB</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <div id="chart_div"></div>
+
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Artesunate/Amodiaquine </b>is an artemisinin-based combination therapy (ACT) used to treat acute uncomplicated plasmodium falciparum malaria. This anti-malarial combination treatment was launched in 2007 by the Drugs for Neglected Disease Initiative in partnership with Sanofi-Aventis.</p>
             <p><b>Artesunate + Sulfadoxine-Pyrimethamine </b>is another artemisin-based combination therapy for the treatment of malaria. Sanofi acquired the patent once it bought Hoechst AG which held the original patent.</p>
@@ -530,9 +580,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -544,9 +606,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -557,9 +631,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -570,9 +656,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -583,9 +681,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -596,9 +706,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -609,9 +731,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -622,9 +756,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -635,9 +781,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -648,9 +806,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -661,9 +831,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -674,9 +856,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -687,9 +881,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -700,9 +906,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
@@ -713,9 +931,21 @@ function BayerHealthcareBold() {
             <p><b>Score:</b></p>
             <p><b>Drugs:</b></p>
             <p><b>Diseases:</b></p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
-            <p>GRAPH</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="chart_div">
+                        <a title="Malaria">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">Malaria</div>
+                            <div style="width: 100.0%;background-color:#3483c4;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+
+                        <a title="TB">
+                            <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">TB</div>
+                            <div style="width: 36.9564468073814%;background-color:#f5b546;height: 40px;display:inline-block;font-size:0;margin-right:-4px;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <p class="bluetxt" style="font-size:26px; !important">Key Drugs:</p>
             <p><b>Random Drug </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
             <p><b>Random Drug + Sulfadoxine-Pyrimethamine </b>Lorem ipsum dolor sit amet, unum laoreet temporibus ei usu, ei vidisse torquatos pertinacia sed. No duo ignota evertitur, eum ad lorem salutatus, minim graeci equidem id has. Ea habeo maluisset pri. Delenit vulputate pertinacia te his, eu per audire nominavi. No eos ubique appareat interpretaris.</p>
