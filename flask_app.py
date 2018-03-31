@@ -42,16 +42,8 @@ def requires_auth(f):
 
 def connect_db():
     # print("in connect_db")
-<<<<<<< HEAD
-
-
-    return sqlite3.connect('/Users/shileicui/Desktop/GHI_Website/new_website/global-health-impact-web-/ghi.db')
-
-
-=======
     return sqlite3.connect('F:/global-health-impact-web/ghi.db')
 
->>>>>>> 61805511a1f4a9c12759613f660ba2f0658f432c
 @app.before_request
 def before_request():
     # print("In before_request")
