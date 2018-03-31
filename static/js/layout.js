@@ -76,4 +76,7 @@ if (window.location.hash){
       }
    }
 });
+<<<<<<< HEAD
+=======
 
+>>>>>>> 61805511a1f4a9c12759613f660ba2f0658f432c
