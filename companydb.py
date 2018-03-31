@@ -25,6 +25,8 @@ datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQ
 datasrc20102015 = 'https://docs.google.com/spreadsheets/d/1vwMReqs8G2jK-Cx2_MWKn85MlNjnQK-UR3Q8vZ_pPNk/pub?gid=1560508440&single=true&output=csv'
 
 df = pd.read_csv(datasrc, skiprows=1)
+df_new = df.notnull()
+print(df_new)
 print(df)
 i = 0;
 colorlist = []
@@ -36,34 +38,6 @@ print(colorlist)
 manudata = []
 manutotal = []
 
-tb2010 = float(df.iloc[25,99].replace('-','0').replace(',',''))
-tb2013 = float(df.iloc[25,100].replace('-','0').replace(',',''))
-hiv2010 = float(df.iloc[27,99].replace('-','0').replace(',',''))
-hiv2013 = float(df.iloc[27,100].replace('-','0').replace(',',''))
-total2010 = tb2010+hiv2010
-total2013 = tb2013+hiv2013
-color= colors[0]
-#----------------
-unalle = 'Unalleviated Burden'
-disease1 = 'tb'
-row = [unalle,disease1,tb2010,tb2013,color]
-manudata.append(row)
-conn.execute('insert into manudis values (?,?,?,?,?)', row)
-#unalle = 'Unalleviated Burden'
-
-disease2 = 'hiv'
-row = [unalle,disease2,hiv2010,hiv2013,color]
-manudata.append(row)
-conn.execute('insert into manudis values (?,?,?,?,?)', row)
-
-#unalle = 'Unalleviated Burden'
-
-disease3 = 'all'
-
-row = [unalle,disease3,total2010,total2013,color]
-manudata.append(row)
-conn.execute('insert into manudis values (?,?,?,?,?)', row)
-#----------
 
 for k in range(25,88):
     company = df.iloc[k,2]
@@ -72,9 +46,31 @@ for k in range(25,88):
         if math.isnan(company):
             break
     disease = 'TB'
-    temp = df.iloc[k,3].replace('-','0').replace(',','')
-    tbdaly2010 = float(temp)
-    tbdaly2013 = float(df.iloc[k,4].replace('-','0').replace(',',''))
+
+    _k3 = df.iloc[k, 3]
+    if df_new.iloc[k, 3] == False:
+        temp1 = 0
+    elif '-' in _k3:
+         temp1 = _k3.replace('-','0')
+    elif ',' in _k3:
+         temp1 = _k3.replace(',','')
+    else:
+        temp1 = _k3
+
+    tbdaly2010 = float(temp1)
+
+    _k4 = df.iloc[k, 4]
+    if df_new.iloc[k, 4] ==  False:
+        temp2 = 0
+    elif '-' in _k4:
+        temp2 = _k4.replace('-', '0')
+    elif ',' in _k4:
+        temp2 = _k4.replace(',', '')
+    else:
+        temp2 = _k4
+
+    tbdaly2013 = float(temp2)
+
     if tbdaly2010 > 0 or tbdaly2013 > 0:
         color = colors[i]
         row=[company,disease,tbdaly2010,tbdaly2013,color]
@@ -90,6 +86,29 @@ for k in range(25,88):
     disease = 'HIV'
     hivdaly2010 = float(df.iloc[k,10].replace('-','0').replace(',',''))
     hivdaly2013 = float(df.iloc[k,11].replace('-','0').replace(',',''))
+    _k10 =  df.iloc[k, 10]
+    if df_new.iloc[k, 10] == False:
+        temp1 = 0
+    if '-' in _k10:
+        temph = _k10.replace('-', '0')
+    elif ',' in _k10:
+        temph = _k10.replace(',', '')
+    else:
+        temph = _k10
+
+        hivdaly2010 = float(temph)
+
+    k11 = df.iloc[k, 11]
+    if df_new.iloc[k, 11] == False:
+        temp1 = 0
+    if '-' in k11:
+        temph1 = k11.replace('-', '0')
+    elif ',' in k11:
+        temph1 = k11.replace(',', '')
+    else:
+        temph1 = k11
+
+    tbdaly2013 = float(temph1)
     if hivdaly2010 > 0 or hivdaly2013 > 0:
         color = colors[i]
         row=[company,disease,hivdaly2010,hivdaly2013,color]
@@ -102,8 +121,31 @@ for k in range(25,88):
     if isinstance(company,float):
         if math.isnan(company):
             break
-    daly2010 = float(df.iloc[k,13].replace('-','0').replace(',',''))
-    daly2013 = float(df.iloc[k,14].replace('-','0').replace(',',''))
+
+    k13 = df.iloc[k, 13]
+    if df_new.iloc[k, 13] == False:
+        temp1 = 0
+    if '-' in k13:
+        temphd = k13.replace('-', '0')
+    elif ',' in k13:
+        temphd = k13.replace(',', '')
+    else:
+        temphd = k13
+
+    daly2010 = float(temphd)
+
+    k14 = df.iloc[k, 14]
+    if df_new.iloc[k, 14] == False:
+        tempd1 = 0
+    if '-' in k14:
+        tempd1 = k14.replace('-', '0')
+    elif ',' in k14:
+        tempd1 = k14.replace(',', '')
+    else:
+        tempd1 = k14
+
+    daly2013 = float(tempd1)
+
     if daly2010 > 0 or daly2013 > 0:
         color = colors[i]
         row=[company,daly2010,daly2013,color]

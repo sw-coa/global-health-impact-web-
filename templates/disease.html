@@ -137,6 +137,7 @@
       google.charts.setOnLoadCallback(drawMap);
       function drawMap() {
         var data = google.visualization.arrayToDataTable({{ piedat |safe }});
+        console.log(data);
         var mapoptions = {
         };
         mapoptions['dataMode'] = 'regions';
