@@ -10,6 +10,7 @@ function yearclick(showthis,hidethis) {
     document.getElementById(hidethis).style.display = 'none';
     document.getElementById(showthis).style.display = 'block';
 }
+
 function dropNav() {
     document.getElementById("navBar").classList.toggle("show");
     if (document.getElementById("abtBar").classList.contains('show')) {
@@ -75,3 +76,4 @@ if (window.location.hash){
       }
    }
 });
+

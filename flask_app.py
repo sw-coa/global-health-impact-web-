@@ -44,7 +44,6 @@ def connect_db():
     # print("in connect_db")
     return sqlite3.connect('F:/global-health-impact-web/ghi.db')
 
-
 @app.before_request
 def before_request():
     # print("In before_request")
@@ -1939,4 +1938,3 @@ if __name__ == '__main__':
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_database', None)
-
