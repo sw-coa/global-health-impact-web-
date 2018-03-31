@@ -10,11 +10,11 @@ conn.execute(''' DROP TABLE IF EXISTS country2013 ''')
 conn.execute(''' DROP TABLE IF EXISTS countryp2010 ''')
 conn.execute(''' DROP TABLE IF EXISTS countryp2013 ''')
 
-conn.execute(''' CREATE TABLE country2010 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistomasis real, lf real) ''')
-conn.execute(''' CREATE TABLE country2013 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistomasis real, onchoceriasis real, lf real) ''')
+conn.execute(''' CREATE TABLE country2010 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, lf real) ''')
+conn.execute(''' CREATE TABLE country2013 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, onchoceriasis real, lf real) ''')
 
-conn.execute(''' CREATE TABLE countryp2010 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistomasis real, lf real) ''')
-conn.execute(''' CREATE TABLE countryp2013 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistomasis real, onchoceriasis real, lf real) ''')
+conn.execute(''' CREATE TABLE countryp2010 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, lf real) ''')
+conn.execute(''' CREATE TABLE countryp2013 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, onchoceriasis real, lf real) ''')
 
 
 url = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=0&single=true&output=csv'
@@ -51,11 +51,11 @@ for i in range(3, 218):
     roundworm = cleanfloat(df.iloc[i,66])
     hookworm = cleanfloat(df.iloc[i,67])
     whipworm = cleanfloat(df.iloc[i,68])
-    schistomasis = cleanfloat(df.iloc[i,76])
+    schistosomiasis = cleanfloat(df.iloc[i,76])
     lf = cleanfloat(df.iloc[i,80])
-    total = tb + malaria + hiv + roundworm + hookworm + whipworm + schistomasis + lf
+    total = tb + malaria + hiv + roundworm + hookworm + whipworm + schistosomiasis + lf
     print(total)
-    row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf]
+    row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf]
     countrydata.append(row)
     #print(row)
 
@@ -72,9 +72,9 @@ for j in sortedlist:
     roundworm = (j[5]/maxval) *  100
     hookworm = (j[6]/maxval) *  100
     whipworm = (j[7]/maxval) *  100
-    schistomasis = (j[8]/maxval) *  100
+    schistosomiasis = (j[8]/maxval) *  100
     lf = (j[9]/maxval) *  100
-    row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf]
+    row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf]
     mapp.append(row)
     #print(row)
 
@@ -95,11 +95,11 @@ for i in range(3, 218):
     roundworm = cleanfloat(df.iloc[i,150])
     hookworm = cleanfloat(df.iloc[i,151])
     whipworm = cleanfloat(df.iloc[i,152])
-    schistomasis = cleanfloat(df.iloc[i,160])
-    onchoceriasis = cleanfloat(df.iloc[i,165])
-    lf = cleanfloat(df.iloc[i,169])
-    total = tb + malaria + hiv + roundworm + hookworm + whipworm + schistomasis + onchoceriasis + lf
-    row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, onchoceriasis, lf]
+    schistosomiasis = cleanfloat(df.iloc[i,160])
+    onchoceriasis = cleanfloat(df.iloc[i,162])
+    lf = cleanfloat(df.iloc[i,166])
+    total = tb + malaria + hiv + roundworm + hookworm + whipworm + schistosomiasis + onchoceriasis + lf
+    row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchoceriasis, lf]
     countrydata2.append(row)
 
 sortedlist2 = sorted(countrydata2, key=lambda xy: xy[1], reverse=True)
@@ -114,10 +114,10 @@ for j in sortedlist2:
     roundworm = (j[5]/maxval) *  100
     hookworm = (j[6]/maxval) *  100
     whipworm = (j[7]/maxval) *  100
-    schistomasis = (j[8]/maxval) *  100
+    schistosomiasis = (j[8]/maxval) *  100
     onchoceriasis = (j[9]/maxval) * 100
     lf = (j[10]/maxval) *  100
-    row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, onchoceriasis, lf]
+    row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchoceriasis, lf]
     mapp2.append(row)
 
 #print(countrydata2)
@@ -128,3 +128,4 @@ for l in mapp2:
     conn.execute(''' INSERT INTO countryp2013 VALUES (?,?,?,?,?,?,?,?,?,?,?) ''', l)
 
 conn.commit()
+print("Data saved successfully in database")
