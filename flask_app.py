@@ -737,12 +737,12 @@ def country():
     g.db = connect_db()
     color = []
     year = 2010
-    colors = {'tb': '#FFB31C', 'malaria': '#0083CA', 'hiv': '#EF3E2E', 'schistomasis': '#546675', 'lf': '#305516', 'hookworm': '#86AAB9', 'roundworm': '#003452', 'whipworm': '#CAEEFD', 'onchocerciasis': '#5CB85C'}
+    colors = {'tb': '#FFB31C', 'malaria': '#0083CA', 'hiv': '#EF3E2E', 'schistosomiasis': '#546675', 'lf': '#305516', 'hookworm': '#86AAB9', 'roundworm': '#003452', 'whipworm': '#CAEEFD', 'onchocerciasis': '#5CB85C'}
     isall = 1
     drugg = 'all'
     name = 'ALL'
-    br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf from countryp2010 ')
-    cur = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf from country2010 ')
+    br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from countryp2010 ')
+    cur = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from country2010 ')
     bars = br.fetchall() # has percentile
     maps = cur.fetchall() # has actual val
     # print(bars)
@@ -794,22 +794,24 @@ def countrydata(xdisease,xyear):
     print(xdisease)
     print(xyear)
     g.db = connect_db()
+    print(g.db)
     color = []
     year = xyear
-    colors = {'tb': '#FFB31C', 'malaria': '#0083CA', 'hiv': '#EF3E2E', 'schistomasis': '#546675', 'lf': '#305516', 'hookworm': '#86AAB9', 'roundworm': '#003452', 'whipworm': '#CAEEFD', 'onchocerciasis': '#5CB85C'}
+    colors = {'tb': '#FFB31C', 'malaria': '#0083CA', 'hiv': '#EF3E2E', 'schistosomiasis': '#546675', 'lf': '#305516', 'hookworm': '#86AAB9', 'roundworm': '#003452', 'whipworm': '#CAEEFD', 'onchocerciasis': '#5CB85C'}
     if xdisease == 'all':
         isall = 1
         drugg = 'all'
         name = 'ALL'
         if xyear == '2010':
-            br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf from countryp2010 ')
-            cur = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf from country2010 ')
+            br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from countryp2010 ')
+            cur = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from country2010 ')
         elif xyear == '2013':
-            cur = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf from country2013 ')
-            br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf from countryp2013 ')
+            cur = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from country2013 ')
+            br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from countryp2013 ')
     else:
         isall = 0
         namedict = {'tb': 'TB', 'malaria': 'MALARIA', 'hiv': 'HIV/AIDS', 'schistosomiasis': 'SCHISTOSOMIASIS', 'onchocerciasis':'ONCHOCERCIASIS', 'lf': 'LYMPHATIC FILARIASIS', 'hookworm': 'HOOKWORM', 'roundworm': 'ROUNDWORM', 'whipworm': 'WHIPWORM'}
+        print(xdisease)
         color = colors[xdisease]
         name = namedict[xdisease]
         drugg = xdisease
@@ -842,6 +844,10 @@ def countrydata(xdisease,xyear):
                 cur = g.db.execute(' select country, schistosomiasis from country2010 ')
                 br = g.db.execute(' select country, schistosomiasis from countryp2010 ')
                 sortind = 7
+            elif xdisease == 'onchocerciasis':
+                cur = g.db.execute(' select country, onchocerciasis from country2010 ')
+                br = g.db.execute(' select country, onchocerciasis from countryp2010 ')
+                sortind = 8
             elif xdisease == 'lf':
                 cur = g.db.execute(' select country, lf from country2010 ')
                 br = g.db.execute(' select country, lf from countryp2010 ')
@@ -919,11 +925,13 @@ def countrydata(xdisease,xyear):
             temp = [row[0],row[1],perc]
             barlist.append(temp)
         if xyear == '2010':
-            cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, lf from country2010 ')
+            cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from country2010 ')
         elif xyear == '2013':
-            cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistomasis, onchoceriasis, lf from country2013 ')
+            cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchoceriasis, lf from country2013 ')
         vals = cur.fetchall()
-        vals = list(filter(lambda x: x[0] != None, vals))
+        #vals = list(filter(lambda x: x[0] != None, vals))
+        print(sortind)
+        print(vals)
         sortvals = sorted(vals, key=lambda x: x[sortind], reverse=True)
         sort = []
         for row in sortvals:
@@ -1065,7 +1073,7 @@ def companyindx(year,disease):
                   '#B99BCF', '#DC2A5A', '#D3D472','#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5',
                   '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5', '#0ACD57', '#22419F','#D47C5B','#003452',
                   '#86AAB9', '#CAEEFD' ]
-   # colors = {'TB': '#FFB31C', 'Malaria': '#0083CA', 'HIV': '#EF3E2E', 'schistomasis': '#546675', 'lf': '#305516', 'hookworm': '#86AAB9', 'roundworm': '#003452', 'whipworm': '#CAEEFD', 'onchocerciasis': '#5CB85C'}
+   # colors = {'TB': '#FFB31C', 'Malaria': '#0083CA', 'HIV': '#EF3E2E', 'schistosomiasis': '#546675', 'lf': '#305516', 'hookworm': '#86AAB9', 'roundworm': '#003452', 'whipworm': '#CAEEFD', 'onchocerciasis': '#5CB85C'}
 
 
 
