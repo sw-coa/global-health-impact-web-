@@ -24,7 +24,7 @@ conn.execute('''CREATE TABLE distypes
 datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=1560508440&single=true&output=csv'
 df = pd.read_csv(datasrc, skiprows=1)
 datasrc2 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI7j2NartMCCF_N-OCkFqAyD67N9Q32yybE21x-zaRPrETsszdZep91dVVVSCjeXXbPjPfZVdE-odE/pub?gid=1560508440&single=true&output=csv'
-df2 = pd.read_csv(datasrc, skiprows=1)
+df2 = pd.read_csv(datasrc2, skiprows=1)
 
 disease2010db = []
 disease2013db = []
@@ -60,6 +60,9 @@ for k in range(8,20):
     temp = df.iloc[k,94]
     temp1 = df.iloc[k,96]
     temp2 = df.iloc[k,97]
+    print('hi yoo')
+    print(distype)
+    print(disease)
     if type(temp) != float and type(temp1)!=float and type(temp2)!=float:
         impact = float(temp.replace(',',''))
         daly = float(temp1.replace(',',''))
@@ -86,7 +89,7 @@ def stripdata2(x,y):
         res = float(tmp.replace(',','').replace(' ','0').replace('%',''))
         if res > 10000:
             res = res * 0.00001
-        print(res)
+        #print(res)
         return (0.01*res)
     else:
         return(0)
@@ -98,7 +101,7 @@ for k in range(91, 100):
     colors = ['#FFB31C', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
               '#546675', '#8A5575', '#305516']
     diseasename = df.iloc[k,7]
-    #print(diseasename)
+    print(diseasename)
     color = colors[j]
     efficacy2010 = stripdata(k,8)
     efficacy2013 = stripdata(k,9)
@@ -107,7 +110,7 @@ for k in range(91, 100):
     need2010 = stripdata(k,12)
     need2013 = stripdata(k,13)
     roww = [diseasename,color,efficacy2010,efficacy2013,coverage2010,coverage2011,need2010,need2013]
-    print(roww)
+    #print(roww)
     disbars.append(roww)
     j+=1
     conn.execute('insert into disbars values (?,?,?,?,?,?,?,?)', roww)
@@ -167,5 +170,61 @@ for k in [94,96,98,99,100,102]:
 cur = conn.execute(' select * from distypes where distype=? ',('TB',))
 data = cur.fetchall()
 
+#print(data)
+
+
+i=1
+j=0
+mark=0
+efficacy2010 = 0
+efficacy2013 = 0
+coverage2010 = 0
+coverage2011 = 0
+for k in [94,96,98,99,100,102]:
+    colors = ['#FFB31C', '#FFB31C', '#FFB31C', '#0083CA', '#0083CA', '#EF3E2E', '#003452', '#86AAB9', '#CAEEFD',
+              '#546675', '#8A5575', '#305516']
+    dismap =[2,3,1]
+    position = [2,0,1]
+    disease = ['p. falc Malaria', 'p. vivax Malaria', 'Malaria']
+    disetype='Malaria'
+    m = dismap[mark]
+    p = position[mark]
+    color=colors[j%12]
+    diseasename = disease[mark]
+    efficacy2010 += stripdata2(k,1)
+    efficacy2013 += stripdata2(k,2)
+    coverage2010 += stripdata2(k,3)
+    coverage2011 += stripdata2(k,5)
+    print('==========This is Malaria=====')
+    #print(k)
+    #print(df2.iloc[k,0])
+    #print(df2.iloc[k,1])
+    #print(df2.iloc[k,2])
+    #print(df2.iloc[k,3])
+    #print(df2.iloc[k,5])
+    #print(coverage2010)
+    #print(efficacy2010)
+
+    if i==m :
+        efficacy2010 /= m
+        efficacy2013 /= m
+        coverage2010 /= m
+        coverage2011 /= m
+        i=0
+        mark+=1
+        roww = [diseasename,disetype,color,efficacy2010,efficacy2013,coverage2010,coverage2011,p]
+        distypes.append(roww)
+        print(roww)
+        conn.execute('insert into distypes values (?,?,?,?,?,?,?,?)', roww)
+        efficacy2010 = 0
+        efficacy2013 = 0
+        coverage2010 = 0
+        coverage2011 = 0
+
+    j+=1
+    i+=1
+cur = conn.execute(' select * from distypes where distype=? ',('Malaria',))
+data = cur.fetchall()
 print(data)
+
 conn.commit()
