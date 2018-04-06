@@ -686,8 +686,10 @@ def drug(year,disease):
         t = [drug,score]
         if score > 0:
             piedata.append(t)
-    sortedpie2 = sorted(piedata, key=lambda xy: xy[1], reverse=True)
-    maxrow = sortedpie2[0]
+
+    if len(piedata) > 0:
+      sortedpie2 = sorted(piedata, key=lambda xy: xy[1], reverse=True)
+      maxrow = sortedpie2[0]
     if maxrow[0] == 'Unmet Need':
         maxrow = sortedpie2[1]
 
