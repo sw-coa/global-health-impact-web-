@@ -1080,10 +1080,6 @@ def companyindx(year,disease):
                   '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5', '#0ACD57', '#22419F','#D47C5B','#003452',
                   '#86AAB9', '#CAEEFD' ]
    # colors = {'TB': '#FFB31C', 'Malaria': '#0083CA', 'HIV': '#EF3E2E', 'schistosomiasis': '#546675', 'lf': '#305516', 'hookworm': '#86AAB9', 'roundworm': '#003452', 'whipworm': '#CAEEFD', 'onchocerciasis': '#5CB85C'}
-
-
-
-#--------------------------Jing----Modify sql, order by daly2010 and use colocnt to apply color to piechart---------------------------------
    # pielabb=[]
     piedata1 = []
     piedata2 = []
@@ -1097,6 +1093,101 @@ def companyindx(year,disease):
             cur = g.db.execute(' select company,disease, daly2010, color from manudis order by daly2010 DESC')
             cdd = g.db.execute(' select company, disease, daly2010, color from manudis order by daly2010 DESC ')
             name = 'ALL'
+            colcnt = 0
+            piee = cur.fetchall()
+            barr = cdd.fetchall()
+            for j in piee:
+                company = j[0]
+                disease = j[1]
+                daly2010 = j[2]
+                # color = j[2]
+                color = compcolors[colcnt]
+
+                if (company == 'Unalleviated Burden') and (disease != 'all'):
+                    continue
+                if daly2010 > 0:
+                    t = [company, daly2010, color]
+                    colcnt += 1
+                    piedata1.append(t)
+                    if company != 'Unalleviated Burden':
+                        piedata2.append(t)
+            # piedata.sort(key=lambda x: x[1], reverse=True)
+            n = 0
+            temprow = []
+            for k in piedata1:
+                print(k)
+                if n < 4:
+                    comp = k[0]
+                    shortcomp = comp[0:10]
+                    temprow.append(comp)
+                    temprow.append(shortcomp)
+                    scolor = k[2]
+                    sscolor = scolor[1:7]
+                    temprow.append(sscolor)
+                    n += 1
+                else:
+                    n = 0
+                    pielab1.append(temprow)
+                    temprow = []
+            n = 0
+            temprow = []
+            for k in piedata2:
+                print(k)
+                if n < 4:
+                    comp = k[0]
+                    shortcomp = comp[0:10]
+                    temprow.append(comp)
+                    temprow.append(shortcomp)
+                    scolor = k[2]
+                    sscolor = scolor[1:7]
+                    temprow.append(sscolor)
+                    n += 1
+                else:
+                    n = 0
+                    pielab2.append(temprow)
+                    temprow = []
+
+            colcnt = 0
+            for l in barr:
+                company = l[0]
+                daly2010 = l[2]
+                if company == 'Unalleviated Burden':
+                    # colcnt += 1
+                    continue
+                disease = l[1]
+                color = compcolors[colcnt]
+                # color=l[3]
+                colcnt += 1
+                xyz = [company, daly2010, disease, color]
+                barchart.append(xyz)
+                print(barchart)
+            # barchart.sort(key=lambda x: x[1], reverse=True)
+            maxim = barchart[0]
+            maxval = maxim[1]
+            colcnt = 1
+            for row in barchart:
+                comp = row[0]
+                print(row[1])
+                if maxval > 0:
+                    daly = (row[1] / maxval) * 100
+                else:
+                    daly = 0
+                disease = row[2]
+                color = compcolors[colcnt]
+                # color = row[3]
+                colcnt += 1
+                xyz = [comp, daly, disease, color]
+                bardata.append(xyz)
+            # -----------------------------------------------------------------------------------------------------------------------------------------
+            g.db.close()
+            url = name.lower()
+            speclocate = [year, name, url]
+            print(bardata)
+            print(pielab1)
+            print(pielab2)
+            return render_template('company.html', data1=piedata2, data2=piedata1, name=name, navsub=2, showindex=1,
+                                   pielab1=pielab1, pielab2=pielab2, bardata=bardata, comptype=0, speclocate=speclocate,
+                                   scrolling=1)
         elif disease == 'hiv':
             cur = g.db.execute(' select company,disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('HIV',))
             cdd = g.db.execute(' select company, disease, daly2010, color from manudis  where disease = ? order by daly2010 DESC', ('HIV',))
