@@ -81,6 +81,7 @@ def resources():
 def diseaseinx():
     piedat = []
     clickdat = []
+    maxTotal = 0
     g.db = connect_db()
     cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchocerciasis, lf from diseaseall2010 ')
     data = cur.fetchall()
@@ -107,7 +108,7 @@ def diseaseinx():
     piedat.insert(0,['Country','DALY'])
     upp = ddisease.upper()
     speclocate = [dyear, ddisease,upp]
-    return render_template('disease.html', navsub=4, showindex=1, piedat=piedat, clickdat=clickdat, index=index, disease=1, speclocate = speclocate, scrolling=1)
+    return render_template('disease.html', navsub=4, showindex=1, piedat=piedat, clickdat=clickdat, index=index, disease=1, speclocate = speclocate, scrolling=1, maxTotal = total)
 
 @app.route('/index/disease/<dyear>/<ddisease>')
 def diseasepg(dyear, ddisease):
@@ -118,6 +119,8 @@ def diseasepg(dyear, ddisease):
     bar3 = []
     piedat = []
     clickdat = []
+    maxTotal = 0
+
     print(ddisease)
 
     if dyear == '2010':
@@ -162,7 +165,7 @@ def diseasepg(dyear, ddisease):
             upp = ddisease.upper()
             speclocate = [dyear, ddisease, upp]
             return render_template('disease.html', navsub=4, showindex=1, diseasepie=piedata, bar1data=bar1data,
-                                   disease=0, bar1=bar1, bar2=bar2, bar3=bar3, speclocate=speclocate, scrolling=1)
+                                   disease=0, bar1=bar1, bar2=bar2, bar3=bar3, speclocate=speclocate, scrolling=1, maxTotal = maxTotal)
 
         elif ddisease == 'malaria':
             g.db = connect_db()
@@ -282,7 +285,7 @@ def diseasepg(dyear, ddisease):
                 upp = ddisease.upper()
                 speclocate = [dyear, ddisease, upp]
                 return render_template('disease.html', navsub=4, showindex=1, piedat=piedat, clickdat=clickdat, index=index,
-                           disease=1, speclocate=speclocate, scrolling=1)
+                           disease=1, speclocate=speclocate, scrolling=1, maxTotal = total)
         barcolors = ['#FFD480', '#CCCC00', '#CCA300', '#86AAB9', '#003452', '#CAEEFD', '#546675', '#8A5575', '#305516']
         c = 0
         print(data)
@@ -305,6 +308,8 @@ def diseasepg(dyear, ddisease):
             tb = row[1]
             # xx = [country,tb]
             xy = [country, tb]
+            if tb > maxTotal:
+                maxTotal = tb
             piedat.append(xy)
             clickdat.append(xy)
         print('==========efficacy2010=====')
@@ -316,7 +321,7 @@ def diseasepg(dyear, ddisease):
         upp = ddisease.upper()
         speclocate = [dyear, ddisease, upp]
         return render_template('disease.html', navsub=4, showindex=1, piedat=piedat, clickdat=clickdat, index=index,
-                               bar1=bar1, bar2=bar2, disease=2, speclocate=speclocate, scrolling=1)
+                               bar1=bar1, bar2=bar2, disease=2, speclocate=speclocate, scrolling=1, maxTotal = maxTotal)
 
     elif dyear == '2013':
         if ddisease == 'summary':
@@ -359,7 +364,7 @@ def diseasepg(dyear, ddisease):
             upp = ddisease.upper()
             speclocate = [dyear, ddisease, upp]
             return render_template('disease.html', navsub=4, showindex=1, diseasepie=piedata, bar1data=bar1data,
-                                   disease=0, bar1=bar1, bar2=bar2, bar3=bar3, speclocate=speclocate)
+                                   disease=0, bar1=bar1, bar2=bar2, bar3=bar3, speclocate=speclocate, maxTotal = maxTotal)
 
 
         elif ddisease == 'malaria':
@@ -482,7 +487,7 @@ def diseasepg(dyear, ddisease):
             upp = ddisease.upper()
             speclocate = [dyear, ddisease, upp]
             return render_template('disease.html', navsub=4, showindex=1, piedat=piedat, clickdat=clickdat, index=index,
-                                   disease=1, speclocate=speclocate, scrolling=1)
+                                   disease=1, speclocate=speclocate, scrolling=1, maxTotal = maxTotal)
 
         barcolors = ['#FFD480', '#CCCC00', '#CCA300', '#86AAB9', '#003452', '#CAEEFD', '#546675', '#8A5575', '#305516']
         c = 0
@@ -506,6 +511,8 @@ def diseasepg(dyear, ddisease):
             tb = row[1]
             # xx = [country,tb]
             xy = [country, tb]
+            if tb > maxTotal:
+                maxTotal = tb
             piedat.append(xy)
             clickdat.append(xy)
         print('==========efficacy2010=====')
@@ -517,7 +524,7 @@ def diseasepg(dyear, ddisease):
         upp = ddisease.upper()
         speclocate = [dyear, ddisease, upp]
         return render_template('disease.html', navsub=4, showindex=1, piedat=piedat, clickdat=clickdat, index=index,
-                               bar1=bar1, bar2=bar2, disease=2, speclocate=speclocate, scrolling=1)
+                               bar1=bar1, bar2=bar2, disease=2, speclocate=speclocate, scrolling=1, maxTotal = maxTotal)
 
 
 @app.route('/reports')
@@ -686,10 +693,8 @@ def drug(year,disease):
         t = [drug,score]
         if score > 0:
             piedata.append(t)
-
-    if len(piedata) > 0:
-      sortedpie2 = sorted(piedata, key=lambda xy: xy[1], reverse=True)
-      maxrow = sortedpie2[0]
+    sortedpie2 = sorted(piedata, key=lambda xy: xy[1], reverse=True)
+    maxrow = sortedpie2[0]
     if maxrow[0] == 'Unmet Need':
         maxrow = sortedpie2[1]
 

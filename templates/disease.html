@@ -133,11 +133,11 @@
 {% if disease == 1 %}
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+        console.log({{maxTotal}});
       google.charts.load('upcoming', {packages:["geochart","corechart"]});
       google.charts.setOnLoadCallback(drawMap);
       function drawMap() {
         var data = google.visualization.arrayToDataTable({{ piedat |safe }});
-        console.log(data);
         var mapoptions = {
         };
         mapoptions['dataMode'] = 'regions';
@@ -217,6 +217,9 @@
     </div>
     <div class="col-sm-6">
         <div width="400px" id="mapdiv"></div>
+        {% with maxVal=maxTotal %}
+        {% include "map-label.html"  %}
+        {% endwith %}
     </div>
 </div>
 <div class="row">
@@ -266,6 +269,7 @@
 {% if disease == 2 %}
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+        console.log({{maxTotal}});
       google.charts.load('upcoming', {packages:["geochart","corechart"]});
       google.charts.setOnLoadCallback(drawMap);
       function drawMap() {
@@ -346,6 +350,9 @@
         <div class="contentbox">
             <p class="blueheader text-left">Disability Adjusted Life Years<br /><b>Lost</b>  to <b>{{ speclocate.2 }}</b> </p>
             <div width="400px" id="mapdiv"></div>
+            {% with maxVal=maxTotal %}
+            {% include "map-label.html"  %}
+            {% endwith %}
         </div>
     </div>
 </div>
@@ -433,6 +440,9 @@
     </div>
     <div class="col-sm-6">
         <div width="400px" id="mapdiv"></div>
+        {% with maxVal="{{maxTotal}}" %}
+        {% include "map-label.html"  %}
+        {% endwith %}
     </div>
 </div>
 <div class="row">
