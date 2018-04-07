@@ -15,7 +15,8 @@ conn.execute('''CREATE TABLE countrybydis2013
              (country text, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schis real, onch real, lf real)''')
 
 
-datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=1996016204&single=true&output=csv'
+#datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=1996016204&single=true&output=csv'
+datasrc = 'ORS_Daly_2010_2013.csv'
 df = pd.read_csv(datasrc, skiprows=1)
 for i in range (1,216):
     temprow = []

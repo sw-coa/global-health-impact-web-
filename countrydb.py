@@ -17,7 +17,8 @@ conn.execute(''' CREATE TABLE countryp2010 (country text, total real, tb real, m
 conn.execute(''' CREATE TABLE countryp2013 (country text, total real, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, onchoceriasis real, lf real) ''')
 
 
-url = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=0&single=true&output=csv'
+#url = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=0&single=true&output=csv'
+url = 'ORS_Impact_Score_2010_2013.csv'
 df = pd.read_csv(url, skiprows=1)
 print("Inside countryDB file !!!!!!!!!!!!!!!!!!")
 def cleanfloat(var):
@@ -88,7 +89,7 @@ countrydata2 = []
 mapp2 = []
 for i in range(3, 218):
     country = df.iloc[i,83]
-    #print(country)
+    print(country)
     tb = cleanfloat(df.iloc[i,90])
     malaria = cleanfloat(df.iloc[i,120])
     hiv = cleanfloat(df.iloc[i,131])
@@ -120,8 +121,9 @@ for j in sortedlist2:
     row = [country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchoceriasis, lf]
     mapp2.append(row)
 
-#print(countrydata2)
+print(countrydata2)
 for k in countrydata2:
+    print(k)
     conn.execute(''' INSERT INTO country2013 VALUES (?,?,?,?,?,?,?,?,?,?,?) ''', k)
 
 for l in mapp2:
