@@ -694,13 +694,14 @@ def drug(year,disease):
         if score > 0:
             piedata.append(t)
     sortedpie2 = sorted(piedata, key=lambda xy: xy[1], reverse=True)
-    maxrow = sortedpie2[0]
-    if maxrow[0] == 'Unmet Need':
+    if (len(sortedpie2) > 0):
+     maxrow = sortedpie2[0]
+     if maxrow[0] == 'Unmet Need':
         maxrow = sortedpie2[1]
-
-    maxval = maxrow[1]
-    c = 0
-    for row in sortedpie2:
+     else:
+      maxval = maxrow[1]
+      c = 0
+      for row in sortedpie2:
         perc = (row[1] / maxval) * 100
         row.append(perc)
         color = drugcolors[c]
@@ -708,31 +709,31 @@ def drug(year,disease):
         c+=1
         if row[0] != 'Unmet Need':
             impactpie.append(row)
-    lablist = []
-    pielabb = []
-    for k in impactpie:
-        labit = []
-        drug = k[0]
-        score = k[1]
-        color = k[3]
-        shortdrug = drug[0:10]
-        labit.append(drug)
-        labit.append(shortdrug)
-        labit.append(color)
-        labit.append(score)
-        lablist.append(labit)
-    labrow = []
-    xx = 0
-    if len(lablist) < 4:
-        pielabb.append(lablist)
-    else:
-        for item in lablist:
-            labrow.append(item)
-            xx += 1
-            if xx % 4 == 0:
-                pielabb.append(labrow)
-                labrow = []
-                xx = 0
+        lablist = []
+        pielabb = []
+        for k in impactpie:
+            labit = []
+            drug = k[0]
+            score = k[1]
+            color = k[3]
+            shortdrug = drug[0:10]
+            labit.append(drug)
+            labit.append(shortdrug)
+            labit.append(color)
+            labit.append(score)
+            lablist.append(labit)
+        labrow = []
+        xx = 0
+        if len(lablist) < 4:
+            pielabb.append(lablist)
+        else:
+            for item in lablist:
+                labrow.append(item)
+                xx += 1
+                if xx % 4 == 0:
+                    pielabb.append(labrow)
+                    labrow = []
+                    xx = 0
     g.db.close()
     speclocate = [year,drugg,disease]
     return render_template('drug.html', data=piedata, drug=drugg, navsub=3, showindex=1, pielabb=pielabb, drugcolors=drugcolors, speclocate = speclocate, scrolling=1, impactpie=impactpie, sortedpie2 = sortedpie2)
@@ -744,7 +745,7 @@ def country():
     color = []
     year = 2010
     colors = {'tb': '#FFB31C', 'malaria': '#0083CA', 'hiv': '#EF3E2E', 'schistosomiasis': '#546675', 'lf': '#305516', 'hookworm': '#86AAB9', 'roundworm': '#003452', 'whipworm': '#CAEEFD', 'onchocerciasis': '#5CB85C'}
-    isall = 1
+    isall = 100
     drugg = 'all'
     name = 'ALL'
     br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from countryp2010 ')

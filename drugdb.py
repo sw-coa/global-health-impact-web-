@@ -15,8 +15,9 @@ conn.execute('''CREATE TABLE drug2010
              (drug text, company text, disease text, score real, percent real, color text)''')
 
 
-datasrc = 'https://docs.google.com/spreadsheets/d/1KtWAdu4qO0mRJREY5Aje5CMZhdnxPoTPRdBXIUKN-uw/pub?gid=1560508440&single=true&output=csv'
+#datasrc = 'https://docs.google.com/spreadsheets/d/1KtWAdu4qO0mRJREY5Aje5CMZhdnxPoTPRdBXIUKN-uw/pub?gid=1560508440&single=true&output=csv'
 datasrc20102015 = 'https://docs.google.com/spreadsheets/d/1vwMReqs8G2jK-Cx2_MWKn85MlNjnQK-UR3Q8vZ_pPNk/pub?gid=1560508440&single=true&output=csv'
+datasrc = 'ORS_GlobalBurdenDisease_2010_2013.csv';
 df = pd.read_csv(datasrc, skiprows=1)
 drugdata = []
 drug2010 = []

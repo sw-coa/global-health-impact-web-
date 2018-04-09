@@ -25,7 +25,8 @@ def stripdata(x,y):
         return(0)
     else:
         return(tmp)
-datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=1996016204&single=true&output=csv'
+#datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=1996016204&single=true&output=csv'
+datasrc = 'ORS_Daly_2010_2013'
 df = pd.read_csv(datasrc, skiprows=1)
 data2010 = []
 data2013 = []

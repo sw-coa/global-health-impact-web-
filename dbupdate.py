@@ -22,7 +22,8 @@ conn.execute('''CREATE TABLE drugr2013
             (drug text, company text, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, onchocerciasis real, lf real, total real)''')
 
 
-datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=1560508440&single=true&output=csv'
+#datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=1560508440&single=true&output=csv'
+datasrc = 'ORS_GlobalBurdenDisease_2010_2013.csv'
 df = pd.read_csv(datasrc, skiprows=1)
 drugdata = []
 drugrdata = []
