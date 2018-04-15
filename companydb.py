@@ -8,27 +8,33 @@ conn.execute('''DROP TABLE IF EXISTS manudis''')
 conn.execute('''DROP TABLE IF EXISTS manutot''')
 conn.execute('''DROP TABLE IF EXISTS patent2010''')
 conn.execute('''DROP TABLE IF EXISTS patent2013''')
-
+conn.execute('''DROP TABLE IF EXISTS patent2015''')
+conn.execute('''DROP TABLE IF EXISTS manudis2015''')
+conn.execute('''DROP TABLE IF EXISTS manutot2015''')
 
 conn.execute('''CREATE TABLE manudis
              (company text, disease text, daly2010 real, daly2013 real, color text)''')
 
 conn.execute('''CREATE TABLE manutot
              (company text, daly2010 real, daly2013 real, color text)''')
-
 conn.execute('''CREATE TABLE patent2010
             (company text, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, onchocerciasis real, lf real, total real, color text)''')
 conn.execute('''CREATE TABLE patent2013
             (company text, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, onchocerciasis real, lf real, total real, color text)''')
+conn.execute('''CREATE TABLE patent2015
+            (company text, tb real, malaria real, hiv real, roundworm real, hookworm real, whipworm real, schistosomiasis real, onchocerciasis real, lf real, total real, color text)''')
 
 #datasrc = 'https://docs.google.com/spreadsheets/d/1IBfN_3f-dG65YbLWQbkXojUxs2PlQyo7l04Ubz9kLkU/pub?gid=1560508440&single=true&output=csv'
-datasrc20102015 = 'https://docs.google.com/spreadsheets/d/1vwMReqs8G2jK-Cx2_MWKn85MlNjnQK-UR3Q8vZ_pPNk/pub?gid=1560508440&single=true&output=csv'
+#datasrc20102015 = 'https://docs.google.com/spreadsheets/d/1vwMReqs8G2jK-Cx2_MWKn85MlNjnQK-UR3Q8vZ_pPNk/pub?gid=1560508440&single=true&output=csv'
 
 datasrc = 'ORS_GlobalBurdenDisease_2010_2013.csv'
+datasrc20102015 = 'ORS_GlobalBurdenDisease_2010B_2015.csv'
 df = pd.read_csv(datasrc, skiprows=1)
-df_new = df.notnull()
-print(df_new)
-print(df)
+df2015 = pd.read_csv(datasrc20102015, skiprows=1)
+is_df2015_true = df2015.notnull()
+is_df_true = df.notnull()
+#print(df_new)
+#print(df)
 i = 0;
 colorlist = []
 colors = ['FFB31C','0083CA','EF3E2E','003452','86AAB9','CAEEFD','546675','8A5575','305516','B78988','BAE2DA','B1345D','5B75A7','906F76','C0E188','DE9C2A','F15A22','8F918B','F2C2B7','F7C406','B83F98','548A9B','D86375','F1DBC6','0083CA','7A80A3','CA8566','A3516E','1DF533','510B95','DFF352','F2C883','E3744D','26B2BE','5006BA','B99BCF','DC2A5A','D3D472','2A9DC4','C25C90','65A007','FE3289','C6DAB5','DDF6AC','B7E038','1ADBBD','3BC6D5','0ACD57','22419F','D47C5B']
@@ -36,9 +42,9 @@ for x in colors:
     y = '#'+x
     colorlist.append(y)
 print(colorlist)
+
 manudata = []
 manutotal = []
-
 
 for k in range(25,88):
     company = df.iloc[k,2]
@@ -49,7 +55,7 @@ for k in range(25,88):
     disease = 'TB'
 
     _k3 = df.iloc[k, 3]
-    if df_new.iloc[k, 3] == False:
+    if is_df_true.iloc[k, 3] == False:
         temp1 = 0
     elif '-' in _k3:
          temp1 = _k3.replace('-','0')
@@ -61,7 +67,7 @@ for k in range(25,88):
     tbdaly2010 = float(temp1)
 
     _k4 = df.iloc[k, 4]
-    if df_new.iloc[k, 4] ==  False:
+    if is_df_true.iloc[k, 4] ==  False:
         temp2 = 0
     elif '-' in _k4:
         temp2 = _k4.replace('-', '0')
@@ -88,7 +94,7 @@ for k in range(25,88):
     hivdaly2010 = float(df.iloc[k,10].replace('-','0').replace(',',''))
     hivdaly2013 = float(df.iloc[k,11].replace('-','0').replace(',',''))
     _k10 =  df.iloc[k, 10]
-    if df_new.iloc[k, 10] == False:
+    if is_df_true.iloc[k, 10] == False:
         temp1 = 0
     if '-' in _k10:
         temph = _k10.replace('-', '0')
@@ -100,7 +106,7 @@ for k in range(25,88):
         hivdaly2010 = float(temph)
 
     k11 = df.iloc[k, 11]
-    if df_new.iloc[k, 11] == False:
+    if is_df_true.iloc[k, 11] == False:
         temp1 = 0
     if '-' in k11:
         temph1 = k11.replace('-', '0')
@@ -124,7 +130,7 @@ for k in range(25,88):
             break
 
     k13 = df.iloc[k, 13]
-    if df_new.iloc[k, 13] == False:
+    if is_df_true.iloc[k, 13] == False:
         temp1 = 0
     if '-' in k13:
         temphd = k13.replace('-', '0')
@@ -136,7 +142,7 @@ for k in range(25,88):
     daly2010 = float(temphd)
 
     k14 = df.iloc[k, 14]
-    if df_new.iloc[k, 14] == False:
+    if is_df_true.iloc[k, 14] == False:
         tempd1 = 0
     if '-' in k14:
         tempd1 = k14.replace('-', '0')
@@ -156,6 +162,9 @@ for k in range(25,88):
 ###############################PATENT PATENT PATENT CODE BELOW ######################################################################
 ###############################PATENT PATENT PATENT CODE BELOW ######################################################################
 def cleanfloat(var):
+    print(var)
+    if var == '#REF!' or var == '-' or var == 'nan':
+        var = 0
     if type(var) != float:
         var = float(var.replace(',',''))
     if var != var:
@@ -303,7 +312,123 @@ for item in pat2013:
     conn.execute(' insert into patent2013 values (?,?,?,?,?,?,?,?,?,?,?,?) ', item)
 print(pat2013)
 
+oldrow = ['']
+pat2015 = []
+for i in range(49,97):
+    prow = []
+    print(i)
+    #print(df2015)
+    comp = df2015.iloc[1,i]
+    prow.append(comp)
+    for j in range(11,21):
+        if j == 11:
+            if is_df2015_true.iloc[8,i] == True:
+                tb1 = cleanfloat(df2015.iloc[8,i])
+            else:
+                tb1 = 0
+            if is_df2015_true.iloc[9, i] == True:
+                tb2 = cleanfloat(df2015.iloc[9,i])
+            else:
+                tb2 = 0
+            if is_df2015_true.iloc[10, i] == True:
+                tb3 = cleanfloat(df2015.iloc[10,i])
+            else:
+                tb3 = 0
+            tb=[tb1,tb2,tb3]
+            temp = (tb1+tb2+tb3)
+            prow.append(temp)
+        elif j == 12:
+            if is_df2015_true.iloc[11, i] == True:
+                mal1 = cleanfloat(df2015.iloc[11,i])
+            else:
+                mal1 = 0
+            if is_df2015_true.iloc[12, i] == True:
+                mal2 = cleanfloat(df2015.iloc[12,i])
+            else:
+                mal2 = 0
+            mal=[mal1,mal2]
+            temp = (mal1+mal2)
+            prow.append(temp)
+        elif j == 20:
+            if is_df2015_true.iloc[j,i] == True:
+                total = cleanfloat(df2015.iloc[j,i])
+            else:
+                total = 0
+            prow.append(total)
+        else:
+            temp = df2015.iloc[j,i]
+            print(temp)
+            if temp == '-' or temp == '#REF!':
+                temp = 0
+            if isinstance(temp,float) == False and isinstance(temp,int) == False:
+                temp = float(temp.replace(',',''))
+            if temp != temp:
+                temp = 0
+            prow.append(temp)
+    if prow[0] == oldrow [0]:
+        for ind in range(1,len(prow)):
+            prow[ind] += oldrow[ind]
+    oldrow = prow
+    if comp != df2015.iloc[1,i+1]:
+        pat2015.append(prow)
+unmet = ['Unmet Need']
+for j in range(11,21):
+    if j == 11:
+        print(df2015.iloc[8,93])
+        if is_df2015_true.iloc[8,94] == True:
+            tb1 = cleanfloat(df2015.iloc[8,94])
+        else:
+            tb1 = 0
+        if is_df2015_true.iloc[9, 94] == True:
+            tb2 = cleanfloat(df2015.iloc[9,94])
+        else:
+            tb2 = 0
+        if is_df2015_true.iloc[10, 94] == True:
+            tb3 = cleanfloat(df2015.iloc[10,94])
+        else:
+            tb3 = 0
+        tb=[tb1,tb2,tb3]
+        temp = (tb1+tb2+tb3)
+        unmet.append(temp)
+    elif j == 12:
+        if is_df2015_true.iloc[11, 94] == True:
+            mal1 = cleanfloat(df2015.iloc[11,94])
+        else:
+            mall = 0
+        if is_df2015_true.iloc[12, 94] == True:
+            mal2 = cleanfloat(df2015.iloc[12,94])
+        else:
+            mal2 = 0
+        mal=[mal1,mal2]
+        temp = (mal1+mal2)
+        unmet.append(temp)
+    elif j == 20:
+        if is_df2015_true.iloc[j, 94] == True:
+            total = cleanfloat(df2015.iloc[j,94])
+        else:
+            total = 0
+        unmet.append(total)
+    else:
+        temp = df2015.iloc[j,94]
+        if temp == '-' or temp == '#REF!':
+            temp = 0
+        if isinstance(temp,float) == False and isinstance(temp,int) == False:
+            temp = float(temp.replace(',',''))
+        if temp != temp:
+            temp = 0
+        unmet.append(temp)
+pat2015.append(unmet)
+colind = 0
+for item in pat2015:
+    item.append(colors[colind])
+    colind+=1
+    conn.execute(' insert into patent2015 values (?,?,?,?,?,?,?,?,?,?,?,?) ', item)
+print(pat2015)
+
+#This is to calculate data for 2010B and 2015
+
 ##############   END OF PATENT CODE  ############################################################################
 ##############   END OF PATENT CODE  ############################################################################
 
 conn.commit()
+print("Database operation complete")

@@ -809,12 +809,23 @@ def countrydata(xdisease,xyear):
         isall = 1
         drugg = 'all'
         name = 'ALL'
-        if xyear == '2010':
+        if xyear == '2010A':
+            br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from countryp2010 ')
+            cur = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from country2010 ')
+        elif xyear == '2010B':
+            br = g.db.execute(
+                ' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from countryp2010 ')
+            cur = g.db.execute(
+                ' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from country2010 ')
+        elif xyear == '2010':
             br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from countryp2010 ')
             cur = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from country2010 ')
         elif xyear == '2013':
             cur = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from country2013 ')
             br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from countryp2013 ')
+        elif xyear == '2015':
+            cur = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from country2015 ')
+            br = g.db.execute(' select country, total, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from countryp2015 ')
     else:
         isall = 0
         namedict = {'tb': 'TB', 'malaria': 'MALARIA', 'hiv': 'HIV/AIDS', 'schistosomiasis': 'SCHISTOSOMIASIS', 'onchocerciasis':'ONCHOCERCIASIS', 'lf': 'LYMPHATIC FILARIASIS', 'hookworm': 'HOOKWORM', 'roundworm': 'ROUNDWORM', 'whipworm': 'WHIPWORM'}
@@ -896,6 +907,43 @@ def countrydata(xdisease,xyear):
                 cur = g.db.execute(' select country, lf from country2013 ')
                 br = g.db.execute(' select country, lf from countryp2013 ')
                 sortind = 9
+        elif xyear == '2015':
+            if xdisease == 'tb':
+                cur = g.db.execute(' select country, tb from country2015 ')
+                br = g.db.execute(' select country, tb from countryp2015 ')
+                sortind = 1
+            elif xdisease == 'malaria':
+                cur = g.db.execute(' select country, malaria from country2015 ')
+                br = g.db.execute(' select country, malaria from countryp2015 ')
+                sortind = 2
+            elif xdisease == 'hiv':
+                cur = g.db.execute(' select country, hiv from country2015 ')
+                br = g.db.execute(' select country, hiv from countryp2015 ')
+                sortind = 3
+            elif xdisease == 'roundworm':
+                cur = g.db.execute(' select country, roundworm from country2015 ')
+                br = g.db.execute(' select country, roundworm from countryp2015 ')
+                sortind = 4
+            elif xdisease == 'hookworm':
+                cur = g.db.execute(' select country, hookworm from country2015 ')
+                br = g.db.execute(' select country, hookworm from countryp2015 ')
+                sortind = 5
+            elif xdisease == 'whipworm':
+                cur = g.db.execute(' select country, whipworm from country2015 ')
+                br = g.db.execute(' select country, whipworm from countryp2015 ')
+                sortind = 6
+            elif xdisease == 'schistosomiasis':
+                cur = g.db.execute(' select country, schistosomiasis from country2015 ')
+                br = g.db.execute(' select country, schistosomiasis from countryp2015 ')
+                sortind = 7
+            elif xdisease == 'onchocerciasis':
+                cur = g.db.execute(' select country, onchoceriasis from country2015 ')
+                br = g.db.execute(' select country, onchoceriasis from countryp2015 ')
+                sortind = 8
+            elif xdisease == 'lf':
+                cur = g.db.execute(' select country, lf from country2015 ')
+                br = g.db.execute(' select country, lf from countryp2015 ')
+                sortind = 9
     bars = br.fetchall()
     maps = cur.fetchall()
     mapdata = []
@@ -925,16 +973,18 @@ def countrydata(xdisease,xyear):
             sort.append(tmp)
         print(sort)
     else:
-        print("inside malaria")
         barlist = []
         for row in sortedval:
-            perc = row[1] / width * 100
-            temp = [row[0],row[1],perc]
-            barlist.append(temp)
+            if row[1] != 0.0:
+                perc = row[1] / width * 100
+                temp = [row[0],row[1],perc]
+                barlist.append(temp)
         if xyear == '2010':
             cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, lf from country2010 ')
         elif xyear == '2013':
             cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchoceriasis, lf from country2013 ')
+        elif xyear == '2015':
+            cur = g.db.execute(' select country, tb, malaria, hiv, roundworm, hookworm, whipworm, schistosomiasis, onchoceriasis, lf from country2015 ')
         vals = cur.fetchall()
         #vals = list(filter(lambda x: x[0] != None, vals))
         print(sortind)
