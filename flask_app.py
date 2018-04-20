@@ -622,6 +622,10 @@ def druginx():
                 xx = 0
     g.db.close()
     speclocate = ['2010','all','ALL']
+    print(pielabb)
+    print(piedata)
+    print(impactpie)
+    print(sortedpie2)
     return render_template('drug.html', data=piedata, drug='All', navsub=3, showindex=1, pielabb=pielabb, drugcolors=drugcolors, speclocate = speclocate, scrolling=1, impactpie=impactpie, sortedpie2 = sortedpie2)
 
 @app.route('/index/drug/<year>/<disease>')
@@ -643,6 +647,8 @@ def drug(year,disease):
             cur = g.db.execute(' select drug, total from drugr2010 ')
         elif year == '2013':
             cur = g.db.execute(' select drug, total from drugr2013 ')
+        elif year == '2015':
+            cur = g.db.execute(' select drug, total from drugr2015 ')
     else:
         drugg = diseasedict[disease]
         if year == '2010':
@@ -685,6 +691,26 @@ def drug(year,disease):
             elif disease == 'lf':
                 cur = g.db.execute(' select drug, lf from drugr2013 ')
 
+        elif year == '2015':
+            if disease == 'malaria':
+                cur = g.db.execute(' select drug, malaria from drugr2015 ')
+            elif disease == 'hiv':
+                cur = g.db.execute(' select drug, hiv from drugr2015 ')
+            elif disease == 'tb':
+                cur = g.db.execute(' select drug, tb from drugr2015 ')
+            elif disease == 'roundworm':
+                cur = g.db.execute(' select drug, roundworm from drugr2015 ')
+            elif disease == 'hookworm':
+                cur = g.db.execute(' select drug, hookworm from drugr2015 ')
+            elif disease == 'whipworm':
+                cur = g.db.execute(' select drug, hookworm from drugr2015 ')
+            elif disease == 'schistosomiasis':
+                cur = g.db.execute(' select drug, schistosomiasis from drugr2015 ')
+            elif disease == 'onchocerciasis':
+                cur = g.db.execute(' select drug, onchocerciasis from drugr2015 ')
+            elif disease == 'lf':
+                cur = g.db.execute(' select drug, lf from drugr2015 ')
+
     piee = cur.fetchall()
     impactpie = []
     for k in piee:
@@ -693,15 +719,21 @@ def drug(year,disease):
         t = [drug,score]
         if score > 0:
             piedata.append(t)
+    print(piedata)
     sortedpie2 = sorted(piedata, key=lambda xy: xy[1], reverse=True)
     if (len(sortedpie2) > 0):
      maxrow = sortedpie2[0]
      if maxrow[0] == 'Unmet Need':
         maxrow = sortedpie2[1]
+        print(maxrow)
+        maxval = maxrow[1]
      else:
       maxval = maxrow[1]
-      c = 0
-      for row in sortedpie2:
+
+    c = 0
+    for row in sortedpie2:
+        print(sortedpie2)
+        print(maxval)
         perc = (row[1] / maxval) * 100
         row.append(perc)
         color = drugcolors[c]
@@ -736,6 +768,10 @@ def drug(year,disease):
                     xx = 0
     g.db.close()
     speclocate = [year,drugg,disease]
+    print(piedata)
+    print(pielabb)
+    print(impactpie)
+    print(sortedpie2)
     return render_template('drug.html', data=piedata, drug=drugg, navsub=3, showindex=1, pielabb=pielabb, drugcolors=drugcolors, speclocate = speclocate, scrolling=1, impactpie=impactpie, sortedpie2 = sortedpie2)
 
 @app.route('/index/country')

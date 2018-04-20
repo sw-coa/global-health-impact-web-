@@ -88,10 +88,13 @@
         <div class= "height1" id="relocation2015">  </div>
         <div class= "height1" id="relocation_manu2010">  </div>
         <div class= "height1" id="relocation_manu2013">  </div>
+        <div class= "height1" id="relocation_manu2015">  </div>
         <div class= "height1" id="relocation_ph2010">  </div>
         <div class= "height1" id="relocation_ph2013">  </div>
+        <div class= "height1" id="relocation_ph2015">  </div>
         <div class= "height1" id="relocation_drug2010">  </div>
         <div class= "height1" id="relocation_drug2013">  </div>
+        <div class= "height1" id="relocation_drug2015">  </div>
         <div class= "height1" id="relocation_disease2010">  </div>
         <div class= "height1" id="relocation_disease2013">  </div>
         <div class="height" id="maincontentblock">
@@ -235,7 +238,7 @@
                   {% endif %}
                   <li><a class="hh1" href="/index/drug">Drug</a></li>
                   {% if navsub == 3 %}
-                  <a href="#relocation" onclick="yearclick('drug2010','drug2013')" class="yearbutton">2010</a>
+                  <a href="#relocation" onclick="new_yearclick('drug2010','drug2013','drug2015')" class="yearbutton">2010</a>
                   <div class="subnavdiv" id="drug2010">
                       <ul style="list-style-type:none;">
                           <li><a class="dislist" href="/index/drug/2010/all#relocation_drug2010">All</a></li>
@@ -249,7 +252,7 @@
                           <li><a class="dislist" href="/index/drug/2010/whipworm#relocation_drug2010">Whipworm</a></li>
                       </ul>
                   </div><br>
-                  <a href="#relocation" onclick="yearclick('drug2013','drug2010')" class="yearbutton">2013</a>
+                  <a href="#relocation" onclick="new_yearclick('drug2013','drug2010','drug2013')" class="yearbutton">2013</a>
                   <div class="subnavdiv" id="drug2013">
                       <ul style="list-style-type:none;">
                           <li><a class="dislist" href="/index/drug/2013/all#relocation_drug2013">All</a></li>
@@ -262,6 +265,21 @@
                           <li><a class="dislist" href="/index/drug/2013/hookworm#relocation_drug2013">Hookworm</a></li>
                           <li><a class="dislist" href="/index/drug/2013/roundworm#relocation_drug2013">Roundworm</a></li>
                           <li><a class="dislist" href="/index/drug/2013/whipworm#relocation_drug2013">Whipworm</a></li>
+                      </ul>
+                  </div><br>
+                  <a href="#relocation" onclick="new_yearclick('drug2015','drug2013','drug2010')" class="yearbutton">2015</a>
+                  <div class="subnavdiv" id="drug2015">
+                      <ul style="list-style-type:none;">
+                          <li><a class="dislist" href="/index/drug/2015/all#relocation_drug2015">All</a></li>
+                          <li><a class="dislist" href="/index/drug/2015/malaria#relocation_drug2015">Malaria</a></li>
+                          <li><a class="dislist" href="/index/drug/2015/tb#relocation_drug2015">TB</a></li>
+                          <li><a class="dislist" href="/index/drug/2015/hiv#relocation_drug2015">HIV/AIDS</a></li>
+                          <li><a class="dislist" href="/index/drug/2015/onchocerciasis#relocation_drug2015">Onchocerciasis</a></li>
+                          <li><a class="dislist" href="/index/drug/2015/schistosomiasis#relocation_drug2015">Schistosomiasis</a></li>
+                          <li><a class="dislist" href="/index/drug/2015/lf#relocation_drug2015">Lymphatic Filariasis</a></li>
+                          <li><a class="dislist" href="/index/drug/2015/hookworm#relocation_drug2015">Hookworm</a></li>
+                          <li><a class="dislist" href="/index/drug/2015/roundworm#relocation_drug2015">Roundworm</a></li>
+                          <li><a class="dislist" href="/index/drug/2015/whipworm#relocation_drug2015">Whipworm</a></li>
                       </ul>
                   </div>
                   {% endif %}
