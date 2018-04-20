@@ -1280,25 +1280,26 @@ def companyindx(year,disease):
             name = 'TB'
     elif year == '2015':#=====add 2015 SQL=========
         if disease == 'all':
-            cur = g.db.execute(' select company,disease, daly2015, color from company2015  order by daly2015 DESC')
-            cdd = g.db.execute(' select company, disease, daly2015, color from company2015 order by daly2015 DESC')
+            cur = g.db.execute(' select company,disease, daly2015, color from manudis2015  order by daly2015 DESC')
+            cdd = g.db.execute(' select company, disease, daly2015, color from manudis2015 order by daly2015 DESC')
             name = 'ALL'
         elif disease == 'hiv':
-            cur = g.db.execute(' select company, disease,daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('hiv',))
-            cdd = g.db.execute(' select company, disease,daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('hiv',))
+            cur = g.db.execute(' select company, disease,daly2015, color from manudis2015 where disease = ? order by daly2015 DESC', ('HIV',))
+            cdd = g.db.execute(' select company, disease,daly2015, color from manudis2015 where disease = ? order by daly2015 DESC', ('HIV',))
             name = 'HIV/AIDS'
         elif disease == 'tb':
-            cur = g.db.execute(' select company,disease, daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('tb',))
-            cdd = g.db.execute(' select company, disease, daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('tb',))
+            cur = g.db.execute(' select company,disease, daly2015, color from manudis2015 where disease = ? order by daly2015 DESC', ('TB',))
+            cdd = g.db.execute(' select company, disease, daly2015, color from manudis2015 where disease = ? order by daly2015 DESC', ('TB',))
             name = 'TB'
         elif disease == 'malaria':
-            cur = g.db.execute(' select company,disease, daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('malaria',))
-            cdd = g.db.execute(' select company, disease, daly2015, color from company2015 where disease = ? order by daly2015 DESC', ('malaria',))
+            cur = g.db.execute(' select company,disease, daly2015, color from manudis2015 where disease = ? order by daly2015 DESC', ('Malaria',))
+            cdd = g.db.execute(' select company, disease, daly2015, color from manudis2015 where disease = ? order by daly2015 DESC', ('Malaria',))
             name = 'MALARIA'
             #=====2015--end============
     piee = cur.fetchall()
     barr = cdd.fetchall()
-
+    print(piee)
+    print(barr)
     colocnt = 0
     for j in piee:
         company = j[0]
@@ -1447,6 +1448,27 @@ def patent(year,disease):
             dat = g.db.execute(' select company, onchocerciasis, color from patent2013 ')
         elif disease == 'lf':
             dat = g.db.execute(' select company, lf, color from patent2013 ')
+    elif year == '2015':
+        if disease == 'all':
+            dat = g.db.execute(' select company, total, color from patent2015 ')
+        elif disease == 'tb':
+            dat = g.db.execute(' select company, tb, color from patent2015 ')
+        elif disease == 'malaria':
+            dat = g.db.execute(' select company, malaria, color from patent2015 ')
+        elif disease == 'hiv':
+            dat = g.db.execute(' select company, hiv, color from patent2015 ')
+        elif disease == 'roundworm':
+            dat = g.db.execute(' select company, roundworm, color from patent2015 ')
+        elif disease == 'hookworm':
+            dat = g.db.execute(' select company, hookworm, color from patent2015 ')
+        elif disease == 'whipworm':
+            dat = g.db.execute(' select company, whipworm, color from patent2015 ')
+        elif disease == 'schistosomiasis':
+            dat = g.db.execute(' select company, schistosomiasis, color from patent2015 ')
+        elif disease == 'onchocerciasis':
+            dat = g.db.execute(' select company, onchocerciasis, color from patent2015 ')
+        elif disease == 'lf':
+            dat = g.db.execute(' select company, lf, color from patent2015 ')
     data = dat.fetchall()
     patent1 = []
     patent2 = []

@@ -156,7 +156,7 @@
                   <ul class="compsublist">
                       <li><a href="#relocation" onclick="yearclick('manunav','patentnav')" class="compsub">Manufacturer</a>
                       <div id="manunav"{% if comptype == 1 %} style="display:none"{% endif %}>
-                          <a href="#relocation" onclick="yearclick('manu2010','manu2013')" class="yearbutton">2010</a>
+                          <a href="#relocation" onclick="new_yearclick('manu2010','manu2013','manu2015')" class="yearbutton">2010</a>
                           <div class="subnavdiv" id="manu2010">
                               <ul style="list-style-type:none;">
                                   <li><a class="dislist" href="/index/company/manufacturer/2010/all#relocation_manu2010">All</a></li>
@@ -164,18 +164,27 @@
                                   <li><a class="dislist" href="/index/company/manufacturer/2010/hiv#relocation_manu2010">HIV/AIDS</a></li>
                               </ul>
                           </div><br>
-                          <a href="#relocation" onclick="yearclick('manu2013','manu2010')" class="yearbutton">2013</a>
+                          <a href="#relocation" onclick="new_yearclick('manu2013','manu2010', 'manu2015')" class="yearbutton">2013</a>
                           <div class="subnavdiv" id="manu2013">
                               <ul style="list-style-type:none;">
                                   <li><a class="dislist" href="/index/company/manufacturer/2013/all#relocation_manu2013">All</a></li>
                                   <li><a class="dislist" href="/index/company/manufacturer/2013/tb#relocation_manu2013">TB</a></li>
                                   <li><a class="dislist" href="/index/company/manufacturer/2013/hiv#relocation_manu2013">HIV/AIDS</a></li>
                               </ul>
+                          </div><br>
+                          <a href="#relocation" onclick="new_yearclick('manu2015','manu2010', 'manu2013')" class="yearbutton">2015</a>
+                          <div class="subnavdiv" id="manu2015">
+                              <ul style="list-style-type:none;">
+                                  <li><a class="dislist" href="/index/company/manufacturer/2015/all#relocation_manu2015">All</a></li>
+                                  <li><a class="dislist" href="/index/company/manufacturer/2015/malaria#relocation_manu2015">MALARIA</a></li>
+                                  <li><a class="dislist" href="/index/company/manufacturer/2015/tb#relocation_manu2015">TB</a></li>
+                                  <li><a class="dislist" href="/index/company/manufacturer/2015/hiv#relocation_manu2015">HIV/AIDS</a></li>
+                              </ul>
                           </div>
                       </div></li>
                       <li><a href="#relocation" onclick="yearclick('patentnav','manunav')" class="compsub">Patent Holder</a>
                       <div id="patentnav"{% if comptype == 0 %} style="display:none"{% endif %}>
-                          <a href="#relocation" onclick="yearclick('patent2010','patent2013')" class="yearbutton">2010</a>
+                          <a href="#relocation" onclick="new_yearclick('patent2010','patent2013','patent2015')" class="yearbutton">2010</a>
                           <div class="subnavdiv" id="patent2010">
                               <ul style="list-style-type:none;">
                                   <li><a class="dislist" href="/index/company/patent/2010/all#relocation_ph2010">All</a></li>
@@ -190,7 +199,7 @@
                                   <li><a class="dislist" href="/index/company/patent/2010/whipworm#relocation_ph2010">Whipworm</a></li>
                               </ul>
                           </div><br>
-                          <a href="#relocation" onclick="yearclick('patent2013','patent2010')" class="yearbutton">2013</a>
+                          <a href="#relocation" onclick="new_yearclick('patent2013','patent2010','patent2015')" class="yearbutton">2013</a>
                           <div class="subnavdiv" id="patent2013">
                               <ul style="list-style-type:none;">
                                   <li><a class="dislist" href="/index/company/patent/2013/all#relocation_ph2013">All</a></li>
@@ -203,6 +212,21 @@
                                   <li><a class="dislist" href="/index/company/patent/2013/hookworm#relocation_ph2013">Hookworm</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2013/roundworm#relocation_ph2013">Roundworm</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2013/whipworm#relocation_ph2013">Whipworm</a></li>
+                              </ul>
+                          </div><br>
+                          <a href="#relocation" onclick="new_yearclick('patent2015','patent2010','patent2013')" class="yearbutton">2015</a>
+                          <div class="subnavdiv" id="patent2015">
+                              <ul style="list-style-type:none;">
+                                  <li><a class="dislist" href="/index/company/patent/2015/all#relocation_ph2015">All</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2015/malaria#relocation_ph2015">Malaria</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2015/tb#relocation_ph2015">TB</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2015/hiv#relocation_ph2015">HIV/AIDS</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2015/onchocerciasis#relocation_ph2015">Onchocerciasis</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2015/schistosomiasis#relocation_ph2015">Schistosomiasis</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2015/lf#relocation_ph2015">Lymphatic Filariasis</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2015/hookworm#relocation_ph2015">Hookworm</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2015/roundworm#relocation_ph2015">Roundworm</a></li>
+                                  <li><a class="dislist" href="/index/company/patent/2015/whipworm#relocation_ph2015">Whipworm</a></li>
                               </ul>
                           </div>
 
