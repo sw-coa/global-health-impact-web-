@@ -22,6 +22,7 @@
     google.charts.load('upcoming', {'packages':['geochart','corechart']});
     google.charts.setOnLoadCallback(drawMap);
     var forBarData = {{barlist |safe}};
+    console.log(barlist)
     function drawMap() {
         var data = google.visualization.arrayToDataTable(
            {{ mapdata |safe }}
@@ -57,34 +58,34 @@
 
         google.visualization.events.addListener(geomap, 'select', myClickHandler);
 
-        // row = sorted[0];
-        // var bardata = new google.visualization.DataTable();
-        // bardata.addColumn('string','Country');
-        // bardata.addColumn('number','Score');
-        // bardata.addColumn({type: 'string', role: 'style'});
-        // bardata.addRow(['TB',row[2],"color: #FFB31C"]);
-        // bardata.addRow(['Malaria',row[3],"color: #0083CA"]);
-        // bardata.addRow(['HIV',row[4],"color: #EF3E2E"]);
-        // bardata.addRow(['Schistosomiasis',row[8],"color: #003452"]);
+         row = sorted[0];
+         var bardata = new google.visualization.DataTable();
+         bardata.addColumn('string','Country');
+         bardata.addColumn('number','Score');
+         bardata.addColumn({type: 'string', role: 'style'});
+         bardata.addRow(['TB',row[2],"color: #FFB31C"]);
+         bardata.addRow(['Malaria',row[3],"color: #0083CA"]);
+         bardata.addRow(['HIV',row[4],"color: #EF3E2E"]);
+         bardata.addRow(['Schistosomiasis',row[8],"color: #003452"]);
         // // bardata.addRow(['Onchocerciasis',row[6],"color: #86AAB9"]);
-        // bardata.addRow(['LF',row[9],"color: #CAEEFD"]);
-        // bardata.addRow(['Hookworm',row[6],"color: #546675"]);
-        // bardata.addRow(['Roundworm',row[5],"color: #8A5575"]);
-        // bardata.addRow(['Whipworm',row[7],"color: #305516"]);
-        // var baroptions = {
-        //     legend:'none',
-        //     top: 0,
-        //     width: 400,
-        //     animation:{
-        //         startup: true,
-        //         duration: 1000,
-        //         easing: 'out',
-        //     }
-        // };
+         bardata.addRow(['LF',row[9],"color: #CAEEFD"]);
+         bardata.addRow(['Hookworm',row[6],"color: #546675"]);
+         bardata.addRow(['Roundworm',row[5],"color: #8A5575"]);
+         bardata.addRow(['Whipworm',row[7],"color: #305516"]);
+         var baroptions = {
+             legend:'none',
+             top: 0,
+             width: 400,
+             animation:{
+                 startup: true,
+                 duration: 1000,
+                 easing: 'out',
+             }
+         };
 
-        // var barchart = new google.visualization.BarChart(document.getElementById('horbars'));
-        // barchart.draw(bardata,baroptions);
-        // document.getElementById('cntname').innerHTML = row[0];
+         var barchart = new google.visualization.BarChart(document.getElementById('horbars'));
+         barchart.draw(bardata,baroptions);
+         document.getElementById('cntname').innerHTML = row[0];
     };
 
     {% if isall == 1 %}
@@ -181,7 +182,7 @@
 <div class="row" id="scrollhere" onload="func1()">
     <div class="col-sm-6">
         <div class="contentbox">
-        <p class="redtxt">Disease: <b>{{ name }}</b></p>
+        <p class="redtxt">Country: <b>{{ name }}</b></p>
         <p class="txtcontent">The Global Health Impact Project examines how diseases of poverty, as well as the medicines available to those who are afflicted, affect health around the world. These conditions include HIV/AIDS, TB, malaria, lymphatic filariasis, onchoriasis, schistosomiasis, hookworm, ringworm, and whipworm. The presence of these diseases, as well as access to essential medicines that treat them varies widely around the world. The Global Health Impact Country Index measures key drugs’ impact on these global health problems in each country and the total Disability Adjusted Life Years (DALYS) saved that would be lost without treatment for these conditions. For additional information, please see <b>About the Index</b> and <b>Methodology.</b></p>
         </div>
     </div>
@@ -199,10 +200,21 @@
         <div>
         <div id="chart_div" style="width: 100%; height: 350px; overflow-y: auto;overflow-x: hidden;">
             {% if isall == 0 %}
+             {% set count = 0 %}
             {% for cntry in barlist %}
-            <a onclick="countryClick({{loop.index - 1}})" title="{{ cntry.0 }}: {{ cntry.1 }}">
-                <div style="padding-top: 2px; font-family: 'Nunito','sans-serif';">{{ cntry.0 }}</div>
-                <div style="width: {{ cntry.2 }}%;background-color: {{ color }};height: 10px;"></div>
+            alert(cntry)
+            <!-- {{cntry}} -->
+            <a onclick="countryclickAll({{cntry.2}})">
+                <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';">{{ cntry.0.0 }}</div>
+                <div class="barfloats" style="width: {{ cntry.0.2 }}%;background-color: #FFB31C;"></div>
+                <div class="barfloats" style="width: {{ cntry.0.3 }}%;background-color: #0083CA;"></div>
+                <div class="barfloats" style="width: {{ cntry.0.4 }}%;background-color: #EF3E2E;"></div>
+                <div class="barfloats" style="width: {{ cntry.0.5 }}%;background-color: #003452;"></div>
+                <div class="barfloats" style="width: {{ cntry.0.6 }}%;background-color: #86AAB9;"></div>
+                <div class="barfloats" style="width: {{ cntry.0.7 }}%;background-color: #CAEEFD;"></div>
+                <div class="barfloats" style="width: {{ cntry.0.8 }}%;background-color: #546675;"></div>
+                <div class="barfloats" style="width: {{ cntry.0.9 }}%;background-color: #5CB85C;"></div>
+                <div class="barfloats" style="width: {{ cntry.0.10 }}%;background-color: #305516;"></div>
             </a>
             {% endfor %}
             {% endif %}

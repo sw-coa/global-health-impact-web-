@@ -90,11 +90,17 @@ if (window.location.hash){
       if (hash == "relocation_drug2013"){
          document.getElementById('drug2013').style.display = 'block';
       }
+      if (hash == "relocation_drug2015"){
+         document.getElementById('drug2015').style.display = 'block';
+      }
       if (hash == "relocation_disease2010"){
          document.getElementById('disease2010').style.display = 'block';
       }
       if (hash == "relocation_disease2013"){
          document.getElementById('disease2013').style.display = 'block';
+      }
+      if (hash == "relocation_disease2015"){
+         document.getElementById('disease2015').style.display = 'block';
       }
    }
 });

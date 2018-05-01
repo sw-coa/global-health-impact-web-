@@ -97,6 +97,7 @@
         <div class= "height1" id="relocation_drug2015">  </div>
         <div class= "height1" id="relocation_disease2010">  </div>
         <div class= "height1" id="relocation_disease2013">  </div>
+        <div class= "height1" id="relocation_disease2015">  </div>
         <div class="height" id="maincontentblock">
 
         <div class="narrow">
@@ -285,7 +286,7 @@
                   {% endif %}
                   <li><a class="hh1" href="/index/disease">Disease</a></li>
                   {% if navsub == 4 %}
-                  <a href="#relocation" onclick="yearclick('disease2010','disease2013')" class="yearbutton">2010</a>
+                  <a href="#relocation" onclick="new_yearclick('disease2010','disease2013','disease2015')" class="yearbutton">2010</a>
                   <div class="subnavdiv" id="disease2010">
                       <ul style="list-style-type:none;">
                           <li><a class="dislist" href="/index/disease/2010/summary#relocation_disease2010">Summary</a></li>
@@ -301,7 +302,7 @@
                           <li><a class="dislist" href="/index/disease/2010/whipworm#relocation_disease2010">Whipworm</a></li>
                       </ul>
                   </div><br>
-                  <a href="#relocation" onclick="yearclick('disease2013','disease2010')" class="yearbutton">2013</a>
+                  <a href="#relocation" onclick="new_yearclick('disease2013','disease2010','disease2015')" class="yearbutton">2013</a>
                   <div class="subnavdiv" id="disease2013">
                       <ul style="list-style-type:none;">
                           <li><a class="dislist" href="/index/disease/2013/summary#relocation_disease2013">Summary</a></li>
@@ -315,6 +316,22 @@
                           <li><a class="dislist" href="/index/disease/2013/hookworm#relocation_disease2013">Hookworm</a></li>
                           <li><a class="dislist" href="/index/disease/2013/roundworm#relocation_disease2013">Roundworm</a></li>
                           <li><a class="dislist" href="/index/disease/2013/whipworm#relocation_disease2013">Whipworm</a></li>
+                      </ul>
+                  </div><br>
+                  <a href="#relocation" onclick="new_yearclick('disease2015','disease2013','disease2010')" class="yearbutton">2015</a>
+                  <div class="subnavdiv" id="disease2015">
+                      <ul style="list-style-type:none;">
+                          <li><a class="dislist" href="/index/disease/2015/summary#relocation_disease2015">Summary</a></li>
+                          <li><a class="dislist" href="/index/disease/2015/all#relocation_disease2015">All</a></li>
+                          <li><a class="dislist" href="/index/disease/2015/malaria#relocation_disease2015">Malaria</a></li>
+                          <li><a class="dislist" href="/index/disease/2015/tb#relocation_disease2015">TB</a></li>
+                          <li><a class="dislist" href="/index/disease/2015/hiv#relocation_disease2015">HIV/AIDS</a></li>
+                          <li><a class="dislist" href="/index/disease/2015/onchocerciasis#relocation_disease2015">Onchocerciasis</a></li>
+                          <li><a class="dislist" href="/index/disease/2015/schistosomiasis#relocation_disease2015">Schistosomiasis</a></li>
+                          <li><a class="dislist" href="/index/disease/2015/lf#relocation_disease2015">Lymphatic Filariasis</a></li>
+                          <li><a class="dislist" href="/index/disease/2015/hookworm#relocation_disease2015">Hookworm</a></li>
+                          <li><a class="dislist" href="/index/disease/2015/roundworm#relocation_disease2015">Roundworm</a></li>
+                          <li><a class="dislist" href="/index/disease/2015/whipworm#relocation_disease2015">Whipworm</a></li>
                       </ul>
                   </div>
                   {% endif %}
