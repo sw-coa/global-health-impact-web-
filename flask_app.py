@@ -825,10 +825,14 @@ def druginx():
     for row in sortedpie2:
         perc = (row[1] / maxval) * 100
         row.append(perc)
-        color = drugcolors[c]
+        _row = str(row[0])
+        if _row != 'Unmet Need':
+            color = drugcolors[c]
+        else:
+            color = '#00cab1'
         row.append(color)
         c+=1
-        if row[0] != 'Unmet Need':
+        if _row != 'Unmet Need':
             impactpie.append(row)
     lablist = []
     pielabb = []
@@ -971,10 +975,14 @@ def drug(year,disease):
         print(maxval)
         perc = (row[1] / maxval) * 100
         row.append(perc)
-        color = drugcolors[c]
+        _row = str(row[0])
+        if _row != 'Unmet Need':
+            color = drugcolors[c]
+        else:
+            color = '#00cab1'
         row.append(color)
         c+=1
-        if row[0] != 'Unmet Need':
+        if _row != 'Unmet Need':
             impactpie.append(row)
         lablist = []
         pielabb = []
