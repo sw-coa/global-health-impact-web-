@@ -26,6 +26,7 @@ datasrc2010B2015 = 'ORS_GlobalBurdenDisease_2010B_2015.csv';
 
 df = pd.read_csv(datasrc, skiprows=1)
 df2015 = pd.read_csv(datasrc2010B2015, skiprows=1)
+test = []
 drugdata = []
 drug2010 = []
 drug2013 = []
