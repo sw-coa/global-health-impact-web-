@@ -744,22 +744,24 @@ def reports():
     print(reports2010)
     print(reportsbar2010)
     for i in reports2010:
-        year = i[0]
-        cname = str(i[1])
-        timpactscre = i[2]
-        rank = i[3]
-        numOfDis = i[4]
-        row = [year, cname, timpactscre, rank, numOfDis]
+        id = i[0]
+        year = i[1]
+        cname = str(i[2])
+        timpactscre = i[3]
+        rank = i[4]
+        numOfDis = i[5]
+        row = [id, year, cname, timpactscre, rank, numOfDis]
         reportdict.append(row)
     print(reportdict)
 
     for i in reportsbar2010:
-        year = i[0]
-        cname = str(i[1])
-        drug = str(i[2])
-        disease = str(i[3])
-        impact = i[4]
-        rowbar = [year, cname, drug, disease, impact]
+        _id = i[0]
+        year = i[1]
+        cname = str(i[2])
+        drug = str(i[3])
+        disease = str(i[4])
+        impact = i[5]
+        rowbar = [_id, year, cname, drug, disease, impact]
         reportbar2010.append(rowbar)
     print(reportbar2010)
 
