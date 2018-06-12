@@ -17,12 +17,54 @@
         <div class="contentbox">
             <p class="redtxt"  style="font-size:42px;font-weight:bold">REPORTS</p>
         </div>
+         <div class="contentbox">
+            <p class="redtxt"  style="font-size:30px;font-weight:bold">PICK A COMPANY</p>
+        </div>
     </div>
 
 </div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+
+    var colorval;
+
+
+    function getColor(colorvalue)
+    {
+      if(colorvalue.includes("Malaria"))
+      {
+        colorval = "#0083CA";
+      }
+      else if(colorvalue.includes("TB"))
+      {
+        colorval = "#FFB31C";
+      }
+      else if(colorvalue.includes("HIV"))
+      {
+        colorval = "#EF3E2E";
+      }
+      else if(colorvalue.includes("Roundworm"))
+      {
+        colorval = "#003452";
+      }
+      else if(colorvalue.includes("Hookworm"))
+      {
+        colorval = "#86AAB9";
+      }
+      else if(colorvalue.includes("Whipworm"))
+      {
+        colorval = "#CAEEFD";
+      }
+      else if(colorvalue.includes("Schistosomiasis"))
+      {
+        colorval = "#546675";
+      }
+      else
+      {
+        colorval = "#5CB85C";
+      }
+    }
 
     var reportsdata = {{report2010 | safe}}
 
@@ -32,14 +74,13 @@
     google.charts.setOnLoadCallback(drawMap);
     function drawMap() {
       row = reportdetail[0];
-      rowvalue = reportsdata[1];
-      console.log(row)
-      console.log(rowvalue)
+      rowvalue = reportsdata[0];
+      getColor(row[4]);
       var bardata = new google.visualization.DataTable();
       bardata.addColumn('string','Disease');
       bardata.addColumn('number','Impact');
       bardata.addColumn({type: 'string', role: 'style'});
-      bardata.addRow([row[4],row[5],"color: #FFB31C"]);
+      bardata.addRow([row[4],row[5],"color: colorval"]);
        var baroptions = {
              legend:'none',
              top: 0,
@@ -56,41 +97,58 @@
       document.getElementById('rptScore').innerHTML = rowvalue[3];
       document.getElementById('rptDrug').innerHTML = row[3];
       document.getElementById('rptDisease').innerHTML = row[4];
+      console.log(rowvalue[2]);
+      document.getElementById('cntname').innerHTML = rowvalue[2];
     }
 
     function rptClick(rownum){
+          document.getElementById('rptDrug').innerHTML = "";
+          document.getElementById('rptDisease').innerHTML = "";
            // alert("Inside"+ rownum);
-            row = reportdetail[rownum-1];
-            rowvalue = reportsdata[rownum-1];
-            // alert("{{color}}");
-            var disColor = "color:"+"{{color}}";
-            var bardata = new google.visualization.DataTable();
-            bardata.addColumn('string','Disease');
-            bardata.addColumn('number','Impact');
-            bardata.addColumn({type: 'string', role: 'style'});
-            bardata.addRow([row[4],row[5],disColor]);
-            var baroptions = {
-                legend:'none',
-                top: 0,
-                width: 400,
-                animation:{
-                    startup: true,
-                    duration: 1000,
-                    easing: 'out',
-                }
-            };
+            var ii = 0;
+            var j;
+             var count = Object.keys(reportdetail).length;
+             console.log(count);
+             var bardata = new google.visualization.DataTable();
+             bardata.addColumn('string','Disease');
+             bardata.addColumn('number','Impact');
+             bardata.addColumn({type: 'string', role: 'style'});
+             for(ii = 0; ii < count; ii++)
+             {
+                    console.log(reportdetail[ii][0])
+                    if(rownum == reportdetail[ii][0])
+                    {
+                    row = reportdetail[ii];
+                    rowvalue = reportsdata[rownum-1];
+                    console.log(row[4]);
+                    console.log(row[5]);
+                    getColor(row[4]);
+                     bardata.addRow([row[4],row[5],colorval]);
+                    document.getElementById('rptDrug').innerHTML += " " + row[3];
+                    document.getElementById('rptDisease').innerHTML += " " + row[4];
+                    }
+             }
+               var baroptions = {
+                    legend:'none',
+                    top: 0,
+                    width: 400,
+                    animation:{
+                        startup: true,
+                        duration: 1000,
+                        easing: 'out',
+                    }
+                };
             var barchart = new google.visualization.BarChart(document.getElementById('horbars'));
             barchart.draw(bardata,baroptions);
             document.getElementById('rptScore').innerHTML = rowvalue[3];
-            document.getElementById('rptDrug').innerHTML = row[3];
-            document.getElementById('rptDisease').innerHTML = row[4];
+            document.getElementById('cntname').innerHTML = rowvalue[2];
         };
 </script>
 
 
 <div class="row">
 <div  class="col-sm-6">
-        <p class="bluetxt text-center" id="cntname"></p>
+
      {% for rpt in report2010 %}
             <a onclick="rptClick({{rpt.0}})">
                 <div style="padding-top: 1px; font-family: 'Nunito','sans-serif';">{{ rpt.2 }}</div>
@@ -98,6 +156,8 @@
         {% endfor %}
 </div>
     <div class="col-sm-6">
+
+        <p class="redtxt" id="cntname" style="font-size:20px"></p>
         <div style="width:250px;">
          <div style="width:50px; float:left;"><b> Score :</b> </div>
          <div style="width:200px; float:right;" id="rptScore"></div>
@@ -110,6 +170,8 @@
          <div style="width:70px; float:left;"><b> Disease : </b> </div>
          <div style="width:200px; float:right;" id="rptDisease"></div>
         </div>
+    </div>
+    <div class="col-sm-6">
          <div class="rgtpos" id="horbars" ></div>
     </div>
 </div>

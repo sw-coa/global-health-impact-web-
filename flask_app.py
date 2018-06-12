@@ -743,6 +743,7 @@ def reports():
     reportbar2010 = []
     print(reports2010)
     print(reportsbar2010)
+
     for i in reports2010:
         id = i[0]
         year = i[1]
@@ -753,6 +754,7 @@ def reports():
         row = [id, year, cname, timpactscre, rank, numOfDis]
         reportdict.append(row)
     print(reportdict)
+
 
     for i in reportsbar2010:
         _id = i[0]
