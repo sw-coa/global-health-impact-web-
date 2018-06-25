@@ -1307,7 +1307,9 @@ def company():
                   '#8A5575','#305516','#B78988','#BAE2DA','#B1345D','#5B75A7','#906F76','#C0E188',
                   '#B99BCF', '#DC2A5A', '#D3D472','#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5',
                   '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5', '#0ACD57', '#22419F','#D47C5B','#003452',
-                  '#86AAB9', '#CAEEFD' ]
+                  '#86AAB9', '#CAEEFD','#139A97', '#1CDDD8', '#FF033D', '#004444', '#C25C7D', '#B5A28F', '#C25C7D', '#90BA3E', '#DA8709', '#B0B0CE',
+                  '#2D00DD', '#DD2D00', '#FAFDFD', '#F5FD2F', '#0DC4E0', '#FFD700', '#CC263C', '#F5F5DC', '#3D9C35', '#00CC00',
+                  '#EAEAFF' ]
 #------Jing 10/7----modify sql: add order by and use manudis as table to select data, apply color to piechart and bar chart------------------
 
     cur = g.db.execute(' select distinct company,disease, daly2010 from manudis order by daly2010 DESC')#====10.7
@@ -1350,9 +1352,9 @@ def company():
         print(k)
         if n < 4:
             comp = k[0]
-            shortcomp = comp[0:10]
+            #shortcomp = comp[0:10]
             temprow.append(comp)
-            temprow.append(shortcomp)
+            temprow.append(comp)
             scolor=k[2]
             sscolor=scolor[1:7]
             temprow.append(sscolor)
@@ -1368,9 +1370,9 @@ def company():
         print(k)
         if n < 4:
             comp = k[0]
-            shortcomp = comp[0:10]
+            #shortcomp = comp[0:10]
             temprow.append(comp)
-            temprow.append(shortcomp)
+            temprow.append(comp)
             scolor=k[2]
             sscolor=scolor[1:7]
             temprow.append(sscolor)
@@ -1411,6 +1413,7 @@ def company():
     g.db.close()
     url = name.lower()
     speclocate = [year,name,url]
+    print (piedata1)
     return render_template('company.html', data1=piedata2, data2=piedata1,name=name, navsub=2, showindex=1, pielab1=pielab1, pielab2=pielab2, bardata=bardata, comptype = 0, speclocate = speclocate, scrolling=1)
 
 @app.route('/index/company/manufacturer/<year>/<disease>')
@@ -1421,7 +1424,9 @@ def companyindx(year,disease):
                   '#8A5575','#305516','#B78988','#BAE2DA','#B1345D','#5B75A7','#906F76','#C0E188',
                   '#B99BCF', '#DC2A5A', '#D3D472','#2A9DC4', '#C25C90', '#65A007', '#FE3289', '#C6DAB5',
                   '#DDF6AC', '#B7E038', '#1ADBBD', '#3BC6D5', '#0ACD57', '#22419F','#D47C5B','#003452',
-                  '#86AAB9', '#CAEEFD' ]
+                  '#86AAB9', '#CAEEFD','#139A97', '#1CDDD8', '#FF033D', '#004444', '#C25C7D', '#B5A28F', '#C25C7D', '#90BA3E', '#DA8709', '#B0B0CE',
+                  '#2D00DD', '#DD2D00', '#FAFDFD', '#F5FD2F', '#0DC4E0', '#FFD700', '#CC263C', '#F5F5DC', '#3D9C35', '#00CC00',
+                  '#EAEAFF' ]
    # colors = {'TB': '#FFB31C', 'Malaria': '#0083CA', 'HIV': '#EF3E2E', 'schistosomiasis': '#546675', 'lf': '#305516', 'hookworm': '#86AAB9', 'roundworm': '#003452', 'whipworm': '#CAEEFD', 'onchocerciasis': '#5CB85C'}
    # pielabb=[]
     piedata1 = []
@@ -1461,9 +1466,9 @@ def companyindx(year,disease):
                 print(k)
                 if n < 4:
                     comp = k[0]
-                    shortcomp = comp[0:10]
+                    #shortcomp = comp[0:10]
                     temprow.append(comp)
-                    temprow.append(shortcomp)
+                    temprow.append(comp)
                     scolor = k[2]
                     sscolor = scolor[1:7]
                     temprow.append(sscolor)
@@ -1478,9 +1483,9 @@ def companyindx(year,disease):
                 print(k)
                 if n < 4:
                     comp = k[0]
-                    shortcomp = comp[0:10]
+                    #shortcomp = comp[0:10]
                     temprow.append(comp)
-                    temprow.append(shortcomp)
+                    temprow.append(comp)
                     scolor = k[2]
                     sscolor = scolor[1:7]
                     temprow.append(sscolor)
@@ -1621,9 +1626,9 @@ def companyindx(year,disease):
         print(k)
         if n < 4:
             comp = k[0]
-            shortcomp = comp[0:10]
+            #shortcomp = comp[0:10]
             temprow.append(comp)
-            temprow.append(shortcomp)
+            temprow.append(comp)
             scolor=k[2]
             sscolor=scolor[1:7]
             temprow.append(sscolor)
@@ -1642,9 +1647,9 @@ def companyindx(year,disease):
         print(k)
         if n < 4:
             comp = k[0]
-            shortcomp = comp[0:10]
+            #shortcomp = comp[0:10]
             temprow.append(comp)
-            temprow.append(shortcomp)
+            temprow.append(comp)
             scolor=k[2]
             sscolor=scolor[1:7]
             temprow.append(sscolor)
@@ -1791,9 +1796,9 @@ def patent(year,disease):
         comp = k[0]
         score = k[1]
         color = "#"+k[2]
-        shortcomp = comp[0:10]
+        #shortcomp = comp[0:10]
         labit.append(comp)
-        labit.append(shortcomp)
+        labit.append(comp)
         labit.append(color)
         labit.append(score)
         lablist1.append(labit)
@@ -1816,9 +1821,9 @@ def patent(year,disease):
         comp = k[0]
         score = k[1]
         color = "#"+k[2]
-        shortcomp = comp[0:10]
+        #shortcomp = comp[0:10]
         labit.append(comp)
-        labit.append(shortcomp)
+        labit.append(comp)
         labit.append(color)
         labit.append(score)
         lablist2.append(labit)
@@ -3668,8 +3673,10 @@ def ManageAccount():
         conn.commit()
         print ("Completed Update")
     except Exception as e:
+        error = str(e)
         conn.rollback()
-        return render_template('accountF.html', showthediv=0)
+        return render_template('accountF.html',error=error,  showthediv=0)
+
     return render_template('accountS.html', showthediv=0)
 
 if __name__ == '__main__':
