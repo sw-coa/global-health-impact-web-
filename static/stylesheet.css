@@ -307,6 +307,23 @@ body {
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
     }
+	
+	.navbtn {
+    color: #404040;
+    background-color: #FFFFFF;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    position: relative;
+    display: inline-block;
+    float: right;
+    width: 75px;
+    }
 }
 @media only screen and (min-width: 421px) and (max-width: 599px) {
     .cap {
